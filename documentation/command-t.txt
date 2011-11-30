@@ -1,0 +1,1 @@
+../plugins/command-t/doc/command-t.txt
