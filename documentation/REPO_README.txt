@@ -23,11 +23,5 @@ Keymappings / Features:
     [...]
 
 included plugins:
-    [...]
-
-included subrepos:
-    [...]
-
-included color schemes:
-    [...]
+    "Taglist" by Yegappan Lakshmanan (yegappan AT yahoo DOT com) (state 2007 May 24)
 
