@@ -14,6 +14,8 @@ To use this configuration, just checkout repo and link vimrc directly to your ho
  > git clone <repo>
  > cd ~/
  > ln -s .vim/vimrc .vimrc
+ > git submodule init
+ > git submodule update 
 
 To add another plugin as subrepo, just use something like this:
  > git submodule add https://github.com/vim-scripts/The-NERD-Commenter plugins/NerdCommenter
