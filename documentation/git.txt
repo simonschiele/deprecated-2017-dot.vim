@@ -1,1 +1,0 @@
-../plugins/git/doc/ft-gitcommit-plugin.txt
