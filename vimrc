@@ -229,6 +229,9 @@ let g:gundo_width = 60
 autocmd vimenter * if !argc() | NERDTree | endif 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" powerline
+let g:Powerline_symbols = 'fancy'
+
 
 " Taglist settings
 "let Tlist_Use_Right_Window = 1
