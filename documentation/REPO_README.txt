@@ -35,16 +35,16 @@ included plugins:
 	
     * "pathogen" (https://github.com/tpope/vim-pathogen.git)
           Description: Plugin-Manager
-
-	* "command-t" (https://github.com/wincent/Command-T)
-	      Description: fast/intuitive file opening and buffer switching
+    
+    * "command-t" (https://github.com/wincent/Command-T)
+          Description: fast/intuitive file opening and buffer switching
           Installation: cd ~/.vim/plugins/command-t/ && rake make
           Depends: ruby + vim with ruby support
 
     * "ack" (https://github.com/mileszs/ack.vim)
-	      Description: better than grep :-)
+          Description: better than grep :-)
           Depends: ack-grep
-    
+
     * "gundo" (https://github.com/sjl/gundo.vim)
           Description: visualizing the undo tree
           Depends: vim with python support	
@@ -82,16 +82,20 @@ included plugins:
           Description: source browser 
           Depends: exuberant-ctags
           Comment: NOT A SUBREPO!
+    
+    * "vim-powerline" (https://github.com/Lokaltog/vim-powerline)
+          Description: mighty and fancy statusline.  
+          Depends: patched font! see readme
  
 included color schemes:
-    256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)
-    adrian (Adrian Nagle <vim@naglenet.org>) (state 25 Sep 2001)
-    calmar256-dark (calmar <mac@calmar.ws>) (state 02 March 2007)
-    colorful256 (Jagpreet <jagpreetc AT gmail DOT com>) (state 03 Oct 2007)
-    desert256 (Henry So, Jr. <henryso@panix.com>)
-    desert (Hans Fugal <hans@fugal.net>) (state 2003/06/02)
-    deveiate (Mahlon E. Smith <mahlon@martini.nu> & Michael Granger <ged@faeriemud.org>) (state 27 Jun 2008)
-    inkpot (Ciaran McCreesh <ciaran.mccreesh@googlemail.com>)
-    wombat256 (David Liang <bmdavll at gmail dot com>) (state November 28 2008)
-    xoria256 (Dmitriy Y. Zotikov (xio) <xio@ungrund.org>)
+    * 256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)
+    * adrian (Adrian Nagle <vim@naglenet.org>) (state 25 Sep 2001)
+    * calmar256-dark (calmar <mac@calmar.ws>) (state 02 March 2007)
+    * colorful256 (Jagpreet <jagpreetc AT gmail DOT com>) (state 03 Oct 2007)
+    * desert256 (Henry So, Jr. <henryso@panix.com>)
+    * desert (Hans Fugal <hans@fugal.net>) (state 2003/06/02)
+    * deveiate (Mahlon E. Smith <mahlon@martini.nu> & Michael Granger <ged@faeriemud.org>) (state 27 Jun 2008)
+    * inkpot (Ciaran McCreesh <ciaran.mccreesh@googlemail.com>)
+    * wombat256 (David Liang <bmdavll at gmail dot com>) (state November 28 2008)
+    * xoria256 (Dmitriy Y. Zotikov (xio) <xio@ungrund.org>)
 
