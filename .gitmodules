@@ -28,3 +28,6 @@
 [submodule "plugins/ack"]
 	path = plugins/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "plugins/snipmate"]
+	path = plugins/snipmate
+	url = https://github.com/garbas/vim-snipmate.git
