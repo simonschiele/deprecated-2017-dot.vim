@@ -25,11 +25,30 @@ Keymappings / Features:
     [...]
 
 included plugins:
-    [...]
+    "Taglist" by Yegappan Lakshmanan (yegappan AT yahoo DOT com) (state 2007 May 24)
 
 included subrepos:
-    [...]
+	* https://github.com/tpope/vim-pathogen.git
+	* https://github.com/tpope/vim-git.git
+	* https://github.com/tpope/vim-surround.git
+	* https://github.com/msanders/snipmate.vim.git
+	* https://github.com/ervandew/supertab.git
+	* https://github.com/sontek/minibufexpl.vim.git
+	* https://github.com/tpope/vim-fugitive.git
+	* https://github.com/wincent/Command-T.git
+	* https://github.com/sjl/gundo.vim.git
+	* https://github.com/vim-scripts/Mark.git
+	* https://github.com/scrooloose/nerdcommenter.git
+	* https://github.com/scrooloose/nerdtree.git
 
 included color schemes:
-    [...]
+    256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)
+    adrian (Adrian Nagle <vim@naglenet.org>) (state 2001-09-25)
+    calmar256-dark (calmar <mac@calmar.ws>) (state 02. March 2007)
+    colorful256 (Jagpreet <jagpreetc AT gmail DOT com>) (state 03 Oct, 2007)
+    desert256 (Henry So, Jr. <henryso@panix.com>)
+    desert (Hans Fugal <hans@fugal.net>) (state 2003/06/02)
+    inkpot (Ciaran McCreesh <ciaran.mccreesh@googlemail.com>)
+    wombat256 (David Liang <bmdavll at gmail dot com>) (November 28 2008)
+    xoria256 (Dmitriy Y. Zotikov (xio) <xio@ungrund.org>)
 
