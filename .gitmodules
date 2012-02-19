@@ -31,3 +31,9 @@
 [submodule "plugins/snipmate"]
 	path = plugins/snipmate
 	url = https://github.com/garbas/vim-snipmate.git
+[submodule "plugins/tlib_vim"]
+	path = plugins/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "plugins/vim-addon-mw-utils"]
+	path = plugins/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
