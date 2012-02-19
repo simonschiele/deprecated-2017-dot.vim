@@ -4,9 +4,6 @@
 [submodule "plugins/surround"]
 	path = plugins/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "plugins/snipmate"]
-	path = plugins/snipmate
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "plugins/supertab"]
 	path = plugins/supertab
 	url = https://github.com/ervandew/supertab.git
