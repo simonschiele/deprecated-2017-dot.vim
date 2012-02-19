@@ -1,53 +1,36 @@
 
-" {{{ Pathogen & Plugin Settings 
+" {{{ Pathogen
 
-" Use pathogen to load further modules
+" Use pathogen to load further modules from plugins/
 filetype off
 call pathogen#runtime_append_all_bundles("plugins")
 call pathogen#helptags()
 
-" Supertab settings
-let g:SuperTabDefaultCompletionType = "context"
-
-" Taglist settings
-"let Tlist_Use_Right_Window = 1
-"let Tlist_Enable_Fold_Column = 0
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Use_SingleClick = 1
-"let Tlist_Inc_Winwidth = 0
-
 " }}}
 
-" {{{ Look & Feel
+" {{{ Look
 
 set t_Co=256
+
 "set background=dark
 " hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
 " hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
 
 if has("syntax")
-    
     syntax on
-    
     color wombat256
-    " color inkpot
-    " color 256-jungle
-    " color adrian
-    " color calmar256
-    " color colorful256
-    " color desert256
-    " color desert
-    " color deveiate
-    " color wombat256
-    " color xoria256
-
+    
+    "color inkpot
+    "color 256-jungle
+    "color adrian
+    "color calmar256
+    "color colorful256
+    "color desert256
+    "color desert
+    "color deveiate
+    "color wombat256
+    "color xoria256
 endif    
-
-" line numbering
-set number              " line numbering
-
-" folding
-set foldmethod=marker   " autofold on three braces ({{)
 
 " fancy cursor-crosshair
 "hi CursorColumn term=none cterm=none ctermbg=52
@@ -55,11 +38,90 @@ set foldmethod=marker   " autofold on three braces ({{)
 set cursorcolumn
 set cursorline
 
+" line numbering
+set number
+
+" wilmenu 
+set wildmenu                       " turn on wild menu
+set wildmode=list:longest,full       " set wildmenu to list choice
+
+" }}}
+
+" {{{ Editor Settings 
+
+" just to be sure
+set nocompatible
+
+" tabbing & indentation
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+set smartindent
+set autoindent
+"set shiftround
+
+" moving
+set scrolloff=3
+
+" buffers
+set hidden
+
+" more intuitive backspacing in insert mode 
+set backspace=indent,eol,start  
+
+" searching
+set hlsearch            " highlite search term
+set incsearch           " search while typing
+set ignorecase          " Do case insensitive matching by default
+set smartcase           " Do smart case matching
+
+" save/load
+set autowrite           " save on buffer change
+
+" filetype stuff
+set ff=unix             " fileformat 
+
+" folding
+set foldmethod=marker   " autofold on three "{"
+
+" brackets
+set showmatch
+
+" replace
+"set gdefault           " always assume /g
+
+" mouse
+"set mouse=a|b          " To play with x11 integration - confusing x11 behavier... 
+
+" undo/backup/swp/... 
+set undolevels=1000     " 1000 undos
+set history=50          " keep 50 lines of command line history
+set viminfo='20,\"10000 " read/write a .viminfo file
+set nobackup            " don't write backup file
+set nowritebackup       " dont' write 'old_version'-backup file
+
+" jump to last position on reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.so,.out,.bin,.aux,.idx,.jpg,.png,.gif,.avi,.mkv,.mp3,.flac
+
 " strange settings for split windows. they are always minimized to 
 " one line, except one. and you can switch nicely... not usable for 
 " me but maybe comes handy some day for devices with small screen...
 "set winminheight=0
 "set winheight=999
+
+" miscellaneous 
+set showcmd
+set noerrorbells
+set ttyfast
 
 " }}}
 
@@ -129,70 +191,53 @@ autocmd FileType php noremap <C-P> :!php -l %<CR>
 
 " }}}
 
-" {{{ Editor Settings 
+" {{{ Keymappings & Plugin Settings 
 
-" jump to last position on reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
+" Set a more intuitive <Leader>
+let mapleader = "," 
 
-" Suffixes that get lower priority when doing tab completion for filenames.
-" These are files we are not likely to want to edit or read.
-set suffixes=.bak,~,.swp,.o,.so,.out,.bin,.aux,.idx,.jpg,.png,.gif,.avi,.mkv,.mp3,.flac
+" Snipmate settings
+let g:snips_dir = "~/.vim/snippets/"
+let g:snips_author = 'Simon Schiele'
+let g:snips_trigger_key_backwards='<none>'
 
-set nocompatible                    " just to be sure
-set backspace=indent,eol,start      " more powerful backspacing
-set ttyfast
+" vim-ack settings
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-set smartindent
-set autoindent
-set showmatch           " Show matching brackets.
-set smartcase           " Do smart case matching
-set hlsearch            " highlite search term
-set incsearch           " search while typing
-"set ignorecase         " Do case insensitive matching by default
-set autowrite           " save on buffer change
-set gdefault            " always assume /g
-set ff=unix             " fileformat 
-set wildmenu                         " turn on wild menu :e <Tab>
-set wildmode=list:longest,full       " set wildmenu to list choice
-set showcmd
-set noerrorbells        " no error bells
-set undolevels=1000     " 1000 undos
-set history=50          " keep 50 lines of command line history
-set viminfo='20,\"10000 " read/write a .viminfo file
-set nobackup            " don't write backup file
-set nowritebackup       " dont' write 'old_version'-backup file
-"set mouse=a|b          " To play with x11 integration - confusing x11 behavier... 
-"set hidden             " Hide buffers when they are abandoned
-"set textwidth=0        " Don't wrap lines by default
-"set wmh=0              " allow window size 0 - not working as expected...
-"set ruler              " show the cursor position all the time
-"set novb
-"set noeb
-"set shiftround
+" Supertab settings
+let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingBackward = '<c-s-tab>'
+let g:SuperTabMappingTabLiteral = '<tab>'
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabCrClosePreview = 1
+"let g:SuperTabCrMapping = 1
 
-" What is this?
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" commant-t settings
+"nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+nnoremap <silent> <Leader>o :CommandT<CR>
 
-" }}}
+" Gundo settings 
+nnoremap <Leader>u :GundoToggle<CR>
+let g:gundo_width = 60
+"let g:gundo_preview_height = 20 
+"let g:gundo_right = 1
+"let g:gundo_preview_statusline = 
+"let g:gundo_tree_statusline = 
 
-" {{{ Shortcuts  
+" NerdTree settings
+autocmd vimenter * if !argc() | NERDTree | endif 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" This is for working across multiple xterms and/or gvims
-" Transfer/read and write one block of text between vim sessions (capture whole line):
-"nmap ;w :. w! ~/.vimxfer<CR>      " Write
-"nmap ;r :r ~/.vimxfer<CR>         " Read
-"nmap ;a :. w! >>~/.vimxfer<CR>    " Append 
 
-" firefox like navigation
+" Taglist settings
+"let Tlist_Use_Right_Window = 1
+"let Tlist_Enable_Fold_Column = 0
+"let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Use_SingleClick = 1
+"let Tlist_Inc_Winwidth = 0
+
+" firefox-like navigation
 nnoremap <silent> <C-PageDown> :next <CR>
 nnoremap <silent> <C-PageUp> :prev<CR>
 nnoremap <silent> <C-n> :new<CR>
@@ -218,10 +263,16 @@ nnoremap <silent> <F7> :TlistToggle<CR>
 nnoremap <silent> <F8> :NERDTreeToggle<CR> 
 
 " folding 
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+inoremap <Leader>f <C-O>za
+nnoremap <Leader>f za
+onoremap <Leader>f <C-C>za
+vnoremap <Leader>f zf
+
+" This is for working across multiple xterms and/or gvims
+" Transfer/read and write one block of text between vim sessions (capture whole line):
+"nmap ;w :. w! ~/.vimxfer<CR>      " Write
+"nmap ;r :r ~/.vimxfer<CR>         " Read
+"nmap ;a :. w! >>~/.vimxfer<CR>    " Append 
 
 " }}}
 
