@@ -10,27 +10,20 @@ call pathogen#helptags()
 
 " {{{ Look
 
-set t_Co=256
+if $COLORCOUNT == "256"
+    set t_Co=256
+    color wombat256
+else
+    color wombat
+endif
+
+if has("syntax")
+    syntax on
+endif    
 
 "set background=dark
 " hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
 " hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
-
-if has("syntax")
-    syntax on
-    color wombat256
-    
-    "color inkpot
-    "color 256-jungle
-    "color adrian
-    "color calmar256
-    "color colorful256
-    "color desert256
-    "color desert
-    "color deveiate
-    "color wombat256
-    "color xoria256
-endif    
 
 " fancy cursor-crosshair
 "hi CursorColumn term=none cterm=none ctermbg=52
