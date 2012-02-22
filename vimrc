@@ -34,10 +34,6 @@ set cursorline
 " line numbering
 set number
 
-" wilmenu 
-set wildmenu                       " turn on wild menu
-set wildmode=list:longest,full       " set wildmenu to list choice
-
 " }}}
 
 " {{{ Editor Settings 
@@ -87,6 +83,11 @@ set showmatch
 
 " mouse
 "set mouse=a|b          " To play with x11 integration - confusing x11 behavier... 
+
+" wilmenu 
+set wildmenu                       " turn on wild menu
+set wildmode=list:longest,full       " set wildmenu to list choice
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.jpe?g,*.png,*.xpm,*.gif
 
 " undo/backup/swp/... 
 set undolevels=1000     " 1000 undos
