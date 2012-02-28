@@ -1,0 +1,1 @@
+../plugins/vim-addon-mw-utils/doc/tiny_cmd.txt

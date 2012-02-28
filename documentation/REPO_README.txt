@@ -9,16 +9,28 @@ Repo:
 If you use this repo as your default configuration, just mail a public key and you will get
 write permission to the repo :-)
 
+
 To use this configuration, just checkout repo + subrepos and link vimrc directly to your home:
+ 
+ # Backup existing config
  > mv ~/.vim/ ~/vim-old/
+ > mv ~/.vimrc ~/vim-old/dot.vimrc
+
+ # Clone base repo
  > git clone <repo> ~/.vim/
+ 
+ # Clone subrepos (plugins)
  > cd ~/.vim/
  > git submodule init
  > git submodule update 
+ 
+ # Link vimrc to your HOME 
  > ln -s .vim/vimrc ~/.vimrc
+
 
 To add another plugin as subrepo, just use something like this:
  > git submodule add https://github.com/vim-scripts/The-NERD-Commenter plugins/NerdCommenter
+
 
 Keymappings:
     ,           - <Leader>
@@ -30,6 +42,7 @@ Keymappings:
     F7          - Taglist browser
     F8          - file browser
     Strg+P      - PHP parser check
+
 
 included plugins:
 	
@@ -87,6 +100,7 @@ included plugins:
           Description: mighty and fancy statusline.  
           Depends: patched font! see readme
  
+
 included color schemes:
     * 256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)
     * adrian (Adrian Nagle <vim@naglenet.org>) (state 25 Sep 2001)
