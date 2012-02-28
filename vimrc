@@ -199,11 +199,11 @@ let g:snips_trigger_key_backwards='<none>'
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 " Supertab settings
-let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingForward = '<tab>'
 let g:SuperTabMappingBackward = '<c-s-tab>'
-let g:SuperTabMappingTabLiteral = '<tab>'
+let g:SuperTabMappingTabLiteral = '<s-tab>'
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
+"let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabCrClosePreview = 1
 "let g:SuperTabCrMapping = 1
 
@@ -225,7 +225,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " powerline
 let g:Powerline_symbols = 'fancy'
-
 
 " Taglist settings
 "let Tlist_Use_Right_Window = 1
