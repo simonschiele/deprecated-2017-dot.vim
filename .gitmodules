@@ -40,3 +40,6 @@
 [submodule "plugins/vim-powerline"]
 	path = plugins/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "plugins/syntastic"]
+	path = plugins/syntastic
+	url = https://github.com/scrooloose/syntastic.git
