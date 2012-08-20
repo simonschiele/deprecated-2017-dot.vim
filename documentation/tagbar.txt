@@ -1,0 +1,1 @@
+../plugins/tagbar/doc/tagbar.txt
