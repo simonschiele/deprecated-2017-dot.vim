@@ -43,3 +43,9 @@
 [submodule "plugins/syntastic"]
 	path = plugins/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "plugins/tagbar"]
+	path = plugins/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "helper/tagbar-phpctags"]
+	path = helper/tagbar-phpctags
+	url = https://github.com/techlivezheng/tagbar-phpctags.git
