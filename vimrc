@@ -304,6 +304,7 @@ let g:gundo_width = 60
 "let g:gundo_tree_statusline = 
 
 """ [plugin] NerdTree 
+let g:NERDTreeQuitOnOpen = 1
 autocmd vimenter * if !argc() | NERDTree | endif 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nnoremap <silent> <F8> :NERDTreeToggle<CR> 
