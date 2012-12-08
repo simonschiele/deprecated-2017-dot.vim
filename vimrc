@@ -250,6 +250,15 @@ nnoremap <Leader>f za
 onoremap <Leader>f <C-C>za
 vnoremap <Leader>f zf
 
+""" toggle highliting
+nmap <F3> :set hls!<Bar>set hls?<CR>
+
+""" toggle ignorecase
+map <F4> :set ic!<bar>set ic?<cr> 
+
+""" [plugin] gundo
+nmap <F6> :GundoToggle<CR>
+
 """ [plugin] tagbar
 nmap <F7> :TagbarToggle<CR>
 let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
