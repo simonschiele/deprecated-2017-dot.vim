@@ -263,6 +263,9 @@ nmap <F6> :GundoToggle<CR>
 nmap <F7> :TagbarToggle<CR>
 let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
 
+""" scrollsync
+map <F9> :set scb!<bar>set scb?<cr>
+
 """ [plugin] Snipmate
 let g:snips_dir = "~/.vim/snippets/"
 let g:snips_author = 'Simon Schiele'
