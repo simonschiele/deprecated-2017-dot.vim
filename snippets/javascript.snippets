@@ -1,0 +1,20 @@
+snippet php
+	<?php
+	${1}
+	?>
+snippet lang
+	<?=lang('phrase_${1}');?>
+snippet ajax
+	$.ajax({
+		type: "POST",
+		cache: false,
+		url: "/user/mailorder/json/",
+		data: $('form#mailorder').serialize(),
+		success: callbackMailorder
+	});
+snippet log
+	console.log(${1});
+snippet script
+	<script type="text/javascript" language="javascript">
+		${1}
+	</script>
