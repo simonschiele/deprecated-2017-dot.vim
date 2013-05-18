@@ -172,6 +172,18 @@ filetype indent on
 highlight SpellBad term=underline gui=undercurl guisp=Red 
 set spl=en spell        " english spellchecking
 set nospell             " disable by default
+let g:myLang = 0
+let g:myLangList = ['nospell', 'de', 'en']
+function! MySpellLang()
+  "loop through languages
+  if g:myLang == 0 | setlocal nospell | endif
+  if g:myLang == 1 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+  if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+  echomsg 'language:' g:myLangList[g:myLang]
+  let g:myLang = g:myLang + 1
+  if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+endfunction
+map <F7> :<C-U>call MySpellLang()<CR>
 
 """ Web
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -219,7 +231,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " completion test
 set completeopt=longest,menuone
 
-
 " {{{ Keymappings & Plugin Settings 
 
 " Set a more intuitive <Leader>
@@ -241,9 +252,6 @@ nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O><F2>
 set pastetoggle=<F2>
 
-" run script 
-map <F5> :!%:p<CR>
-
 " folding 
 inoremap <Leader>f <C-O>za
 nnoremap <Leader>f za
@@ -256,15 +264,18 @@ nmap <F3> :set hls!<Bar>set hls?<CR>
 """ toggle ignorecase
 map <F4> :set ic!<bar>set ic?<cr> 
 
+" run script 
+map <F5> :!%:p<CR>
+
 """ [plugin] gundo
 nmap <F6> :GundoToggle<CR>
 
 """ [plugin] tagbar
-nmap <F7> :TagbarToggle<CR>
+nmap <F9> :TagbarToggle<CR>
 let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
 
 """ scrollsync
-map <F9> :set scb!<bar>set scb?<cr>
+map <F10> :set scb!<bar>set scb?<cr>
 
 """ [plugin] Snipmate
 let g:snips_dir = "~/.vim/snippets/"
