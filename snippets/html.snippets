@@ -18,6 +18,14 @@ snippet favicon
 	<link rel="icon" href="/${1}/favicon.ico" type="image/x-icon" />
 snippet doctype
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+snippet ui
+	ui-widget ui-widget-content
+snippet .
+	class="${1}"
+snippet #
+	id="${1}"
+snippet white
+	&nbsp;
 snippet skel
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 	<html>      
@@ -31,3 +39,15 @@ snippet skel
 	${2}
 	</body
 	</html>
+snippet lang
+	<?=lang('phrase_${1}');?>
+snippet ajax
+	$.ajax({
+		type: "POST",
+		cache: false,
+		url: "/user/mailorder/json/",
+		data: $('form#mailorder').serialize(),
+		success: callbackMailorder
+	});
+snippet log
+	console.log(${1});
