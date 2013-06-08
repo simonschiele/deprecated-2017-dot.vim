@@ -129,6 +129,17 @@ set ttyfast
 
 " }}}
 
+" {{{ gvim 
+
+if has('gui_running')
+    set guioptions-=T  " no toolbar
+    set guioptions-=m  " no menubar
+    set guioptions-=r  " no right scrollbar
+    set guioptions-=L  " no left scrollbar
+endif
+
+" }}}
+
 " {{{ Statusline
 "Reminder: add 'warning functions" from stuckoverflow thread
 
@@ -150,9 +161,9 @@ set statusline+=%m                                      " modified flag
 
 set statusline+=%=                                      " right align
 set statusline+=%1*%F%*\                                " full filename
-"set statusline+=%1*%t%*\                               " tail of filename
 set statusline+=[line\ %l/%L\|%p%%\|char\ %v]           " [line 87/220|39%|char 50]
 "set statusline+=[%04.3b@ascii\|\%02.2B@hex]            " [0101@ascii|65@hex]
+"set statusline+=%1*%t%*\                               " tail of filename
 "set statusline+=[U+%04B]                               " Unicode char under cursor
 
 ""Complete thirdparty statuslines 
