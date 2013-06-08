@@ -187,11 +187,17 @@ map <F7> :<C-U>call MySpellLang()<CR>
 
 """ Web
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set ft=html.javascript 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
+""" JavaScript
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set ft=javascript.html
+
 """ php
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php set ft=php.html.javascript 
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 
@@ -214,10 +220,7 @@ function! OpenPhpFunction (keyword)
     exe 'call search("User Contributed Notes")'
     exe 'norm dGgg'
 endfunction
-au FileType php map K :call OpenPhpFunction('<C-r><C-w>')<CR>
-
-""" JavaScript
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType php noremap K :call OpenPhpFunction('<C-r><C-w>')<CR>
 
 """ Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
