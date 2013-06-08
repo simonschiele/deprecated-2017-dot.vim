@@ -85,10 +85,11 @@ set showmatch
 " mouse
 "set mouse=a|b          " To play with x11 integration - confusing x11 behavier... 
 
-" wilmenu 
-set wildmenu                       " turn on wild menu
-set wildmode=list:longest,full       " set wildmenu to list choice
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.jpe?g,*.png,*.xpm,*.gif
+" wildmenu 
+set wildmenu                       " enable wildmenu
+"set wildmode=longest,list,full
+set wildmode=longest:full,full
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
 " undo/backup/swp/... 
 set undolevels=1000     " 1000 undos
@@ -237,8 +238,10 @@ autocmd FileType php noremap K :call OpenPhpFunction('<C-r><C-w>')<CR>
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 """ C
-autocmd FileType make set noexpandtab shiftwidth=8
 autocmd FileType c set omnifunc=ccomplete#Complete
+
+""" make
+autocmd FileType make set noexpandtab shiftwidth=8
 
 " }}}
 
