@@ -65,6 +65,9 @@ set smartindent
 set autoindent
 "set shiftround
 
+""" performance & hiccups
+set lazyredraw
+
 """ disable sounds
 set noerrorbells
 set visualbell
@@ -88,7 +91,7 @@ set smartcase           " Do smart case matching
 """ folding
 
 " foldmethods:
-" marker    - folding on three "{"        arker    -
+" marker    - folding on three '{'
 " syntax    - folding by syntax-highliting
 " indent    - folding by indent
 " diff      - folding on unchanged lines
@@ -116,17 +119,24 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
-" undo
+" undo/backup/swp/info/... 
+set history=75          " keep 75 lines of command line history
+set viminfo='20,\"10000 " read/write a .viminfo file  """
+
 set undolevels=1000     " 1000 undos
 set undoreload=10000    " number of lines to save for undo
 set undodir=~/.vim/tmp/undo
 set undofile
 
-" backup/swp/... 
-set history=75          " keep 75 lines of command line history
-set viminfo='20,\"10000 " read/write a .viminfo file  """
-set nobackup            " don't write backup file  """
-set nowritebackup       " dont' write 'old_version'-backup file  """
+"set noswapfile
+set dir=~/.vim/tmp/swap
+set swapfile
+
+"set nobackup            " don't write backup file
+"set nowritebackup       " dont' write 'old_version'-backup file  """
+set backupdir=~/.vim/tmp/backup
+set backup
+set writebackup
 
 " jump to last position on reopening a file
 if has("autocmd")
@@ -186,8 +196,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O><F2>
 set pastetoggle=<F2>
 
-""" toggle highliting
-nmap <F3> :set hls!<Bar>set hls?<CR>
+""" disable highliting temp
+"nmap <F3> :set hls!<Bar>set hls?<CR>
+nmap <F3> :noh<CR>
 
 """ toggle ignorecase
 map <F4> :set ic!<bar>set ic?<cr> 
