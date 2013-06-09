@@ -116,12 +116,17 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
-" undo/backup/swp/... 
+" undo
 set undolevels=1000     " 1000 undos
-set history=50          " keep 50 lines of command line history
-set viminfo='20,\"10000 " read/write a .viminfo file
-set nobackup            " don't write backup file
-set nowritebackup       " dont' write 'old_version'-backup file
+set undoreload=10000    " number of lines to save for undo
+set undodir=~/.vim/tmp/undo
+set undofile
+
+" backup/swp/... 
+set history=75          " keep 75 lines of command line history
+set viminfo='20,\"10000 " read/write a .viminfo file  """
+set nobackup            " don't write backup file  """
+set nowritebackup       " dont' write 'old_version'-backup file  """
 
 " jump to last position on reopening a file
 if has("autocmd")
@@ -133,8 +138,8 @@ endif
 " au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
 " auto-reload vimrc on save
-autocmd BufWritePost vimrc source ~/.vimrc 
-autocmd BufWritePost .vimrc source ~/.vimrc 
+"autocmd BufWritePost .vimrc source ~/.vimrc 
+"autocmd BufWritePost vimrc source ~/.vimrc 
 
 " strange settings for split windows. they are always minimized to 
 " one line, except one. and you can switch nicely... not usable for 
@@ -245,7 +250,7 @@ nnoremap <silent> <Leader>o :CommandT<CR>
 
 """ [plugin] Gundo 
 nnoremap <Leader>u :GundoToggle<CR>
-let g:gundo_width = 60
+let g:gundo_width = 65
 "let g:gundo_preview_height = 20 
 "let g:gundo_right = 1
 "let g:gundo_preview_statusline = 
