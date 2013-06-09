@@ -162,6 +162,10 @@ nnoremap <silent> <C-n> :new<CR>
 if bufwinnr(1)
     map + <C-W>+
     map - <C-W>-
+    map <kPlus> <C-W>+
+    map <kMinus> <C-W>-
+    map <kDivide> <c-w><
+    map <kMultiply> <c-w>>
 endif
 
 """ toggle folding 
