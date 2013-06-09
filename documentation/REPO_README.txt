@@ -1,10 +1,10 @@
 My vim config.
 With this config I fight my daily battle as a (web-)developer.
-If you have nice tips or snipits for me, just send a mail <simon.codingmonkey@googlemail.com>.
+If you have nice tips or snippits for me, just send a mail <simon.codingmonkey@googlemail.com>.
 
 Repo:
  * GitHub:          https://github.com/simonschiele/dot.vim/  (clone git://github.com/simonschiele/dot.vim.git)
- * Self Hosted:     http://simon.psaux.de/git/dot.vim.git/  (clone git://psaux.de/dot.vim.git)
+ * Self Hosted:     http://simon.psaux.de/git/dot.vim.git/  (clone http://simon.psaux.de/git/dot.vim.git)
 
 If you use this repo as your default configuration, just mail a public key and you will get
 write permission to the repo :-)
@@ -25,7 +25,12 @@ To use this configuration, just checkout repo + subrepos and link vimrc directly
  > git submodule update 
  
  # Link vimrc to your HOME 
+ > cd ~/
  > ln -s .vim/vimrc ~/.vimrc
+
+ # Build command-t
+ > cd ~/.vim/plugins/command-t/
+ > ...
 
 
 To add another plugin as subrepo, just use something like this:
@@ -33,16 +38,45 @@ To add another plugin as subrepo, just use something like this:
 
 
 Keymappings:
-    ,           - <Leader>
-    <Leader>+f  - folding
-    <Leader>+b  - buffer overview (command-t)
-    <Leader>+o  - open file (command-t)
-    F2          - toggle paste
-    F5          - execute
-    F7          - Taglist browser
-    F8          - file browser
-    Strg+P      - PHP parser check
+    # modifiers notation
+    ,                   - <Leader>
+    Strg/Ctrl           - <C>
+    Shift               - <S>
+    Enter               - <CR>
 
+    # files
+    <Leader>o           - open file (command-t)
+    
+    # buffers
+    <Leader>b           - buffer overview (command-t)
+    
+    # folding
+    <Leader>f           - toggle folding under cursor
+    <Leader><S>+f       - toggle all folding
+
+    # helpers
+    F2                  - toggle paste
+    F3                  - toggle search highlite 
+    F4                  - toggle ignorecase
+    F5                  - syntax/parser check
+    Shift + F5          - exec
+    F6                  - Gundo
+    F7                  - language / spell check
+    F8                  - file browser
+    F9                  - tagbar
+    F10                 - scrollsync
+    
+    # navigation    
+    I                   - Jump to start of line and switch to insert mode
+    $                   - In command mode, go to end of the line.
+    gg                  - Jump tp beginning of file
+    G                   - Jump to end of file
+    :<line>             - Jump to line (<line> == line number)   
+    Ctrl + F/B          - Page down/back scroll.
+    
+    # edit 
+    df, (reverse dF,)   - Delete all characters till , on the current line
+    
 
 included plugins:
 	
