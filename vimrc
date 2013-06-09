@@ -132,6 +132,10 @@ endif
 " automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 " au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
+" auto-reload vimrc on save
+autocmd BufWritePost vimrc source ~/.vimrc 
+autocmd BufWritePost .vimrc source ~/.vimrc 
+
 " strange settings for split windows. they are always minimized to 
 " one line, except one. and you can switch nicely... not usable for 
 " me but maybe comes handy some day for devices with small screen...
@@ -146,29 +150,29 @@ set backspace=indent,eol,start      " more intuitive backspacing in insert mode
 
 " {{{ Keymappings & Plugin Settings 
 
-" Set a more intuitive <Leader>
+""" Set a more intuitive <Leader>
 let mapleader = "," 
 
-" firefox-like navigation
+""" firefox-like navigation
 nnoremap <silent> <C-PageDown> :next <CR>
 nnoremap <silent> <C-PageUp> :prev<CR>
 nnoremap <silent> <C-n> :new<CR>
 
-" resize window
+""" resize window
 if bufwinnr(1)
     map + <C-W>+
     map - <C-W>-
 endif
 
-" toggle folding 
+""" toggle folding 
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
 
-" toggle all foldings (todo: fix toggle)
+""" toggle all foldings (todo: fix toggle)
 nnoremap <Leader><S-f> zR
 vnoremap <Leader><S-f> zM
 
-" toggle paste
+""" toggle paste
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O><F2>
 set pastetoggle=<F2>
