@@ -390,3 +390,26 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 " }}}
 
+" {{{ Validation / Cleanup
+
+function! MatchToggle()
+    if g:match_eol
+        highlight ExtraWhitespace ctermbg=none guibg=none
+        let g:match_eol = 0 
+    else
+        highlight ExtraWhitespace ctermbg=red guibg=red
+        match ExtraWhitespace /\s\+$/
+        autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+        autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+        autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+        autocmd BufWinLeave * call clearmatches()
+        let g:match_eol = 1
+    endif
+endfunction
+
+let g:match_eol = 0 
+nnoremap <Leader>w :call MatchToggle()<cr>
+call MatchToggle()
+
+" }}}
+
