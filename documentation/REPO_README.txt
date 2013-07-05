@@ -46,17 +46,17 @@ Keymappings:
 
     # files
     <Leader>o           - open file (command-t)
-    
+
     # buffers
     <Leader>b           - buffer overview (command-t)
-    
+
     # folding
     <Leader>f           - toggle folding under cursor
     <Leader><S>+f       - toggle all folding
 
     # helpers
     F2                  - toggle paste
-    F3                  - toggle search highlite 
+    F3                  - remove highliting until next usage
     F4                  - toggle ignorecase
     F5                  - syntax/parser check
     Shift + F5          - exec
@@ -65,75 +65,40 @@ Keymappings:
     F8                  - file browser
     F9                  - tagbar
     F10                 - scrollsync
-    
-    # navigation    
+
+    # navigation
     I                   - Jump to start of line and switch to insert mode
     $                   - In command mode, go to end of the line.
     gg                  - Jump tp beginning of file
     G                   - Jump to end of file
     :<line>             - Jump to line (<line> == line number)   
     Ctrl + F/B          - Page down/back scroll.
-    
+ 
     # edit 
     df, (reverse dF,)   - Delete all characters till , on the current line
-    
+
 
 included plugins:
-	
+
     * "pathogen" (https://github.com/tpope/vim-pathogen.git)
           Description: Plugin-Manager
-    
-    * "command-t" (https://github.com/wincent/Command-T)
-          Description: fast/intuitive file opening and buffer switching
-          Installation: cd ~/.vim/plugins/command-t/ && rake make
-          Depends: ruby + vim with ruby support
-
-    * "ack" (https://github.com/mileszs/ack.vim)
-          Description: better than grep :-)
-          Depends: ack-grep
 
     * "gundo" (https://github.com/sjl/gundo.vim)
           Description: visualizing the undo tree
-          Depends: vim with python support	
-    
-    * "vim-surround" (https://github.com/tpope/vim-surround)
-          Description: fast editing of surroundings
-
-    * "Mark" (https://github.com/vim-scripts/Mark)
-          Description: marks several keywords/regex in different colors
+          Depends: vim with python support
 
     * "vim-fugitive" (https://github.com/tpope/vim-fugitive)
           Description: awesome git plugin
 
     * "nerdcommenter" (https://github.com/scrooloose/nerdcommenter)
           Description: comfortable commenting
-    
+
     * "nerdtree" (https://github.com/scrooloose/nerdtree)
           Description: filebrowser 
 
     * "supertab" (https://github.com/ervandew/supertab)
           Description: sane way to handle multiple complete features on <tab> 
-    
-    * "snipmate" (https://github.com/garbas/snipmate.vim)
-          Description: snipmate fork from garbas 
-          Depends: vim-addon-mw-utils, tlib (both plugins are submodules in this repo)
-          Comment: put your snippets to ~/.vim/snippets/
 
-    * "tlib_vim" (https://github.com/tomtom/tlib_vim)
-          Description: "excellent filterable list selection view" for snipmate
-    
-    * "vim-addon-mw-utils" (https://github.com/MarcWeber/vim-addon-mw-utils)
-          Description: "providing the implementation for caching parsed .snippets files" for snipmate
-
-    * "taglist" by Yegappan Lakshmanan (yegappan AT yahoo DOT com) (state 2007 May 24)
-          Description: source browser 
-          Depends: exuberant-ctags
-          Comment: NOT A SUBREPO!
-    
-    * "vim-powerline" (https://github.com/Lokaltog/vim-powerline)
-          Description: mighty and fancy statusline.  
-          Depends: patched font! see readme
- 
 
 included color schemes:
     * 256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)

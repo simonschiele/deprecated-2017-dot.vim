@@ -1,51 +1,81 @@
-snippet php
-	<?php
-	${1}
-	?>
-snippet script
-	<script type="text/javascript" language="javascript">
-	${1}
-	</script>
-snippet javascript
-	<script src="/${1}" type="text/javascript"></script>
-snippet style
-	<style type="text/css">
-	${1}
-	</style>
-snippet onload
-	$(document).ready(function() {
-		${1}
-	});
-snippet css
-	<link href="/${1}" media="screen" rel="stylesheet" type="text/css" />
-snippet favicon
-	<link rel="icon" href="/${1}/favicon.ico" type="image/x-icon" />
-snippet doctype
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-snippet ui
-	ui-widget ui-widget-content
-snippet .
-	class="${1}"
-snippet #
-	id="${1}"
-snippet white
-	&nbsp;
-snippet skel
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<html>      
-		<head>
-			<title>${1}</title>
-			<link href="base.css" media="screen" rel="stylesheet" type="text/css" />
-			<link rel="icon" href="favicon.ico" type="image/x-icon" />
-		</head>                                                                                
+clearsnippets
 
-		<body>
-			${2}
-		</body
-	</html>
-snippet lang
-	<?=lang('phrase_${1}');?>
-snippet ajax
+snippet php "php"
+<?php
+${1}
+?>
+endsnippet
+
+snippet script "script"
+<script type="text/javascript" language="javascript">
+${1}
+</script>
+endsnippet
+
+snippet javascript "javascript"
+<script src="/${1}" type="text/javascript"></script>
+endsnippet
+
+snippet style "style"
+<style type="text/css">
+${1}
+</style>
+endsnippet
+
+snippet onload "onload"
+$(document).ready(function() {
+    ${1}
+});
+endsnippet
+
+snippet css "css"
+<link href="/${1}" media="screen" rel="stylesheet" type="text/css" />
+endsnippet
+
+snippet favicon "favicon"
+<link rel="icon" href="/${1}/favicon.ico" type="image/x-icon" />
+endsnippet
+
+snippet doctype "doctype"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+endsnippet
+
+snippet ui "ui"
+ui-widget ui-widget-content
+endsnippet
+
+snippet . "."
+class="${1}"
+endsnippet
+
+snippet # "#"
+id="${1}"
+endsnippet
+
+snippet white "white"
+&nbsp;
+endsnippet
+
+snippet skel "skel"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>${1}</title>
+        <link href="base.css" media="screen" rel="stylesheet" type="text/css" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    </head>
+
+    <body>
+        ${2}
+    </body
+</html>
+endsnippet
+
+snippet lang "lang"
+<?=lang('phrase_${1}');?>
+endsnippet
+
+snippet ajax "ajax"
 	$.ajax({
 		type: "POST",
 		cache: false,
@@ -53,5 +83,8 @@ snippet ajax
 		data: $('form#mailorder').serialize(),
 		success: callbackMailorder
 	});
-snippet log
+endsnippet
+
+snippet log "log"
 	console.log(${1});
+endsnippet

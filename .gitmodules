@@ -52,3 +52,21 @@
 [submodule "plugins/vim-toggle"]
 	path = plugins/vim-toggle
 	url = https://github.com/taku-o/vim-toggle.git
+[submodule "plugins/unite"]
+	path = plugins/unite
+	url = https://github.com/Shougo/unite.vim
+[submodule "plugins/vimproc"]
+	path = plugins/vimproc
+	url = https://github.com/Shougo/vimproc.vim
+[submodule "plugins/vimshell"]
+	path = plugins/vimshell
+	url = https://github.com/Shougo/vimshell.vim.git
+[submodule "plugins/vim-airline"]
+	path = plugins/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule "plugins/ultisnips"]
+	path = plugins/ultisnips
+	url = https://github.com/vim-scripts/UltiSnips.git
+[submodule "plugins/youcompleteme"]
+	path = plugins/youcompleteme
+	url = https://github.com/Valloric/YouCompleteMe.git
