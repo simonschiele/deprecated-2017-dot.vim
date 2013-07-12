@@ -13,9 +13,6 @@
 [submodule "plugins/gundo"]
 	path = plugins/gundo
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "plugins/mark"]
-	path = plugins/mark
-	url = https://github.com/vim-scripts/Mark.git
 [submodule "plugins/NerdCommenter"]
 	path = plugins/NerdCommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -52,3 +49,6 @@
 [submodule "plugins-deactivated/surround"]
 	path = plugins-deactivated/surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "plugins-deactivated/mark"]
+	path = plugins-deactivated/mark
+	url = https://github.com/vim-scripts/Mark.git
