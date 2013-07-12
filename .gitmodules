@@ -49,3 +49,6 @@
 [submodule "plugins/vim-toggle"]
 	path = plugins/vim-toggle
 	url = https://github.com/taku-o/vim-toggle.git
+[submodule "plugins/airline"]
+	path = plugins/airline
+	url = https://github.com/bling/vim-airline.git
