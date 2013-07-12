@@ -46,9 +46,9 @@
 [submodule "helper/tagbar-phpctags"]
 	path = helper/tagbar-phpctags
 	url = https://github.com/techlivezheng/tagbar-phpctags.git
-[submodule "plugins/vim-toggle"]
-	path = plugins/vim-toggle
-	url = https://github.com/taku-o/vim-toggle.git
 [submodule "plugins/airline"]
 	path = plugins/airline
 	url = https://github.com/bling/vim-airline.git
+[submodule "plugins-deactivated/vim-toggle"]
+	path = plugins-deactivated/vim-toggle
+	url = https://github.com/taku-o/vim-toggle.git
