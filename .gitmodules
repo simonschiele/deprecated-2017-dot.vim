@@ -52,3 +52,12 @@
 [submodule "plugins-deactivated/mark"]
 	path = plugins-deactivated/mark
 	url = https://github.com/vim-scripts/Mark.git
+[submodule "plugins/vimshell"]
+	path = plugins/vimshell
+	url = https://github.com/Shougo/vimshell.vim.git
+[submodule "plugins/vimproc"]
+	path = plugins/vimproc
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "plugins/unite"]
+	path = plugins/unite
+	url = https://github.com/Shougo/unite.vim.git
