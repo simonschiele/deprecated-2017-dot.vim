@@ -46,9 +46,6 @@
 [submodule "helper/tagbar-phpctags"]
 	path = helper/tagbar-phpctags
 	url = https://github.com/techlivezheng/tagbar-phpctags.git
-[submodule "plugins/vim-powerline"]
-	path = plugins/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "plugins/vim-toggle"]
 	path = plugins/vim-toggle
 	url = https://github.com/taku-o/vim-toggle.git
