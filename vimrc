@@ -292,6 +292,31 @@ function! s:unite_settings()
   map <buffer> <C-c>    <C-c>q
 endfunction
 
+" [plugin] unite-colorscheme
+nnoremap <leader>c :Unite colorscheme<cr>
+
+" [plugin] unite-outline
+nnoremap <leader>t :Unite outline<cr>
+
+" [plugin] unite-ack
+nnoremap <leader>a :Unite ack<cr>
+"g:unite_source_ack_command="ack-grep --nocolor --nogroup"
+"g:unite_source_ack_enable_highlight=1
+"g:unite_source_ack_search_word_highlight=Search
+"g:unite_source_ack_ignore_case=0
+"g:unite_source_ack_enable_print_cmd=1
+"let g:unite_source_ack_targetdir_shortcut={}
+"let g:unite_source_ack_targetdir_shortcut={}
+
+" [plugin] unite-launch
+nnoremap <leader>e :Unite launch<cr>
+let g:unite_launch_apps = [
+  \ 'make',
+  \ 'cmake',
+  \ 'rake',
+  \ 'git pull',
+  \ 'git push']
+
 " }}}
 
 " {{{ Language Support
