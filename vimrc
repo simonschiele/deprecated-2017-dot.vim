@@ -114,13 +114,13 @@ set autowrite           " save on buffer change
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.so,.out,.bin,.aux,.idx,.jpg,.png,.gif,.avi,.mkv,.mp3,.flac
 
-" wildmenu 
+" wildmenu
 set wildmenu
 "set wildmode=longest,list,full
 set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
-" undo/backup/swp/info/... 
+" undo/backup/swp/info/...
 set history=75          " keep 75 lines of command line history
 set viminfo='20,\"10000 " read/write a .viminfo file  """
 
@@ -256,19 +256,15 @@ autocmd FileType *
 
 set completeopt=longest,menuone
 
-""" [plugin] commant-t
-"nnoremap <silent> <Leader>b :CommandTBuffer<CR>
-nnoremap <silent> <Leader>o :CommandT<CR>
-
-""" [plugin] Gundo 
+""" [plugin] Gundo
 nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_width = 65
-"let g:gundo_preview_height = 20 
+"let g:gundo_preview_height = 20
 "let g:gundo_right = 1
-"let g:gundo_preview_statusline = 
-"let g:gundo_tree_statusline = 
+"let g:gundo_preview_statusline =
+"let g:gundo_tree_statusline =
 
-""" [plugin] NerdTree 
+""" [plugin] NerdTree
 let g:NERDTreeQuitOnOpen = 1
 autocmd vimenter * if !argc() | NERDTree | endif 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
