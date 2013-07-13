@@ -177,16 +177,6 @@ nnoremap <silent> <C-PageDown> :next <CR>
 nnoremap <silent> <C-PageUp> :prev<CR>
 nnoremap <silent> <C-n> :new<CR>
 
-""" resize window
-if bufwinnr(1)
-    map + <C-W>+
-    map - <C-W>-
-    map <kPlus> <C-W>+
-    map <kMinus> <C-W>-
-    map <kDivide> <c-w><
-    map <kMultiply> <c-w>>
-endif
-
 """ toggle folding
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
