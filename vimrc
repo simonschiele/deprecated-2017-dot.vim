@@ -8,7 +8,7 @@ call pathogen#helptags()
 
 " }}}
 
-" {{{ Look
+" {{{ Look / Colors
 
 if $COLORCOUNT == "256"
     set t_Co=256
@@ -19,7 +19,7 @@ endif
 
 if has("syntax")
     syntax on
-endif    
+endif
 
 "set background=dark
 " hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
@@ -44,12 +44,15 @@ endif
 
 " }}}
 
-" {{{ Editor Settings 
+" {{{ Editor Settings
 
 """ just to be sure
 set nocompatible
 set ttyfast
 set showcmd
+
+""" UI
+set laststatus=2
 
 """ environment, encoding, fileformat
 set encoding=utf-8
@@ -149,18 +152,18 @@ endif
 " au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
 " auto-reload vimrc on save
-"autocmd BufWritePost .vimrc source ~/.vimrc 
-"autocmd BufWritePost vimrc source ~/.vimrc 
+"autocmd BufWritePost .vimrc source ~/.vimrc
+"autocmd BufWritePost vimrc source ~/.vimrc
 
-" strange settings for split windows. they are always minimized to 
-" one line, except one. and you can switch nicely... not usable for 
+" strange settings for split windows. they are always minimized to
+" one line, except one. and you can switch nicely... not usable for
 " me but maybe comes handy some day for devices with small screen...
 "set winminheight=0
 "set winheight=999
 
 """ navigation
 set scrolloff=3                     " min 3 lines above/below cursor while scrolling
-set backspace=indent,eol,start      " more intuitive backspacing in insert mode 
+set backspace=indent,eol,start      " more intuitive backspacing in insert mode
 
 " }}}
 
@@ -281,7 +284,7 @@ let g:Powerline_symbols = 'fancy'
 "let Tlist_Inc_Winwidth = 0
 "nnoremap <silent> <F7> :TlistToggle<CR>
 
-" Unite
+" [plugin] Unite.vim
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
@@ -291,47 +294,15 @@ nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
 
 " }}}
 
-" {{{ Statusline
-
-" 2 lines for statusline. Inforbar will be shown on typing command
-set laststatus=2
-
-" Overwrite theme colors for statusbar
-"hi StatusLine term=reverse ctermfg=4 gui=undercurl guisp=orange
-
-" Not really used, since powerline... 
-set statusline=
-set statusline+=[%n]                                    " buffer nr
-set statusline+=%y                                      " filetype
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}]         " file encoding
-set statusline+=[%{&ff}]                                " fileformat
-set statusline+=%r                                      " read only flag
-set statusline+=%h                                      " help file flag
-set statusline+=%w                                      "  
-set statusline+=%m                                      " modified flag
-
-set statusline+=%=                                      " right align
-set statusline+=%1*%F%*\                                " full filename
-set statusline+=[line\ %l/%L\|%p%%\|char\ %v]           " [line 87/220|39%|char 50]
-"set statusline+=[%04.3b@ascii\|\%02.2B@hex]            " [0101@ascii|65@hex]
-"set statusline+=%1*%t%*\                               " tail of filename
-"set statusline+=[U+%04B]                               " Unicode char under cursor
-
-""Complete thirdparty statuslines 
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P " from scrooloose
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P " from tpope
-"set statusline=%f%w%m%h%1*%r%2*%{VarExists('b:devpath','<Rel>')}%3*%{VarExists('b:relpath','<Dev>')}%{XLockStat()}%=%-15(%l,%c%V%)%P " from frogonwheel
-
-" }}}
-
 " {{{ Language Support
-    
+
 filetype on
 filetype plugin on
 filetype indent on
 
-""" Human 
-highlight SpellBad term=underline gui=undercurl guisp=Red 
+" {{{ Spelling
+
+highlight SpellBad term=underline gui=undercurl guisp=Red
 set spl=en spell        " english spellchecking
 set nospell             " disable by default
 let g:myLang = 0
@@ -347,17 +318,9 @@ function! MySpellLang()
 endfunction
 map <F7> :<C-U>call MySpellLang()<CR>
 
-""" Web
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType html set ft=html.javascript
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" }}}
 
-""" JavaScript
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript set ft=javascript.html
-
-""" php
+" {{{ php
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType php set ft=php.javascript.html
 autocmd FileType php let php_sql_query=1
@@ -369,7 +332,7 @@ autocmd FileType php noremap <C-P> :!php -l %<CR>
 " The php completion dictionary is provided by Rasmus: http://lerdorf.com/funclist.txt
 "autocmd FileType php set dictionary-=/home/simon/.vim/documentation/php_funclist.txt dictionary+=/home/simon/.vim/documentation/php_funclist.txt
 
-" php manual 
+" php manual
 function! OpenPhpFunction (keyword)
     let proc_keyword = substitute(a:keyword , '_', '-', 'g')
     exe 'split'
@@ -383,6 +346,17 @@ function! OpenPhpFunction (keyword)
     exe 'norm dGgg'
 endfunction
 autocmd FileType php noremap <C-k> :call OpenPhpFunction('<C-r><C-w>')<CR>
+" }}}
+
+""" html/xml/css
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType html set ft=html.javascript
+
+""" JavaScript
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set ft=javascript.html
 
 """ Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -400,7 +374,7 @@ autocmd FileType make set noexpandtab shiftwidth=8
 function! MatchToggle()
     if g:match_eol
         highlight ExtraWhitespace ctermbg=none guibg=none
-        let g:match_eol = 0 
+        let g:match_eol = 0
     else
         highlight ExtraWhitespace ctermbg=red guibg=red
         match ExtraWhitespace /\s\+$/
@@ -412,9 +386,39 @@ function! MatchToggle()
     endif
 endfunction
 
-let g:match_eol = 0 
+let g:match_eol = 0
 nnoremap <Leader>w :call MatchToggle()<cr>
 call MatchToggle()
+
+" }}}
+
+" {{{ Statusline (depricated since air-/powerline)
+
+" Overwrite theme colors for statusbar
+"hi StatusLine term=reverse ctermfg=4 gui=undercurl guisp=orange
+
+" Not really used, since powerline...
+set statusline=
+set statusline+=[%n]                                    " buffer nr
+set statusline+=%y                                      " filetype
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}]         " file encoding
+set statusline+=[%{&ff}]                                " fileformat
+set statusline+=%r                                      " read only flag
+set statusline+=%h                                      " help file flag
+set statusline+=%w                                      "
+set statusline+=%m                                      " modified flag
+
+set statusline+=%=                                      " right align
+set statusline+=%1*%F%*\                                " full filename
+set statusline+=[line\ %l/%L\|%p%%\|char\ %v]           " [line 87/220|39%|char 50]
+"set statusline+=[%04.3b@ascii\|\%02.2B@hex]            " [0101@ascii|65@hex]
+"set statusline+=%1*%t%*\                               " tail of filename
+"set statusline+=[U+%04B]                               " Unicode char under cursor
+
+""Complete thirdparty statuslines
+"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P " from scrooloose
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P " from tpope
+"set statusline=%f%w%m%h%1*%r%2*%{VarExists('b:devpath','<Rel>')}%3*%{VarExists('b:relpath','<Dev>')}%{XLockStat()}%=%-15(%l,%c%V%)%P " from frogonwheel
 
 " }}}
 
