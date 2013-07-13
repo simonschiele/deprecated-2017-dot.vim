@@ -61,3 +61,6 @@
 [submodule "plugins-deactivated/command-t"]
 	path = plugins-deactivated/command-t
 	url = https://github.com/wincent/Command-T.git
+[submodule "plugins/gitgutter"]
+	path = plugins/gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
