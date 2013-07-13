@@ -282,6 +282,16 @@ nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffe
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
 "nnoremap <C-p> :Unite file_rec/async<cr>
 
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " close on Ctrl+c
+  imap <buffer> <C-c>   <C-c>q
+  map <buffer> <C-c>   <C-c>q
+endfunction
+
 " }}}
 
 " {{{ Language Support
