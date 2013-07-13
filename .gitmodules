@@ -16,9 +16,6 @@
 [submodule "plugins/NerdTree"]
 	path = plugins/NerdTree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "plugins/ack"]
-	path = plugins/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "plugins/snipmate"]
 	path = plugins/snipmate
 	url = https://github.com/garbas/vim-snipmate.git
@@ -70,6 +67,9 @@
 [submodule "plugins/unite-colorscheme"]
 	path = plugins/unite-colorscheme
 	url = https://github.com/ujihisa/unite-colorscheme.git
-[submodule "plugins/unite-fonts"]
-	path = plugins/unite-fonts
-	url = https://github.com/ujihisa/unite-font.git
+[submodule "plugins/unite-launch"]
+	path = plugins/unite-launch
+	url = https://github.com/ujihisa/unite-launch.git
+[submodule "plugins/unite-ack"]
+	path = plugins/unite-ack
+	url = https://github.com/t9md/vim-unite-ack
