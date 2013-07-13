@@ -289,7 +289,7 @@ function! s:unite_settings()
   let b:SuperTabDisabled=1
   " close on Ctrl+c
   imap <buffer> <C-c>   <C-c>q
-  map <buffer> <C-c>   <C-c>q
+  map <buffer> <C-c>    <C-c>q
 endfunction
 
 " }}}
