@@ -114,13 +114,13 @@ set autowrite           " save on buffer change
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.so,.out,.bin,.aux,.idx,.jpg,.png,.gif,.avi,.mkv,.mp3,.flac
 
-" wildmenu 
+" wildmenu
 set wildmenu
 "set wildmode=longest,list,full
 set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
-" undo/backup/swp/info/... 
+" undo/backup/swp/info/...
 set history=75          " keep 75 lines of command line history
 set viminfo='20,\"10000 " read/write a .viminfo file  """
 
@@ -164,10 +164,10 @@ set backspace=indent,eol,start      " more intuitive backspacing in insert mode
 
 " }}}
 
-" {{{ Keymappings & Plugin Settings 
+" {{{ Keymappings & Plugin Settings
 
 """ Set a more intuitive <Leader>
-let mapleader = "," 
+let mapleader = ","
 
 """ firefox-like navigation
 nnoremap <silent> <C-PageDown> :next <CR>
@@ -184,7 +184,7 @@ if bufwinnr(1)
     map <kMultiply> <c-w>>
 endif
 
-""" toggle folding 
+""" toggle folding
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
 
@@ -202,9 +202,9 @@ set pastetoggle=<F2>
 nmap <F3> :noh<CR>
 
 """ toggle ignorecase
-map <F4> :set ic!<bar>set ic?<cr> 
+map <F4> :set ic!<bar>set ic?<cr>
 
-""" run script 
+""" run script
 map <F5> :!%:p<CR>
 
 """ [plugin] gundo
@@ -222,7 +222,7 @@ let g:snips_dir = "~/.vim/snippets/"
 let g:snips_author = 'Simon Schiele'
 let g:snips_trigger_key_backwards='<none>'
 
-""" [plugin] vim-ack 
+""" [plugin] vim-ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 """ [plugin] Supertab
@@ -231,7 +231,7 @@ let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabContextDefaultCompletionType = "<c-p>"
 
 " omni
-"let g:SuperTabDefaultCompletionType = "\<c-x>\<c-o>" 
+"let g:SuperTabDefaultCompletionType = "\<c-x>\<c-o>"
 
 " user
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
@@ -256,23 +256,19 @@ autocmd FileType *
 
 set completeopt=longest,menuone
 
-""" [plugin] commant-t
-"nnoremap <silent> <Leader>b :CommandTBuffer<CR>
-nnoremap <silent> <Leader>o :CommandT<CR>
-
-""" [plugin] Gundo 
+""" [plugin] Gundo
 nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_width = 65
-"let g:gundo_preview_height = 20 
+"let g:gundo_preview_height = 20
 "let g:gundo_right = 1
-"let g:gundo_preview_statusline = 
-"let g:gundo_tree_statusline = 
+"let g:gundo_preview_statusline =
+"let g:gundo_tree_statusline =
 
-""" [plugin] NerdTree 
+""" [plugin] NerdTree
 let g:NERDTreeQuitOnOpen = 1
-autocmd vimenter * if !argc() | NERDTree | endif 
+autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <silent> <F8> :NERDTreeToggle<CR> 
+nnoremap <silent> <F8> :NERDTreeToggle<CR>
 
 """ [plugin] powerline
 let g:Powerline_symbols = 'fancy'
@@ -284,6 +280,14 @@ let g:Powerline_symbols = 'fancy'
 "let Tlist_Use_SingleClick = 1
 "let Tlist_Inc_Winwidth = 0
 "nnoremap <silent> <F7> :TlistToggle<CR>
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
+nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
+"nnoremap <C-p> :Unite file_rec/async<cr>
 
 " }}}
 
