@@ -263,8 +263,13 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nnoremap <silent> <F8> :NERDTreeToggle<CR>
 
-""" [plugin] powerline
-let g:Powerline_symbols = 'fancy'
+""" [plugin] airline
+let g:airline_enable_fugitive=1
+let g:airline_enable_syntastic=1
+let g:airline_theme='dark' " dark, light, simple, badwolf, solarized, solarized2
+if $POWERLINE_FONT == "true"
+    let g:airline_powerline_fonts=1
+endif
 
 """ [plugin] Taglist (replaced by tagbar)
 "let Tlist_Use_Right_Window = 1
