@@ -1,7 +1,5 @@
 snippet php
-	<?php
-	${1}
-	?>
+	<?php ${1} ?>
 snippet script
 	<script type="text/javascript" language="javascript">
 	${1}
@@ -32,12 +30,12 @@ snippet white
 	&nbsp;
 snippet skel
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<html>      
+	<html>
 		<head>
 			<title>${1}</title>
 			<link href="base.css" media="screen" rel="stylesheet" type="text/css" />
 			<link rel="icon" href="favicon.ico" type="image/x-icon" />
-		</head>                                                                                
+		</head>
 
 		<body>
 			${2}
@@ -47,11 +45,13 @@ snippet lang
 	<?=lang('phrase_${1}');?>
 snippet ajax
 	$.ajax({
-		type: "POST",
+		url: '/user/add/',
+		data: $('form#addUser').serialize(),
+		type: 'POST',
+		dataType: 'json',
 		cache: false,
-		url: "/user/mailorder/json/",
-		data: $('form#mailorder').serialize(),
-		success: callbackMailorder
+		success: callbackSuccess,
+		error: callbackError
 	});
 snippet log
 	console.log(${1});
