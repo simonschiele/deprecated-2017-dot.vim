@@ -51,6 +51,12 @@ else
     set noeb vb t_vb=
 endif
 
+""" Statusline
+set laststatus=2
+
+" Not really used, since powerline...
+set statusline=[%n]%y[%{strlen(&fenc)?&fenc:'none'}][%{&ff}]%r%h%w%m%=%1*%F%*\ [line\ %l/%L\|%p%%\|char\ %v]
+
 " }}}
 
 " {{{ Editor Settings
@@ -59,9 +65,6 @@ endif
 set nocompatible
 set ttyfast
 set showcmd
-
-""" UI
-set laststatus=2
 
 """ environment, encoding, fileformat
 set encoding=utf-8
@@ -270,14 +273,6 @@ if $POWERLINE_FONT == "true"
     let g:airline_powerline_fonts=1
 endif
 
-""" [plugin] Taglist (replaced by tagbar)
-"let Tlist_Use_Right_Window = 1
-"let Tlist_Enable_Fold_Column = 0
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Use_SingleClick = 1
-"let Tlist_Inc_Winwidth = 0
-"nnoremap <silent> <F7> :TlistToggle<CR>
-
 " }}}
 
 " {{{ Unite.vim
@@ -399,36 +394,6 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 """ binary
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
-
-" }}}
-
-" {{{ Statusline (depricated since air-/powerline)
-
-" Overwrite theme colors for statusbar
-"hi StatusLine term=reverse ctermfg=4 gui=undercurl guisp=orange
-
-" Not really used, since powerline...
-set statusline=
-set statusline+=[%n]                                    " buffer nr
-set statusline+=%y                                      " filetype
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}]         " file encoding
-set statusline+=[%{&ff}]                                " fileformat
-set statusline+=%r                                      " read only flag
-set statusline+=%h                                      " help file flag
-set statusline+=%w                                      "
-set statusline+=%m                                      " modified flag
-
-set statusline+=%=                                      " right align
-set statusline+=%1*%F%*\                                " full filename
-set statusline+=[line\ %l/%L\|%p%%\|char\ %v]           " [line 87/220|39%|char 50]
-"set statusline+=[%04.3b@ascii\|\%02.2B@hex]            " [0101@ascii|65@hex]
-"set statusline+=%1*%t%*\                               " tail of filename
-"set statusline+=[U+%04B]                               " Unicode char under cursor
-
-""Complete thirdparty statuslines
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P " from scrooloose
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P " from tpope
-"set statusline=%f%w%m%h%1*%r%2*%{VarExists('b:devpath','<Rel>')}%3*%{VarExists('b:relpath','<Dev>')}%{XLockStat()}%=%-15(%l,%c%V%)%P " from frogonwheel
 
 " }}}
 
