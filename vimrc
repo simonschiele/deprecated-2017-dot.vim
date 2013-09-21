@@ -290,17 +290,19 @@ function! s:unite_settings()
 endfunction
 
 " open files
-nnoremap <leader>o :<C-u>Unite -toggle -auto-resize -buffer-name=files -start-insert file_rec/async<cr>
+nnoremap <leader>o :<C-u>Unite -toggle -auto-resize -horizontal -direction=botright -buffer-name=files -start-insert file_rec/async<cr>
 
 " bufferbrowser
-nnoremap <leader>b :<C-u>Unite -toggle -auto-resize -buffer-name=buffer -start-insert buffer<cr>
+nnoremap <leader>b :<C-u>Unite -toggle -auto-resize -horizontal -direction=botright -buffer-name=buffer -start-insert buffer<cr>
 
 " yank history
 let g:unite_source_history_yank_enable = 1
-nnoremap <leader>y :<C-u>Unite -toggle -auto-resize -buffer-name=yank history/yank<cr>
+nnoremap <leader>y :<C-u>Unite -toggle -auto-resize -horizontal -direction=botright -buffer-name=yank history/yank<cr>
 
 " [plugin] unite-cleanup
-nnoremap <leader>C :Unite -toggle -complete -auto-resize -buffer-name=cleanup cleanup<cr>
+nnoremap <leader>C :Unite -toggle -complete -auto-resize -horizontal -direction=botright -buffer-name=cleanup cleanup<cr>
+let g:cleanup_highlite_whitespaces = 1 
+let g:cleanup_highlite_tabs = 1 
 
 " [plugin] unite-outline
 "nnoremap <leader>t :Unite outline<cr>
