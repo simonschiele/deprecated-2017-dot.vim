@@ -8,7 +8,7 @@ call pathogen#helptags()
 
 " }}}
 
-" {{{ Look / Colors
+" {{{ Look / Colors / Sounds
 
 if $COLORCOUNT == "" || $COLORCOUNT == "256"
     set t_Co=256
@@ -42,6 +42,15 @@ if has('gui_running')
     set guioptions-=L  " no left scrollbar
 endif
 
+""" disable sounds
+set noerrorbells
+set visualbell
+if has('gui_running')
+    set vb t_vb=
+else
+    set noeb vb t_vb=
+endif
+
 " }}}
 
 " {{{ Editor Settings
@@ -72,15 +81,6 @@ set autoindent
 """ performance & hiccups
 set lazyredraw
 
-""" disable sounds
-set noerrorbells
-set visualbell
-if has('gui_running')
-    set vb t_vb=
-else
-    set noeb vb t_vb=
-endif
-
 """ buffers
 set hidden
 
@@ -93,7 +93,6 @@ set smartcase           " Do smart case matching
 "set gdefault           " always assume /g
 
 """ folding
-
 " foldmethods:
 " marker    - folding on three '{'
 " syntax    - folding by syntax-highliting
@@ -310,9 +309,6 @@ nnoremap <leader>y :<C-u>Unite -toggle -auto-resize -buffer-name=yank history/ya
 " [plugin] unite-cleanup
 nnoremap <leader>C :Unite -toggle -complete -auto-resize -buffer-name=cleanup cleanup<cr>
 
-" [plugin] unite-colorscheme
-nnoremap <leader>c :Unite colorscheme<cr>
-
 " [plugin] unite-outline
 "nnoremap <leader>t :Unite outline<cr>
 
@@ -325,15 +321,6 @@ nnoremap <leader>c :Unite colorscheme<cr>
 "g:unite_source_ack_enable_print_cmd=1
 "let g:unite_source_ack_targetdir_shortcut={}
 "let g:unite_source_ack_targetdir_shortcut={}
-
-" [plugin] unite-launch
-"nnoremap <leader>e :Unite -toggle -complete -auto-resize -buffer-name=exec launch<cr>
-"let g:unite_launch_apps = [
-  "\ 'make',
-  "\ 'cmake',
-  "\ 'rake',
-  "\ 'git pull',
-  "\ 'git push']
 
 " }}}
 
