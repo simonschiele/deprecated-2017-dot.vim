@@ -26,8 +26,6 @@ endif
 " hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
 
 " fancy cursor-crosshair
-"hi CursorColumn term=none cterm=none ctermbg=52
-"hi CursorLine term=none cterm=none ctermbg=52
 set cursorcolumn
 set cursorline
 
@@ -173,7 +171,7 @@ set backspace=indent,eol,start      " more intuitive backspacing in insert mode
 let mapleader = ","
 
 """ firefox-like navigation
-nnoremap <silent> <C-PageDown> :next <CR>
+nnoremap <silent> <C-PageDown> :next<CR>
 nnoremap <silent> <C-PageUp> :prev<CR>
 nnoremap <silent> <C-n> :new<CR>
 
