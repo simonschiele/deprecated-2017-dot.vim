@@ -279,32 +279,45 @@ endif
 "let Tlist_Inc_Winwidth = 0
 "nnoremap <silent> <F7> :TlistToggle<CR>
 
-" [plugin] Unite.vim
-let g:unite_source_history_yank_enable = 1
+" }}}
+
+" {{{ Unite.vim
+
+" matcher -> fuzzy
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
-"nnoremap <C-p> :Unite file_rec/async<cr>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
   " Play nice with supertab
   let b:SuperTabDisabled=1
+
   " close on Ctrl+c
-  imap <buffer> <C-c>   <C-c>q
-  map <buffer> <C-c>    <C-c>q
+  imap <buffer> <C-c> <C-c>q
+  map <buffer> <C-c> <C-c>q
 endfunction
+
+" open files
+nnoremap <leader>o :<C-u>Unite -toggle -auto-resize -buffer-name=files -start-insert file_rec/async<cr>
+
+" bufferbrowser
+nnoremap <leader>b :<C-u>Unite -toggle -auto-resize -buffer-name=buffer -start-insert buffer<cr>
+
+" yank history
+let g:unite_source_history_yank_enable = 1
+nnoremap <leader>y :<C-u>Unite -toggle -auto-resize -buffer-name=yank history/yank<cr>
+
+" [plugin] unite-cleanup
+nnoremap <leader>C :Unite -toggle -complete -auto-resize -buffer-name=cleanup cleanup<cr>
 
 " [plugin] unite-colorscheme
 nnoremap <leader>c :Unite colorscheme<cr>
 
 " [plugin] unite-outline
-nnoremap <leader>t :Unite outline<cr>
+"nnoremap <leader>t :Unite outline<cr>
 
 " [plugin] unite-ack
-nnoremap <leader>a :Unite ack<cr>
+"nnoremap <leader>a :Unite ack<cr>
 "g:unite_source_ack_command="ack-grep --nocolor --nogroup"
 "g:unite_source_ack_enable_highlight=1
 "g:unite_source_ack_search_word_highlight=Search
@@ -314,13 +327,13 @@ nnoremap <leader>a :Unite ack<cr>
 "let g:unite_source_ack_targetdir_shortcut={}
 
 " [plugin] unite-launch
-nnoremap <leader>e :Unite launch<cr>
-let g:unite_launch_apps = [
-  \ 'make',
-  \ 'cmake',
-  \ 'rake',
-  \ 'git pull',
-  \ 'git push']
+"nnoremap <leader>e :Unite -toggle -complete -auto-resize -buffer-name=exec launch<cr>
+"let g:unite_launch_apps = [
+  "\ 'make',
+  "\ 'cmake',
+  "\ 'rake',
+  "\ 'git pull',
+  "\ 'git push']
 
 " }}}
 
@@ -399,29 +412,6 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 """ binary
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
-
-" }}}
-
-" {{{ Validation / Cleanup
-
-function! MatchToggle()
-    if g:match_eol
-        highlight ExtraWhitespace ctermbg=none guibg=none
-        let g:match_eol = 0
-    else
-        highlight ExtraWhitespace ctermbg=red guibg=red
-        match ExtraWhitespace /\s\+$/
-        autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-        autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-        autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-        autocmd BufWinLeave * call clearmatches()
-        let g:match_eol = 1
-    endif
-endfunction
-
-let g:match_eol = 0
-nnoremap <Leader>w :call MatchToggle()<cr>
-call MatchToggle()
 
 " }}}
 
