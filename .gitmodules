@@ -73,3 +73,6 @@
 [submodule "plugins/unite-ack"]
 	path = plugins/unite-ack
 	url = https://github.com/t9md/vim-unite-ack
+[submodule "plugins/unite-cleanup"]
+	path = plugins/unite-cleanup
+	url = http://simon.psaux.de/git/unite-cleanup.git
