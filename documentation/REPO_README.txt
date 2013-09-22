@@ -149,3 +149,4 @@ included color schemes:
     * xoria256 (Dmitriy Y. Zotikov (xio) <xio@ungrund.org>)
     * lucius (Jonathan Filip <jfilip1024@gmail.com>) (state 13 July 2013)
     * Smyck (John-Paul Bader) (state 13 July 2013)
+
