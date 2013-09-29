@@ -219,7 +219,7 @@ map <F10> :set scb!<bar>set scb?<cr>
 """ [plugin] Snipmate
 let g:snips_dir = "~/.vim/snippets/"
 let g:snips_author = 'Simon Schiele'
-let g:snips_trigger_key_backwards='<none>'
+"let g:snips_trigger_key_backwards='<none>'
 
 """ [plugin] vim-ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
