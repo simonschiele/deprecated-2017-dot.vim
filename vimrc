@@ -26,8 +26,13 @@ endif
 " hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
 
 " fancy cursor-crosshair
-set cursorcolumn
-set cursorline
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+    au WinLeave * setlocal nocursorline
+    au WinLeave * setlocal nocursorcolumn
+augroup END
 
 " line numbering
 set number
