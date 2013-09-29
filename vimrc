@@ -3,7 +3,8 @@
 
 " Use pathogen to load further modules from plugins/
 filetype off
-call pathogen#runtime_append_all_bundles("plugins")
+runtime plugins/vim-pathogen/autoload/pathogen.vim
+call pathogen#incubate('plugins/{}')
 call pathogen#helptags()
 
 " }}}
@@ -329,6 +330,7 @@ nnoremap <leader>C :Unite -toggle -complete -auto-resize -direction=bot -start-i
 
 filetype on
 filetype plugin on
+filetype plugin indent on
 filetype indent on
 
 " {{{ Spelling
