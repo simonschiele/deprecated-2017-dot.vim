@@ -283,23 +283,27 @@ endif
 
 " matcher -> fuzzy
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
+    " Play nice with supertab
+    let b:SuperTabDisabled=1
 
-  " close on Ctrl+c
-  imap <buffer> <C-c> <C-c>q
-  map <buffer> <C-c> <C-c>q
+    " close on Ctrl+c
+    imap <buffer> <C-c> <C-c>q
+    map <buffer> <C-c> <C-c>q
 endfunction
+
+let g:unite_prompt='» '
 
 " open files
 nnoremap <leader>o :<C-u>Unite -toggle -no-split -buffer-name=files -start-insert file_rec/async<cr>
 
 " bufferbrowser
 nnoremap <leader>b :<C-u>Unite -toggle -no-split -buffer-name=buffer -start-insert buffer<cr>
+nnoremap <leader>n :<C-u>Unite -quick-match buffer<cr>
 
 " yank history
 let g:unite_source_history_yank_enable = 1
