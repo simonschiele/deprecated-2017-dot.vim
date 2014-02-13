@@ -183,6 +183,9 @@ nnoremap <silent> <C-PageDown> :next<CR>
 nnoremap <silent> <C-PageUp> :prev<CR>
 nnoremap <silent> <C-n> :new<CR>
 
+""" w!! to save as sudo
+cmap w!! w !sudo tee % >/dev/null
+
 """ toggle folding
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
