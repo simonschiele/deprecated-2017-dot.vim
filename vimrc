@@ -186,6 +186,9 @@ nnoremap <silent> <C-n> :new<CR>
 """ w!! to save as sudo
 cmap w!! w !sudo tee % >/dev/null
 
+""" disable recording
+map q <Nop>
+
 """ toggle folding
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
