@@ -11,16 +11,20 @@ call pathogen#helptags()
 
 " {{{ Look / Colors / Sounds
 
-if $COLORCOUNT == "" || $COLORCOUNT == "256"
-    set t_Co=256
-    color wombat256
-else
-    color wombat
-endif
-
 if has("syntax")
     syntax on
 endif
+
+set background=dark
+colorscheme solarized
+"let g:solarized_termcolors=256
+
+"if $COLORCOUNT == "" || $COLORCOUNT == "256"
+    "set t_Co=256
+    "color wombat256
+"else
+    "color wombat
+"endif
 
 "set background=dark
 " hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
@@ -279,7 +283,7 @@ nnoremap <silent> <F8> :NERDTreeToggle<CR>
 """ [plugin] airline
 let g:airline_enable_fugitive=1
 let g:airline_enable_syntastic=1
-let g:airline_theme='dark' " dark, light, simple, badwolf, solarized, solarized2
+let g:airline_theme='zenburn' " dark, light, simple, badwolf, solarized, solarized2
 if $POWERLINE_FONT == "true"
     let g:airline_powerline_fonts=1
 endif
