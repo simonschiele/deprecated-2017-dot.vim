@@ -4,7 +4,7 @@
 " Use pathogen to load further modules from plugins/
 filetype off
 runtime plugins/vim-pathogen/autoload/pathogen.vim
-call pathogen#incubate('plugins/{}')
+call pathogen#infect('plugins/{}')
 call pathogen#helptags()
 
 " }}}
