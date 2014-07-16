@@ -229,6 +229,7 @@ let g:snips_author = 'Simon Schiele'
 
 """ [plugin] vim-ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+nmap <leader>g :Ack 
 
 """ [plugin] Supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -287,6 +288,9 @@ endif
 
 " {{{ Unite.vim
 
+" unite data dir
+let g:unite_data_directory='~/.vim/tmp/unite'
+
 " matcher -> fuzzy
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -316,7 +320,7 @@ let g:unite_source_history_yank_enable = 1
 nnoremap <leader>y :<C-u>Unite -toggle -no-split -buffer-name=yank history/yank<cr>
 
 " [plugin] unite-cleanup
-nnoremap <leader>C :Unite -toggle -complete -auto-resize -direction=bot -start-insert -buffer-name=cleanup cleanup<cr>
+"nnoremap <leader>C :Unite -toggle -complete -auto-resize -direction=bot -start-insert -buffer-name=cleanup cleanup<cr>
 "autocmd BufEnter * UpdateCleanupHighlite()
 "autocmd BufWinEnter UpdateCleanupHighlite()<cr>
 "autocmd InsertEnter UpdateCleanupHighlite()<cr>
