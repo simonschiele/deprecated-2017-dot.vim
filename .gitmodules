@@ -55,9 +55,6 @@
 [submodule "plugins/unite-ack"]
 	path = plugins/unite-ack
 	url = https://github.com/t9md/vim-unite-ack
-[submodule "plugins/unite-cleanup"]
-	path = plugins/unite-cleanup
-	url = http://simon.psaux.de/git/unite-cleanup.git
 [submodule "plugins/vim-pathogen"]
 	path = plugins/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
