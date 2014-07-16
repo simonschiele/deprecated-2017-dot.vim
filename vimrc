@@ -414,6 +414,9 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 """ make
 autocmd FileType make set noexpandtab shiftwidth=8
 
+""" sql
+let g:sql_type_default = 'pgsql'
+
 """ binary
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
 
