@@ -54,6 +54,9 @@ Keymappings:
     <Leader>f           - toggle folding under cursor
     <Leader><S>+f       - toggle all folding
 
+    # undo
+    <Leader>u           - toggle gundo
+
     # helpers
     F2                  - toggle paste
     F3                  - toggle search highlite
