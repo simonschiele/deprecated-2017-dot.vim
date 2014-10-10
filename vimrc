@@ -266,6 +266,9 @@ autocmd FileType *
 
 set completeopt=longest,menuone
 
+""" [plugin] excel.vim
+let g:zipPlugin_ext = '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,*.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,*.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx'
+
 """ [plugin] Gundo
 nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_width = 65

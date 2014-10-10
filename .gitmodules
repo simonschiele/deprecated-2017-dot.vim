@@ -61,3 +61,6 @@
 [submodule "plugins/ack"]
 	path = plugins/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "plugins/excel.vim"]
+	path = plugins/excel.vim
+	url = https://github.com/yakiang/excel.vim.git
