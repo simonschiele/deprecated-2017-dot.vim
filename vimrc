@@ -15,10 +15,12 @@ if has("syntax")
     syntax on
 endif
 
-set background=dark
+""" colorscheme
 colorscheme solarized
-"let g:solarized_termcolors=256
+set background=dark
+let g:solarized_termcolors=256
 
+""" colorcount stuff deactivated at the moment. crappy idea...
 "if $COLORCOUNT == "" || $COLORCOUNT == "256"
     "set t_Co=256
     "color wombat256
@@ -26,11 +28,10 @@ colorscheme solarized
     "color wombat
 "endif
 
-"set background=dark
-" hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
-" hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
+"hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
+"hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
 
-" fancy cursor-crosshair
+""" fancy cursor-crosshair
 augroup CursorLine
     au!
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -39,10 +40,16 @@ augroup CursorLine
     au WinLeave * setlocal nocursorcolumn
 augroup END
 
-" line numbering
+""" line numbering
 set number
 
-" disable extended UI on gvim
+""" Statusline
+set laststatus=2
+
+""" Not really used, since power-/airline...
+set statusline=[%n]%y[%{strlen(&fenc)?&fenc:'none'}][%{&ff}]%r%h%w%m%=%1*%F%*\ [line\ %l/%L\|%p%%\|char\ %v]
+
+""" disable extended UI on gvim
 if has('gui_running')
     set guioptions-=T  " no toolbar
     set guioptions-=m  " no menubar
@@ -58,12 +65,6 @@ if has('gui_running')
 else
     set noeb vb t_vb=
 endif
-
-""" Statusline
-set laststatus=2
-
-" Not really used, since powerline...
-set statusline=[%n]%y[%{strlen(&fenc)?&fenc:'none'}][%{&ff}]%r%h%w%m%=%1*%F%*\ [line\ %l/%L\|%p%%\|char\ %v]
 
 " }}}
 
@@ -134,7 +135,7 @@ set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
 " undo/backup/swp/info/...
-set history=75          " keep 75 lines of command line history
+set history=100          " keep 75 lines of command line history
 set viminfo='20,\"10000 " read/write a .viminfo file  """
 
 set undolevels=1000     " 1000 undos
@@ -284,12 +285,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nnoremap <silent> <F8> :NERDTreeToggle<CR>
 
 """ [plugin] airline
+" themes: badwolf, base16, bubblegum, dark, hybrid, jellybeans, kalisi, kolor,
+" laederon, light, lucius, luna, molokai, monochrome, murmur, powerlineish,
+" raven, serene, silver, simple, solarized, sol, tomorrow, ubaryd,
+" understated, wombat, zenburn
+
 let g:airline_enable_fugitive=1
 let g:airline_enable_syntastic=1
-let g:airline_theme='zenburn' " dark, light, simple, badwolf, solarized, solarized2
-if $POWERLINE_FONT == "true"
-    let g:airline_powerline_fonts=1
-endif
+let g:airline_theme='molokai'
+let g:airline_powerline_fonts=1
+
+" if $POWERLINE_FONT == "true" 
+" "endif
 
 " }}}
 
