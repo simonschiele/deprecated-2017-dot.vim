@@ -1,42 +1,79 @@
-My vim config.
-With this config I fight my daily battle as a (web-)developer.
-If you have nice tips or snippits for me, just send a mail <simon.codingmonkey@googlemail.com>.
+simons vim config
+=============
 
-Repo:
- * GitHub:          https://github.com/simonschiele/dot.vim/  (clone git://github.com/simonschiele/dot.vim.git)
- * Self Hosted:     http://simon.psaux.de/git/dot.vim.git/  (clone http://simon.psaux.de/git/dot.vim.git)
+#### With this config I fight my daily battle as a developer.
 
-If you use this repo as your default configuration, just mail a public key and you will get
-write permission to the repo :-)
+This repo includes my vim configs, a collection of plugins as submodules, a bunch of color themes, ...  If you like to nurse and groom your vim config, like me - I'm pretty sure you will find a few nice snippits here.
 
+If you have nice tips or a few lines of cool config for me, please write a mail to <simon.codingmonkey@googlemail.com>. 
+
+## Overview
+
+[TOC]
+
+## Repositories
+
+* GitHub:
+    * https://github.com/simonschiele/dot.vim/
+    * git://github.com/simonschiele/dot.vim.git
+
+* Self Hosted:
+    * git@simon.psaux.de:dot.vim.git  (just [ask](mailto:simon.codingmonkey@googlemail.com) for write access)
+    * http://simon.psaux.de/git/dot.vim.git/
+
+
+## Repo Content
+
+```
+/
+|
+|_ colors/          color schemes
+|
+|_ documentation/   readmes, plugin docs, ...
+|
+|_ helper/          helper for plugins
+|
+|_ plugins/         plugins
+|
+|_ spell/           aspell dictionaries for spell check (de, en)
+|
+|_ tmp/             backup, swap, undo, tmp-files, ...
+|
+|_ vimrc-bigfile    special vim config for very big files (tested with 1-4gb files)
+|
+|_ vimrc            my main vim config
+|
+\_ README.md        This small help file
+
+```
+
+
+## Setup / How to use this config
 
 To use this configuration, just checkout repo + subrepos and link vimrc directly to your home:
 
- # Backup existing config
- > mv ~/.vim/ ~/vim-old/
- > mv ~/.vimrc ~/vim-old/dot.vimrc
+ # Backup existing config  
+ `> mv ~/.vim/ ~/vim-old/`  
+ `> mv ~/.vimrc ~/vim-old/dot.vimrc`  
 
- # Clone base repo
- > git clone <repo> ~/.vim/
+ # Clone base repo  
+ `> git clone <repo> ~/.vim/`  
 
- # Clone subrepos (plugins)
- > cd ~/.vim/
- > git submodule init
- > git submodule update
+ # Clone subrepos (plugins)  
+ `> cd ~/.vim/`  
+ `> git submodule update --init --recursive`  
 
- # Link vimrc to your HOME
- > cd ~/
- > ln -s .vim/vimrc ~/.vimrc
-
- # Build command-t
- > cd ~/.vim/plugins/command-t/
- > ...
-
-To add another plugin as subrepo, just use something like this:
- > git submodule add https://github.com/vim-scripts/The-NERD-Commenter plugins/NerdCommenter
+ # Link vimrc to your HOME   
+ `> cd ~/`   
+ `> ln -s ~/.vim/vimrc ~/.vimrc`
 
 
-Keymappings:
+ # To add another plugin as subrepo, just use something like this:  
+ `> git submodule add https://github.com/vim/blub.git plugins/blub`
+
+
+## Keymappings
+    
     # modifiers notation
     ,                   - <Leader>
     Strg/Ctrl           - <C>
@@ -55,18 +92,6 @@ Keymappings:
 
     # undo
     <Leader>u           - toggle Gundo
-
-    # helpers
-    F2                  - toggle paste
-    F3                  - toggle search highlite
-    F4                  - toggle ignorecase
-    F5                  - syntax/parser check
-    <S>+F5              - exec
-    F6                  - Gundo
-    F7                  - language / spell check
-    F8                  - file browser (nerdtree)
-    F9                  - tagbar
-    F10                 - scrollsync
 
     # navigation (mostly cmd mode)
     I                   - Jump to start of line and switch to insert mode
@@ -87,10 +112,24 @@ Keymappings:
     g~3w                - toggle case of next three words
     g~iw                - toggle case of the current word
     df, / dF,           - delete all characters till ',' before/after cursor
+
+    # helpers
+    F2                  - toggle paste
+    F3                  - toggle search highlite
+    F4                  - toggle ignorecase
+    F5                  - syntax/parser check
+    <S>+F5              - exec
+    F6                  - Gundo
+    F7                  - language / spell check
+    F8                  - file browser (nerdtree)
+    F9                  - tagbar
+    F10                 - scrollsync
     
 
-included plugins:
-
+## included plugins
+    
+    sorry, this listing is not up-to-date anymore...
+    
     * "pathogen" (https://github.com/tpope/vim-pathogen.git)
           Description: Plugin-Manager
 
@@ -131,7 +170,7 @@ included plugins:
           Comment: put your snippets to ~/.vim/snippets/
 
     * "tlib_vim" (https://github.com/tomtom/tlib_vim)
-    Description: "excellent filterable list selection view" for snipmate
+          Description: "excellent filterable list selection view" for snipmate
 
     * "vim-addon-mw-utils" (https://github.com/MarcWeber/vim-addon-mw-utils)
           Description: "providing the implementation for caching parsed .snippets files" for snipmate
@@ -146,18 +185,37 @@ included plugins:
           Depends: patched font! see readme
 
 
-included color schemes:
-    * 256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)
-    * adrian (Adrian Nagle <vim@naglenet.org>) (state 25 Sep 2001)
-    * calmar256-dark (calmar <mac@calmar.ws>) (state 02 March 2007)
-    * colorful256 (Jagpreet <jagpreetc AT gmail DOT com>) (state 03 Oct 2007)
-    * desert256 (Henry So, Jr. <henryso@panix.com>)
-    * desert (Hans Fugal <hans@fugal.net>) (state 2003/06/02)
-    * deveiate (Mahlon E. Smith <mahlon@martini.nu> & Michael Granger <ged@faeriemud.org>) (state 27 Jun 2008)
-    * inkpot (Ciaran McCreesh <ciaran.mccreesh@googlemail.com>)
-    * liquidcarbon (Jeet Sukumaran) (state 06 October 2010)
-    * wombat256 (David Liang <bmdavll at gmail dot com>) (state November 28 2008)
-    * xoria256 (Dmitriy Y. Zotikov (xio) <xio@ungrund.org>)
-    * lucius (Jonathan Filip <jfilip1024@gmail.com>) (state 13 July 2013)
-    * Smyck (John-Paul Bader) (state 13 July 2013)
+## included color schemes
+    
+    sorry, this listing is not up-to-date anymore...
+
+    * 256-jungle (Piotr Husiatyński <phusiatynski@gmail.com>)  
+    * adrian (Adrian Nagle <vim@naglenet.org>) (state 25 Sep 2001)  
+    * calmar256-dark (calmar <mac@calmar.ws>) (state 02 March 2007)  
+    * colorful256 (Jagpreet <jagpreetc AT gmail DOT com>) (state 03 Oct 2007)  
+    * desert256 (Henry So, Jr. <henryso@panix.com>)  
+    * desert (Hans Fugal <hans@fugal.net>) (state 2003/06/02)  
+    * deveiate (Mahlon E. Smith <mahlon@martini.nu> & Michael Granger   <ged@faeriemud.org>) (state 27 Jun 2008)  
+    * inkpot (Ciaran McCreesh <ciaran.mccreesh@googlemail.com>)  
+    * liquidcarbon (Jeet Sukumaran) (state 06 October 2010)  
+    * wombat256 (David Liang <bmdavll at gmail dot com>) (state November 28 2008)  
+    * xoria256 (Dmitriy Y. Zotikov (xio) <xio@ungrund.org>)   
+    * lucius (Jonathan Filip <jfilip1024@gmail.com>) (state 13 July 2013)  
+    * Smyck (John-Paul Bader) (state 13 July 2013)  
+
+
+## License
+
+This repo contains mostly work from other very gifted people - of course the license of their plugins/schemes is not changed or anything.
+
+Code in this repo that was written by me:  
+[MIT License](http://opensource.org/licenses/MIT)
+
+
+## Authors
+                                        
+**Simon Schiele**
+
+* http://simon.psaux.de/
+* [simon.codingmonkey@googlemail.com](mailto:simon.codingmonkey@googlemail.com)
 
