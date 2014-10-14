@@ -32,7 +32,6 @@ To use this configuration, just checkout repo + subrepos and link vimrc directly
  > cd ~/.vim/plugins/command-t/
  > ...
 
-
 To add another plugin as subrepo, just use something like this:
  > git submodule add https://github.com/vim-scripts/The-NERD-Commenter plugins/NerdCommenter
 
@@ -55,31 +54,40 @@ Keymappings:
     <Leader><S>+f       - toggle all folding
 
     # undo
-    <Leader>u           - toggle gundo
+    <Leader>u           - toggle Gundo
 
     # helpers
     F2                  - toggle paste
     F3                  - toggle search highlite
     F4                  - toggle ignorecase
     F5                  - syntax/parser check
-    Shift + F5          - exec
+    <S>+F5              - exec
     F6                  - Gundo
     F7                  - language / spell check
-    F8                  - file browser
+    F8                  - file browser (nerdtree)
     F9                  - tagbar
     F10                 - scrollsync
 
-    # navigation
+    # navigation (mostly cmd mode)
     I                   - Jump to start of line and switch to insert mode
-    $                   - In command mode, go to end of the line.
-    gg                  - Jump tp beginning of file
+    $                   - Go to end of the line.
+    J                   - Join lines
+    gg                  - Jump to beginning of file
     G                   - Jump to end of file
-    :<line>             - Jump to line (<line> == line number)
-    Ctrl + F/B          - Page down/back scroll.
+    :<line>             - Jump to line
+    <C> + f/b           - Page down/back scroll.
 
     # edit
-    df, (reverse dF,)   - Delete all characters till , on the current line
-
+    <Leader>ci          - toggle commenting (nerdcommenter)
+    <Leader>cc          - comment (nerdcommenter)
+    <Leader>cu          - uncomment (nerdcommenter)
+    gUU / guu           - uppercase / lowercase line
+    gUiw                - current word to uppercase
+    3~                  - toggle case of next three characters
+    g~3w                - toggle case of next three words
+    g~iw                - toggle case of the current word
+    df, / dF,           - delete all characters till ',' before/after cursor
+    
 
 included plugins:
 
@@ -119,7 +127,7 @@ included plugins:
 
     * "snipmate" (https://github.com/garbas/snipmate.vim)
           Description: snipmate fork from garbas
-          Depends: vim-addon-mw-utils, tlib (both plugins are submodules in this repo)
+          depends: vim-addon-mw-utils, tlib (both plugins are submodules in this repo)
           Comment: put your snippets to ~/.vim/snippets/
 
     * "tlib_vim" (https://github.com/tomtom/tlib_vim)
