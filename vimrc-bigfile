@@ -1,0 +1,8 @@
+" speedup vim
+set nocursorcolumn
+set nocursorline
+set synmaxcol=200
+syntax sync minlines=256
+set ttyfast
+set ttyscroll=3
+set lazyredraw
