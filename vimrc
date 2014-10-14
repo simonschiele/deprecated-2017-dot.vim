@@ -13,6 +13,8 @@ call pathogen#helptags()
 
 if has("syntax")
     syntax on
+    set synmaxcol=1000  " process highliting on lines <= 1000 chars 
+    "set synmaxcol=0    " process highliting without char limit 
 endif
 
 """ colorscheme
