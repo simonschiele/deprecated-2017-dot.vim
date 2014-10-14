@@ -299,6 +299,29 @@ let g:airline_powerline_fonts=1
 
 " if $POWERLINE_FONT == "true" 
 " "endif
+""" [plugin] syntastic
+" also have a look at the 'Language Support' section for language specific options 
+let g:syntastic_check_on_open=1             
+let g:syntastic_check_on_wq=0
+let g:syntastic_auto_loc_list=2             
+let g:syntastic_always_populate_loc_list=1  
+let g:syntastic_disabled_filetypes=['html'] 
+let g:syntastic_enable_signs=1
+
+if has("unix")
+  let g:syntastic_error_symbol = "█"
+  let g:syntastic_style_error_symbol = ">"
+  let g:syntastic_warning_symbol = "█"
+  let g:syntastic_style_warning_symbol = ">"
+else
+  let g:syntastic_error_symbol = "X"
+  let g:syntastic_style_error_symbol = ">"
+  let g:syntastic_warning_symbol = "!"
+  let g:syntastic_style_warning_symbol = ">"
+endif
+
+"nnoremap <silent> <C-d> :lclose<CR>:bdelete<CR>     " location list close
+"cabbrev <silent> bd lclose\|bdelete
 
 " }}}
 
@@ -423,6 +446,8 @@ autocmd FileType javascript set ft=javascript.html
 
 """ Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+let g:syntastic_python_checkers=['flake8']
+"let g:syntastic_python_checker_args='--ignore=E501,E225'
 
 """ C
 autocmd FileType c set omnifunc=ccomplete#Complete
