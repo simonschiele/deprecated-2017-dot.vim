@@ -18,9 +18,10 @@ if has("syntax")
 endif
 
 """ colorscheme
-colorscheme solarized
+set t_Co=256
 set background=dark
-let g:solarized_termcolors=256
+colorscheme solarized
+"let g:solarized_termcolors=256
 
 """ colorcount stuff deactivated at the moment. crappy idea...
 "if $COLORCOUNT == "" || $COLORCOUNT == "256"
@@ -45,7 +46,7 @@ augroup END
 """ line numbering
 set number
 
-""" Statusline
+""" statusline
 set laststatus=2
 
 """ Not really used, since power-/airline...
@@ -292,10 +293,12 @@ nnoremap <silent> <F8> :NERDTreeToggle<CR>
 " raven, serene, silver, simple, solarized, sol, tomorrow, ubaryd,
 " understated, wombat, zenburn
 
+let g:airline_powerline_fonts=1
+let g:airline_theme='base16'
+let g:airline_detect_paste=1
+let g:airline_detect_modified=1
 let g:airline_enable_fugitive=1
 let g:airline_enable_syntastic=1
-let g:airline_theme='molokai'
-let g:airline_powerline_fonts=1
 
 " display open buffers in tabline
 "let g:airline#extensions#tabline#enabled=1
