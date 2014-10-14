@@ -297,8 +297,28 @@ let g:airline_enable_syntastic=1
 let g:airline_theme='molokai'
 let g:airline_powerline_fonts=1
 
-" if $POWERLINE_FONT == "true" 
-" "endif
+" display open buffers in tabline
+"let g:airline#extensions#tabline#enabled=1
+
+" airline symbols
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+
+" unicode symbols
+"let g:airline_left_sep='»'
+"let g:airline_left_sep='▶'
+"let g:airline_right_sep='«'
+"let g:airline_right_sep='◀'
+"let g:airline_symbols.linenr='␊'
+"let g:airline_symbols.linenr='␤'
+"let g:airline_symbols.linenr='¶'
+"let g:airline_symbols.branch='⎇'
+"let g:airline_symbols.paste='ρ'
+"let g:airline_symbols.paste='Þ'
+"let g:airline_symbols.paste='∥'
+"let g:airline_symbols.whitespace='Ξ'
+
 """ [plugin] syntastic
 " also have a look at the 'Language Support' section for language specific options 
 let g:syntastic_check_on_open=1             
@@ -462,4 +482,11 @@ let g:sql_type_default = 'pgsql'
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
 
 " }}}
+
+""" random stuff
+" set fillchars=vert:┃,diff:⎼,fold:⎼  " it's about borders?!
+" set printoptions=paper:a4
+
+" if $POWERLINE_FONT == "true" 
+" endif
 
