@@ -14,16 +14,22 @@ call pathogen#helptags()
 """ enable highliting
 if has("syntax")
     syntax on
-    set synmaxcol=1000  " process highliting on lines <= 1000 chars 
-    "set synmaxcol=0    " process highliting without char limit 
+    set synmaxcol=0    " process highliting without char limit 
+    "set synmaxcol=1000  " process highliting on lines <= 1000 chars 
 endif
 
 """ colorscheme
-"set t_AB=^[[48;5;%dm
-"set t_AF=^[[38;5;%dm
 set t_Co=256
+"set t_B=^[[48;5;%dm
+"set t_F=^[[38;5;%dm
+
 let g:solarized_termcolors=16
 "let g:solarized_termcolors=256
+"let g:solarized_bold=0
+"let g:solarized_underline=0
+"let g:solarized_italic=0
+let g:solarized_visibility='low'
+set list
 set background=dark
 colorscheme solarized
 
@@ -495,6 +501,7 @@ let g:sql_type_default = 'pgsql'
 " }}}
 
 """ random stuff
+"
 " set fillchars=vert:┃,diff:⎼,fold:⎼  " it's about borders?!
 " set printoptions=paper:a4
 
