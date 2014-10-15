@@ -315,7 +315,7 @@ let g:airline_enable_fugitive=1
 let g:airline_enable_syntastic=1
 
 " display open buffers in tabline
-"let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled=1
 
 " airline symbols
 "if !exists('g:airline_symbols')
@@ -338,11 +338,11 @@ let g:airline_enable_syntastic=1
 
 """ [plugin] syntastic
 " also have a look at the 'Language Support' section for language specific options 
-let g:syntastic_check_on_open=1             
+let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
-let g:syntastic_auto_loc_list=2             
-let g:syntastic_always_populate_loc_list=1  
-let g:syntastic_disabled_filetypes=['html'] 
+let g:syntastic_auto_loc_list=2
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
 
 if has("unix")
@@ -484,7 +484,7 @@ autocmd FileType javascript set ft=javascript.html
 """ Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 let g:syntastic_python_checkers=['flake8']
-"let g:syntastic_python_checker_args='--ignore=E501,E225'
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 """ C
 autocmd FileType c set omnifunc=ccomplete#Complete
