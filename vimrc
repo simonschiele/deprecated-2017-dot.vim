@@ -11,6 +11,7 @@ call pathogen#helptags()
 
 " {{{ Look / Colors / Sounds
 
+""" enable highliting
 if has("syntax")
     syntax on
     set synmaxcol=1000  " process highliting on lines <= 1000 chars 
@@ -18,10 +19,13 @@ if has("syntax")
 endif
 
 """ colorscheme
+"set t_AB=^[[48;5;%dm
+"set t_AF=^[[38;5;%dm
 set t_Co=256
+let g:solarized_termcolors=16
+"let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
-"let g:solarized_termcolors=256
 
 """ colorcount stuff deactivated at the moment. crappy idea...
 "if $COLORCOUNT == "" || $COLORCOUNT == "256"
@@ -162,18 +166,22 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-" automatically give executable permissions if file begins with #! and contains '/bin/' in the path
-" au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
+"" automatically give executable permissions if file begins with #! and contains '/bin/' in the path
+"au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
-" auto-reload vimrc on save
+"" auto-reload vimrc on save
 "autocmd BufWritePost .vimrc source ~/.vimrc
 "autocmd BufWritePost vimrc source ~/.vimrc
 
-" strange settings for split windows. they are always minimized to
-" one line, except one. and you can switch nicely... not usable for
-" me but maybe comes handy some day for devices with small screen...
+"" strange settings for split windows. they are always minimized to
+"" one line, except one. and you can switch nicely... not usable for
+"" me but maybe comes handy some day for devices with small screen...
 "set winminheight=0
 "set winheight=999
+
+"" don't lose selection after doing indents
+"vnoremap > >gv
+"vnoremap < <gv
 
 """ navigation
 set scrolloff=3                     " min 3 lines above/below cursor while scrolling
