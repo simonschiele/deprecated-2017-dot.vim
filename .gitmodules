@@ -64,3 +64,9 @@
 [submodule "plugins/excel.vim"]
 	path = plugins/excel.vim
 	url = https://github.com/yakiang/excel.vim.git
+[submodule "plugins/ctrlp"]
+	path = plugins/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "plugins/speeddating"]
+	path = plugins/speeddating
+	url = https://github.com/tpope/vim-speeddating.git

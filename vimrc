@@ -18,21 +18,6 @@ if has("syntax")
     "set synmaxcol=1000  " process highliting on lines <= 1000 chars 
 endif
 
-""" colorscheme
-set t_Co=256
-"set t_B=^[[48;5;%dm
-"set t_F=^[[38;5;%dm
-
-let g:solarized_termcolors=16
-"let g:solarized_termcolors=256
-"let g:solarized_bold=0
-"let g:solarized_underline=0
-"let g:solarized_italic=0
-let g:solarized_visibility='low'
-set list
-set background=dark
-colorscheme solarized
-
 """ colorcount stuff deactivated at the moment. crappy idea...
 "if $COLORCOUNT == "" || $COLORCOUNT == "256"
     "set t_Co=256
@@ -40,9 +25,20 @@ colorscheme solarized
 "else
     "color wombat
 "endif
+set t_Co=256
 
-"hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
-"hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
+""" colorscheme
+let g:solarized_bold=1
+let g:solarized_italic=1
+let g:solarized_underline=0
+let g:solarized_visibility='low'
+
+"let g:solarized_termcolors=256
+let g:solarized_termcolors=16
+set background=dark
+set list
+
+colorscheme solarized
 
 """ fancy cursor-crosshair
 augroup CursorLine
@@ -52,6 +48,10 @@ augroup CursorLine
     au WinLeave * setlocal nocursorline
     au WinLeave * setlocal nocursorcolumn
 augroup END
+
+""" hi overwrite
+"hi normal   ctermfg=white  ctermbg=black guifg=white  guibg=black
+"hi nontext  ctermfg=blue   ctermbg=black guifg=blue   guibg=black
 
 """ line numbering
 set number
@@ -125,16 +125,20 @@ set smartcase           " Do smart case matching
 " diff      - folding on unchanged lines
 set foldmethod=marker
 
+""" autofold
 "set foldclose=all      " autoclose folding on leaving
-"set foldopen=all       " autoopen fold on enter
+"set foldopen=all       " autoopen fold on cursor
 
 """ brackets
+set matchpairs+=<:> " add < > to chars that form pairs (see % command)
 set showmatch
+set matchtime=1 " show matching brackets quicker than default
 
 """ mouse
 "set mouse=a|b          " To play with x11 integration - confusing x11 behavier...
 
 """ save/load
+set autoread
 set autowrite           " save on buffer change
 
 " Suffixes that get lower priority when doing tab completion for filenames.
@@ -148,7 +152,7 @@ set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
 " undo/backup/swp/info/...
-set history=100          " keep 75 lines of command line history
+set history=1000        " keep 75 lines of command line history
 set viminfo='20,\"10000 " read/write a .viminfo file  """
 
 set undolevels=1000     " 1000 undos
@@ -503,8 +507,18 @@ let g:sql_type_default = 'pgsql'
 """ random stuff
 "
 " set fillchars=vert:┃,diff:⎼,fold:⎼  " it's about borders?!
+
 " set printoptions=paper:a4
+"set printoptions=number:y " put line numbers on hardcopy
 
 " if $POWERLINE_FONT == "true" 
 " endif
+
+" "set binary " show control characters (ignore 'fileformat')
+
+" " swap aus
+"
+" set noautoindent " do not auto indent
+"
+"
 
