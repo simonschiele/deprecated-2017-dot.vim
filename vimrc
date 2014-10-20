@@ -14,8 +14,8 @@ call pathogen#helptags()
 """ enable highliting
 if has("syntax")
     syntax on
-    set synmaxcol=0    " process highliting without char limit 
-    "set synmaxcol=1000  " process highliting on lines <= 1000 chars 
+    set synmaxcol=0     " process highliting without char limit 
+    "set synmaxcol=1000 " process highliting on lines <= 1000 chars 
 endif
 
 """ colorcount stuff deactivated at the moment. crappy idea...
@@ -27,16 +27,19 @@ endif
 "endif
 set t_Co=256
 
-""" colorscheme
-let g:solarized_bold=1
-let g:solarized_italic=1
-let g:solarized_underline=0
-let g:solarized_visibility='low'
 
-"let g:solarized_termcolors=256
-let g:solarized_termcolors=16
+""" colorscheme
 set background=dark
-set list
+"set list
+
+"let g:solarized_bold=1
+"let g:solarized_italic=1
+"let g:solarized_underline=0
+let g:solarized_contrast='high'
+let g:solarized_visibility='low'
+let g:solarized_termtrans=1
+let g:solarized_termcolors=16
+"let g:solarized_termcolors=256
 
 colorscheme solarized
 
@@ -176,6 +179,8 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
+set browsedir=buffer    " open path should be on pwd of file in buffer
+
 "" automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 "au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
@@ -194,7 +199,10 @@ endif
 "vnoremap < <gv
 
 """ navigation
-set scrolloff=3                     " min 3 lines above/below cursor while scrolling
+" set scrolloff=3                     " min 3 lines above/below cursor while scrolling
+set scrolloff=999                     " cursor centered
+
+""" input
 set backspace=indent,eol,start      " more intuitive backspacing in insert mode
 
 " }}}
@@ -243,6 +251,7 @@ nmap <F6> :GundoToggle<CR>
 
 """ [plugin] tagbar
 nmap <F9> :TagbarToggle<CR>
+let g:tagbar_usearrows = 1
 let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
 
 """ scrollsync
@@ -256,37 +265,6 @@ let g:snips_author = 'Simon Schiele'
 """ [plugin] vim-ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 nmap <leader>g :Ack 
-
-""" [plugin] Supertab
-let g:SuperTabDefaultCompletionType = "context"
-"let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
-"let g:SuperTabContextDefaultCompletionType = "<c-p>"
-
-" omni
-"let g:SuperTabDefaultCompletionType = "\<c-x>\<c-o>"
-
-" user
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-
-"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-"let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
-"let g:SuperTabCrMapping = 1
-
-let g:SuperTabCrClosePreview = 1
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-let g:SuperTabMappingForward = '<s-tab>'
-let g:SuperTabMappingBackward = '<s-c-tab>'
-let g:SuperTabMappingTabLiteral = '<tab>'
-
-autocmd FileType *
-  \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
-  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-  \ endif
-
-set completeopt=longest,menuone
 
 """ [plugin] excel.vim
 let g:zipPlugin_ext = '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,*.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,*.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx'
@@ -349,17 +327,17 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
 
-if has("unix")
-  let g:syntastic_error_symbol = "█"
-  let g:syntastic_style_error_symbol = ">"
-  let g:syntastic_warning_symbol = "█"
-  let g:syntastic_style_warning_symbol = ">"
-else
-  let g:syntastic_error_symbol = "X"
-  let g:syntastic_style_error_symbol = ">"
-  let g:syntastic_warning_symbol = "!"
-  let g:syntastic_style_warning_symbol = ">"
-endif
+"if has("unix")
+  "let g:syntastic_error_symbol = "█"
+  "let g:syntastic_style_error_symbol = ">"
+  "let g:syntastic_warning_symbol = "█"
+  "let g:syntastic_style_warning_symbol = ">"
+"else
+  "let g:syntastic_error_symbol = "X"
+  "let g:syntastic_style_error_symbol = ">"
+  "let g:syntastic_warning_symbol = "!"
+  "let g:syntastic_style_warning_symbol = ">"
+"endif
 
 "nnoremap <silent> <C-d> :lclose<CR>:bdelete<CR>     " location list close
 "cabbrev <silent> bd lclose\|bdelete
@@ -504,6 +482,37 @@ let g:sql_type_default = 'pgsql'
 
 " }}}
 
+""" [plugin] Supertab
+let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
+"let g:SuperTabContextDefaultCompletionType = "<c-p>"
+
+" omni
+"let g:SuperTabDefaultCompletionType = "\<c-x>\<c-o>"
+
+" user
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+
+"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+"let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+"let g:SuperTabCrMapping = 1
+
+"let g:SuperTabCrClosePreview = 1
+"let g:SuperTabClosePreviewOnPopupClose = 1
+
+"let g:SuperTabMappingForward = '<s-tab>'
+"let g:SuperTabMappingBackward = '<s-c-tab>'
+"let g:SuperTabMappingTabLiteral = '<tab>'
+
+"autocmd FileType *
+  "\ if &omnifunc != '' |
+  "\   call SuperTabChain(&omnifunc, "<c-p>") |
+  "\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  "\ endif
+
+"set completeopt=longest,menuone
+
 """ random stuff
 "
 " set fillchars=vert:┃,diff:⎼,fold:⎼  " it's about borders?!
@@ -514,11 +523,34 @@ let g:sql_type_default = 'pgsql'
 " if $POWERLINE_FONT == "true" 
 " endif
 
-" "set binary " show control characters (ignore 'fileformat')
+" set binary " show control characters (ignore 'fileformat')
 
 " " swap aus
 "
 " set noautoindent " do not auto indent
 "
 "
+
+"command Shell :set nolist | ConqueTermSplit bash
+"command PythonShell :set nolist | ConqueTermSplit python
+
+"set foldmethod=syntax
+"set foldlevelstart=1
+
+"let javaScript_fold=1         " JavaScript
+"let perl_fold=1               " Perl
+"let php_folding=1             " PHP
+"let r_syntax_folding=1        " R
+"let ruby_fold=1               " Ruby
+"let sh_fold_enabled=1         " sh
+"let vimsyn_folding='af'       " Vim script
+"let xml_syntax_folding=1      " XML
+
+" set foldmethod=indent
+" set foldnestmax=2
+
+" let g:is_bash = 1
+" let g:sh_fold_enabled = 1
+
+" ciw !!!
 
