@@ -40,21 +40,12 @@
 [submodule "plugins/vimproc"]
 	path = plugins/vimproc
 	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "plugins/unite"]
-	path = plugins/unite
-	url = https://github.com/Shougo/unite.vim.git
 [submodule "plugins/gitgutter"]
 	path = plugins/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "plugins/unite-outline"]
-	path = plugins/unite-outline
-	url = https://github.com/h1mesuke/unite-outline.git
 [submodule "plugins/unite-launch"]
 	path = plugins/unite-launch
 	url = https://github.com/ujihisa/unite-launch.git
-[submodule "plugins/unite-ack"]
-	path = plugins/unite-ack
-	url = https://github.com/t9md/vim-unite-ack
 [submodule "plugins/vim-pathogen"]
 	path = plugins/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
