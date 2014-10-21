@@ -76,3 +76,9 @@
 [submodule "plugins/closetag"]
 	path = plugins/closetag
 	url = git://github.com/docunext/closetag.vim.git
+[submodule "plugins/csv"]
+	path = plugins/csv
+	url = https://github.com/chrisbra/csv.vim
+[submodule "plugins/virtualenv"]
+	path = plugins/virtualenv
+	url = https://github.com/jmcantrell/vim-virtualenv.git

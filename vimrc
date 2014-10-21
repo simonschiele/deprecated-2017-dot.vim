@@ -26,7 +26,7 @@ endif
     "color wombat
 "endif
 set t_Co=256
-
+set ttimeoutlen=50
 
 """ colorscheme
 set background=dark
@@ -156,12 +156,20 @@ set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,
 
 " undo/backup/swp/info/...
 set history=1000        " keep 75 lines of command line history
-set viminfo='20,\"10000 " read/write a .viminfo file  """
 
 set undolevels=1000     " 1000 undos
 set undoreload=10000    " number of lines to save for undo
 set undodir=~/.vim/tmp/undo
 set undofile
+
+" Tell vim to remember certain things when we exit
+" "  '10  :  marks will be remembered for up to 10 previously edited files
+" "  "100 :  will save up to 100 lines for each register
+" "  :20  :  up to 20 lines of command-line history will be remembered
+" "  %    :  saves and restores the buffer list
+" "  n... :  where to save the viminfo files
+" " set viminfo='10,\"100,:20,%,n~/.viminfo'
+set viminfo='20,\"10000 " read/write a .viminfo file  """
 
 "set noswapfile
 set dir=~/.vim/tmp/swap
@@ -283,41 +291,6 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nnoremap <silent> <F8> :NERDTreeToggle<CR>
 
-""" [plugin] airline
-" themes: badwolf, base16, bubblegum, dark, hybrid, jellybeans, kalisi, kolor,
-" laederon, light, lucius, luna, molokai, monochrome, murmur, powerlineish,
-" raven, serene, silver, simple, solarized, sol, tomorrow, ubaryd,
-" understated, wombat, zenburn
-
-let g:airline_powerline_fonts=1
-let g:airline_theme='base16'
-let g:airline_detect_paste=1
-let g:airline_detect_modified=1
-let g:airline_enable_fugitive=1
-let g:airline_enable_syntastic=1
-
-" display open buffers in tabline
-let g:airline#extensions#tabline#enabled=1
-
-" airline symbols
-"if !exists('g:airline_symbols')
-"    let g:airline_symbols = {}
-"endif
-
-" unicode symbols
-"let g:airline_left_sep='»'
-"let g:airline_left_sep='▶'
-"let g:airline_right_sep='«'
-"let g:airline_right_sep='◀'
-"let g:airline_symbols.linenr='␊'
-"let g:airline_symbols.linenr='␤'
-"let g:airline_symbols.linenr='¶'
-"let g:airline_symbols.branch='⎇'
-"let g:airline_symbols.paste='ρ'
-"let g:airline_symbols.paste='Þ'
-"let g:airline_symbols.paste='∥'
-"let g:airline_symbols.whitespace='Ξ'
-
 """ [plugin] syntastic
 " also have a look at the 'Language Support' section for language specific options 
 let g:syntastic_check_on_open=1
@@ -341,6 +314,100 @@ let g:syntastic_enable_signs=1
 
 "nnoremap <silent> <C-d> :lclose<CR>:bdelete<CR>     " location list close
 "cabbrev <silent> bd lclose\|bdelete
+
+
+""" [plugin] airline
+" themes: badwolf, base16, bubblegum, dark, hybrid, jellybeans, kalisi, kolor,
+" laederon, light, lucius, luna, molokai, monochrome, murmur, powerlineish,
+" raven, serene, silver, simple, solarized, sol, tomorrow, ubaryd,
+" understated, wombat, zenburn
+
+" :AirlineToggleWhitespace 
+" :AirlineToggle 
+
+"let g:bufferline_echo =
+let g:airline_powerline_fonts=1
+let g:airline_theme='base16'
+"let g:airline_theme=
+let g:airline_detect_paste=1
+let g:airline_detect_modified=1
+let g:airline_detect_iminsert=1
+
+" control which sections get truncated and at what width.
+"let g:airline#extensions#default#section_truncate_width = {
+"      \ 'b': 90,
+"      \ 'y': 90,
+"      \ })
+
+let g:airline_inactive_collapse=1       " inactive windows have only filename
+let g:airline_exclude_preview=0       " no airline in preview_window
+"let g:airline_exclude_filetypes=[]    " filetypes which have no airline
+"let g:airline_exclude_filenames=[]    " same for filenames 
+
+let g:airline#extensions#tagbar#enabled=1           " tagbar
+let g:airline#extensions#tabline#enabled=1          " display open buffers in tabline
+
+" airline->git
+let g:airline_enable_fugitive=1
+let g:airline#extensions#branch#enabled=1          " 
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#hunks#enabled=1            " enable/disable showing a summary of changed hunks under source control
+let g:airline#extensions#hunks#non_zero_only = 0    " enable/disable showing only non-zero hunks
+"let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+
+" csv
+let g:airline#extensions#csv#enabled=1      " csv.vim
+let g:airline#extensions#csv#column_display = 'Number' " (default)
+let g:airline#extensions#csv#column_display = 'Name'
+
+" syntastic
+let g:airline_enable_syntastic=1
+let g:airline#extensions#syntastic#enabled=1        " syntastic
+
+" airline->whitespace
+let g:airline#extensions#whitespace#enabled=1
+"let g:airline#extensions#whitespace#symbol = '!'
+"let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
+
+" airline->whitespace->message
+let g:airline#extensions#whitespace#show_message = 1
+let g:airline#extensions#whitespace#trailing_format = 'trailing[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = 'mixed-indent[%s]'
+
+" ctrlp <https://github.com/kien/ctrlp.vim>
+"let g:airline#extensions#ctrlp#color_template = 'insert' (default)
+"let g:airline#extensions#ctrlp#color_template = 'normal'
+"let g:airline#extensions#ctrlp#color_template = 'visual'
+"let g:airline#extensions#ctrlp#color_template = 'replace'
+
+" virtualenv <https://github.com/jmcantrell/vim-virtualenv>
+"let g:airline#extensions#virtualenv#enabled = 1  " enable/disable virtualenv integration >
+
+" airline symbols
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+
+" unicode symbols
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline#extensions#branch#symbol = ' '
+"let g:airline#extensions#readonly#symbol = ''
+"let g:airline_linecolumn_prefix = ' '
+"let g:airline_left_sep='»'
+"let g:airline_left_sep='▶'
+"let g:airline_right_sep='«'
+"let g:airline_right_sep='◀'
+"let g:airline_symbols.linenr='␊'
+"let g:airline_symbols.linenr='␤'
+"let g:airline_symbols.linenr='¶'
+"let g:airline_symbols.branch='⎇'
+"let g:airline_symbols.paste='ρ'
+"let g:airline_symbols.paste='Þ'
+"let g:airline_symbols.paste='∥'
+"let g:airline_symbols.whitespace='Ξ'
 
 " }}}
 
@@ -482,6 +549,27 @@ let g:sql_type_default = 'pgsql'
 
 " }}}
 
+let g:netrw_altv           = 1
+let g:netrw_fastbrowse     = 2
+let g:netrw_keepdir        = 0
+let g:netrw_liststyle      = 2
+let g:netrw_retmap         = 1
+let g:netrw_silent         = 1
+let g:netrw_special_syntax = 1
+
+" some kind of highliting
+let readline_has_bash = 1
+
+" sh
+let g:is_bash = 1
+let g:sh_fold_enabled=3     " (enable function folding)folding
+let sh_minlines = 1000
+"let sh_maxlines = 100       " default 2x sh_minlines
+
+" backwards highliting
+let ptcap_minlines = 50
+let rexx_minlines = 50
+
 """ [plugin] Supertab
 let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
@@ -553,4 +641,71 @@ let g:SuperTabDefaultCompletionType = "context"
 " let g:sh_fold_enabled = 1
 
 " ciw !!!
+
+" -- tags
+"set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
+
+" TagList Plugin Configuration
+"let Tlist_Ctags_Cmd='/usr/bin/ctags'       " point taglist to ctags
+"let Tlist_GainFocus_On_ToggleOpen = 1      " Focus on the taglist when its  toggled
+"let Tlist_Close_On_Select = 1              " Close when something's selected
+"let Tlist_Use_Right_Window = 1             " Project uses the left window
+"let Tlist_File_Fold_Auto_Close = 1         " Close folds for inactive files
+
+"--ENABLE PYTHON/DJANGO OMNICOMPLETE
+"
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"
+""--SuperTab Integration
+"set completeopt-=previewtj
+"let g:SuperTabDefaultCompletionType = ""
+"let g:SuperTabDefaultCompletionType = "context"
+
+""map <F2> :previous<CR>                  " map F2 to open previous buffer
+"map <F3> :next<CR>                      " map F3 to open next buffer
+"map <F4> :NERDTreeToggle<CR>            " map F4 to open NERDTree
+"map <F5> :TlistToggle<CR>               " map F5 to toggle the Tag Listing
+"map <silent><C-Left> <C-T>              " taglist - map Ctrl-LeftArrow to jump to the method/property under your cursor
+"map <silent><C-Right> <C-]>             " taglist - map Ctrl-RhitArrow to jump back to your source code
+"map <silent><A-Right> :tabnext<CR>      " map Alt-RightArrow to jump to the next tab
+"map <silent><A-Left> :tabprevious<CR>   " map Alt-LeftArrow to jump to the previous tab
+
+#no: https://github.com/vim-scripts/Django-Projects
+#yes: https://github.com/vim-scripts/vim-django-support.git
+#yes: https://github.com/mjbrownie/vim-htmldjango_omnicomplete
+# -> au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+# -> let g:htmldjangocomplete_html_flavour = 'html401s'
+# -> https://github.com/vim-scripts/vim-htmldjango_omnicomplete
+#colors: https://github.com/vim-scripts/Gummybears.git
+
+#https://github.com/mhinz/vim-hugefile.git
+#https://github.com/vim-scripts/LargeFile.git
+#https://github.com/vim-scripts/DrawIt
+#http://peterodding.com/code/vim/easytags/
+#https://github.com/KohPoll/vim-less.git
+#https://github.com/powerman/vim-plugin-autosess.git
+#https://github.com/powerman/vim-plugin-viewdoc
+#https://github.com/othree/html5.vim
+#https://github.com/tpope/vim-sensible
+#https://github.com/lambacck/python_matchit.git
+#https://github.com/vim-scripts/mathematic.vim
+#https://github.com/vim-scripts/vim-human-dates.git
+#https://github.com/vim-scripts/restore_view.vim
+#https://github.com/sukima/xmledit/
+
+#https://github.com/Valloric/YouCompleteMe
+#https://github.com/SirVer/ultisnips
+
+#https://github.com/suan/vim-instant-markdown
+#https://gitorious.org/vim-gnupg
+#https://github.com/klen/python-mode/
+
+# good example: https://github.com/vim-scripts/foo.vim/blob/master/plugin/foo.vim
+# good list: http://vim-scripts.org/vim/scripts.html
+
 
