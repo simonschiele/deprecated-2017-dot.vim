@@ -675,37 +675,37 @@ let g:SuperTabDefaultCompletionType = "context"
 "map <silent><A-Right> :tabnext<CR>      " map Alt-RightArrow to jump to the next tab
 "map <silent><A-Left> :tabprevious<CR>   " map Alt-LeftArrow to jump to the previous tab
 
-#no: https://github.com/vim-scripts/Django-Projects
-#yes: https://github.com/vim-scripts/vim-django-support.git
-#yes: https://github.com/mjbrownie/vim-htmldjango_omnicomplete
-# -> au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-# -> let g:htmldjangocomplete_html_flavour = 'html401s'
-# -> https://github.com/vim-scripts/vim-htmldjango_omnicomplete
-#colors: https://github.com/vim-scripts/Gummybears.git
+" no: https://github.com/vim-scripts/Django-Projects
+" yes: https://github.com/vim-scripts/vim-django-support.git
+" yes: https://github.com/mjbrownie/vim-htmldjango_omnicomplete
+"  -> au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+"  -> let g:htmldjangocomplete_html_flavour = 'html401s'
+"  -> https://github.com/vim-scripts/vim-htmldjango_omnicomplete
+" colors: https://github.com/vim-scripts/Gummybears.git
 
-#https://github.com/mhinz/vim-hugefile.git
-#https://github.com/vim-scripts/LargeFile.git
-#https://github.com/vim-scripts/DrawIt
-#http://peterodding.com/code/vim/easytags/
-#https://github.com/KohPoll/vim-less.git
-#https://github.com/powerman/vim-plugin-autosess.git
-#https://github.com/powerman/vim-plugin-viewdoc
-#https://github.com/othree/html5.vim
-#https://github.com/tpope/vim-sensible
-#https://github.com/lambacck/python_matchit.git
-#https://github.com/vim-scripts/mathematic.vim
-#https://github.com/vim-scripts/vim-human-dates.git
-#https://github.com/vim-scripts/restore_view.vim
-#https://github.com/sukima/xmledit/
+" https://github.com/mhinz/vim-hugefile.git
+" https://github.com/vim-scripts/LargeFile.git
+" https://github.com/vim-scripts/DrawIt
+" http://peterodding.com/code/vim/easytags/
+" https://github.com/KohPoll/vim-less.git
+" https://github.com/powerman/vim-plugin-autosess.git
+" https://github.com/powerman/vim-plugin-viewdoc
+" https://github.com/othree/html5.vim
+" https://github.com/tpope/vim-sensible
+" https://github.com/lambacck/python_matchit.git
+" https://github.com/vim-scripts/mathematic.vim
+" https://github.com/vim-scripts/vim-human-dates.git
+" https://github.com/vim-scripts/restore_view.vim
+" https://github.com/sukima/xmledit/
 
-#https://github.com/Valloric/YouCompleteMe
-#https://github.com/SirVer/ultisnips
+" https://github.com/Valloric/YouCompleteMe
+" https://github.com/SirVer/ultisnips
 
-#https://github.com/suan/vim-instant-markdown
-#https://gitorious.org/vim-gnupg
-#https://github.com/klen/python-mode/
+" https://github.com/suan/vim-instant-markdown
+" https://gitorious.org/vim-gnupg
+" https://github.com/klen/python-mode/
 
-# good example: https://github.com/vim-scripts/foo.vim/blob/master/plugin/foo.vim
-# good list: http://vim-scripts.org/vim/scripts.html
+"  good example: https://github.com/vim-scripts/foo.vim/blob/master/plugin/foo.vim
+"  good list: http://vim-scripts.org/vim/scripts.html
 
 
