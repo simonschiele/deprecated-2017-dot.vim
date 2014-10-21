@@ -379,6 +379,7 @@ let g:airline#extensions#whitespace#mixed_indent_format = 'mixed-indent[%s]'
 "let g:airline#extensions#ctrlp#color_template = 'normal'
 "let g:airline#extensions#ctrlp#color_template = 'visual'
 "let g:airline#extensions#ctrlp#color_template = 'replace'
+let g:ctrlp_show_hidden = 1
 
 " virtualenv <https://github.com/jmcantrell/vim-virtualenv>
 "let g:airline#extensions#virtualenv#enabled = 1  " enable/disable virtualenv integration >
@@ -704,6 +705,9 @@ let g:SuperTabDefaultCompletionType = "context"
 " https://github.com/suan/vim-instant-markdown
 " https://gitorious.org/vim-gnupg
 " https://github.com/klen/python-mode/
+"
+" https://github.com/airblade/vim-rooter/
+" https://github.com/pangloss/vim-javascript/
 
 "  good example: https://github.com/vim-scripts/foo.vim/blob/master/plugin/foo.vim
 "  good list: http://vim-scripts.org/vim/scripts.html
