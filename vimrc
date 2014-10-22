@@ -14,8 +14,6 @@ call pathogen#helptags()
 """ enable highliting
 if has("syntax")
     syntax on
-    set synmaxcol=0     " process highliting without char limit 
-    "set synmaxcol=1000 " process highliting on lines <= 1000 chars 
 endif
 
 """ colorcount stuff deactivated at the moment. crappy idea...
@@ -25,12 +23,14 @@ endif
 "else
     "color wombat
 "endif
-set t_Co=256
-set ttimeoutlen=50
 
-""" colorscheme
+set ttimeoutlen=50
+set synmaxcol=0     " process highliting without char limit 
+" set synmaxcol=1000 " process highliting on lines <= 1000 chars 
+
+set t_Co=256
 set background=dark
-"set list
+"set list           " show unprintable chars
 
 "let g:solarized_bold=1
 "let g:solarized_italic=1
@@ -120,6 +120,9 @@ set smartcase           " Do smart case matching
 "set wrapscan           " wrap around
 "set gdefault           " always assume /g
 
+" Add a bit extra margin to the left
+" set foldcolumn=1
+
 """ folding
 " foldmethods:
 " marker    - folding on three '{'
@@ -134,8 +137,8 @@ set foldmethod=marker
 
 """ brackets
 set matchpairs+=<:> " add < > to chars that form pairs (see % command)
-set showmatch
 set matchtime=1 " show matching brackets quicker than default
+set showmatch
 
 """ mouse
 "set mouse=a|b          " To play with x11 integration - confusing x11 behavier...
@@ -155,9 +158,8 @@ set wildmode=longest:full,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
 " undo/backup/swp/info/...
-set history=1000        " keep 75 lines of command line history
-
-set undolevels=1000     " 1000 undos
+set history=1000        " keep 1000 lines of command line history
+set undolevels=500      " 500 undos
 set undoreload=10000    " number of lines to save for undo
 set undodir=~/.vim/tmp/undo
 set undofile
@@ -219,11 +221,15 @@ set backspace=indent,eol,start      " more intuitive backspacing in insert mode
 
 """ Set a more intuitive <Leader>
 let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
 """ firefox-like navigation
-nnoremap <silent> <C-PageDown> :next<CR>
-nnoremap <silent> <C-PageUp> :prev<CR>
-nnoremap <silent> <C-n> :new<CR>
+nnoremap <silent> <C-PageDown> :bn<CR>
+nnoremap <silent> <C-PageUp> :bp<CR>
+nnoremap <silent> <C-q> :bn<CR>
 
 """ w!! to save as sudo
 cmap w!! w !sudo tee % >/dev/null
@@ -339,8 +345,8 @@ let g:airline_detect_iminsert=1
 "      \ 'y': 90,
 "      \ })
 
-let g:airline_inactive_collapse=1       " inactive windows have only filename
-let g:airline_exclude_preview=0       " no airline in preview_window
+let g:airline_inactive_collapse=1      " inactive windows have only filename
+let g:airline_exclude_preview=0        " no airline in preview_window
 "let g:airline_exclude_filetypes=[]    " filetypes which have no airline
 "let g:airline_exclude_filenames=[]    " same for filenames 
 
@@ -512,6 +518,9 @@ let g:netrw_special_syntax = 1
 " some kind of highliting
 let readline_has_bash = 1
 
+" ruler
+"set ruler 
+
 " backwards highliting
 "let sh_minlines = 50 
 "let sh_maxlines = 100       " default 2x sh_minlines
@@ -603,6 +612,14 @@ let g:SuperTabDefaultCompletionType = "context"
 "--ENABLE PYTHON/DJANGO OMNICOMPLETE
 "
 "filetype plugin on
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
+
 "set omnifunc=syntaxcomplete#Complete
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
