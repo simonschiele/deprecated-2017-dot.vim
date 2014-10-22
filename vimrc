@@ -412,60 +412,6 @@ let g:ctrlp_show_hidden = 1
 
 " }}}
 
-" {{{ Unite.vim
-
-" unite data dir
-let g:unite_data_directory='~/.vim/tmp/unite'
-
-" matcher -> fuzzy
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-    " Play nice with supertab
-    let b:SuperTabDisabled=1
-
-    " close on Ctrl+c
-    imap <buffer> <C-c> <C-c>q
-    map <buffer> <C-c> <C-c>q
-endfunction
-
-let g:unite_prompt='» '
-
-" open files
-nnoremap <leader>o :<C-u>Unite -toggle -no-split -buffer-name=files -start-insert file_rec/async<cr>
-
-" bufferbrowser
-nnoremap <leader>b :<C-u>Unite -toggle -no-split -buffer-name=buffer -start-insert buffer<cr>
-nnoremap <leader>n :<C-u>Unite -quick-match buffer<cr>
-
-" yank history
-let g:unite_source_history_yank_enable = 1
-nnoremap <leader>y :<C-u>Unite -toggle -no-split -buffer-name=yank history/yank<cr>
-
-" [plugin] unite-cleanup
-"nnoremap <leader>C :Unite -toggle -complete -auto-resize -direction=bot -start-insert -buffer-name=cleanup cleanup<cr>
-"autocmd BufEnter * UpdateCleanupHighlite()
-"autocmd BufWinEnter UpdateCleanupHighlite()<cr>
-"autocmd InsertEnter UpdateCleanupHighlite()<cr>
-
-" [plugin] unite-outline
-"nnoremap <leader>t :Unite outline<cr>
-
-" [plugin] unite-ack
-"nnoremap <leader>a :Unite ack<cr>
-"g:unite_source_ack_command="ack-grep --nocolor --nogroup"
-"g:unite_source_ack_enable_highlight=1
-"g:unite_source_ack_search_word_highlight=Search
-"g:unite_source_ack_ignore_case=0
-"g:unite_source_ack_enable_print_cmd=1
-"let g:unite_source_ack_targetdir_shortcut={}
-"let g:unite_source_ack_targetdir_shortcut={}
-
-" }}}
-
 " {{{ Language Support
 
 filetype on
@@ -545,11 +491,16 @@ autocmd FileType make set noexpandtab shiftwidth=8
 """ sql
 let g:sql_type_default = 'pgsql'
 
+""" sh
+"let g:is_bash = 1
+"let g:sh_fold_enabled=3     " (enable function folding)folding
+
 """ binary
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
 
 " }}}
 
+" netrw
 let g:netrw_altv           = 1
 let g:netrw_fastbrowse     = 2
 let g:netrw_keepdir        = 0
@@ -561,15 +512,11 @@ let g:netrw_special_syntax = 1
 " some kind of highliting
 let readline_has_bash = 1
 
-" sh
-let g:is_bash = 1
-let g:sh_fold_enabled=3     " (enable function folding)folding
-let sh_minlines = 1000
-"let sh_maxlines = 100       " default 2x sh_minlines
-
 " backwards highliting
-let ptcap_minlines = 50
-let rexx_minlines = 50
+"let sh_minlines = 50 
+"let sh_maxlines = 100       " default 2x sh_minlines
+"let ptcap_minlines = 50
+"let rexx_minlines = 50
 
 """ [plugin] Supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -675,41 +622,4 @@ let g:SuperTabDefaultCompletionType = "context"
 "map <silent><C-Right> <C-]>             " taglist - map Ctrl-RhitArrow to jump back to your source code
 "map <silent><A-Right> :tabnext<CR>      " map Alt-RightArrow to jump to the next tab
 "map <silent><A-Left> :tabprevious<CR>   " map Alt-LeftArrow to jump to the previous tab
-
-" no: https://github.com/vim-scripts/Django-Projects
-" yes: https://github.com/vim-scripts/vim-django-support.git
-" yes: https://github.com/mjbrownie/vim-htmldjango_omnicomplete
-"  -> au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-"  -> let g:htmldjangocomplete_html_flavour = 'html401s'
-"  -> https://github.com/vim-scripts/vim-htmldjango_omnicomplete
-" colors: https://github.com/vim-scripts/Gummybears.git
-
-" https://github.com/mhinz/vim-hugefile.git
-" https://github.com/vim-scripts/LargeFile.git
-" https://github.com/vim-scripts/DrawIt
-" http://peterodding.com/code/vim/easytags/
-" https://github.com/KohPoll/vim-less.git
-" https://github.com/powerman/vim-plugin-autosess.git
-" https://github.com/powerman/vim-plugin-viewdoc
-" https://github.com/othree/html5.vim
-" https://github.com/tpope/vim-sensible
-" https://github.com/lambacck/python_matchit.git
-" https://github.com/vim-scripts/mathematic.vim
-" https://github.com/vim-scripts/vim-human-dates.git
-" https://github.com/vim-scripts/restore_view.vim
-" https://github.com/sukima/xmledit/
-
-" https://github.com/Valloric/YouCompleteMe
-" https://github.com/SirVer/ultisnips
-
-" https://github.com/suan/vim-instant-markdown
-" https://gitorious.org/vim-gnupg
-" https://github.com/klen/python-mode/
-"
-" https://github.com/airblade/vim-rooter/
-" https://github.com/pangloss/vim-javascript/
-
-"  good example: https://github.com/vim-scripts/foo.vim/blob/master/plugin/foo.vim
-"  good list: http://vim-scripts.org/vim/scripts.html
-
 
