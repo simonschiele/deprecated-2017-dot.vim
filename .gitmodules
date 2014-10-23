@@ -8,19 +8,19 @@
 	path = plugins/gundo
 	url = https://github.com/sjl/gundo.vim.git
 [submodule "plugins/NerdCommenter"]
-	path = plugins/NerdCommenter
+	path = plugins/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "plugins/NerdTree"]
-	path = plugins/NerdTree
+	path = plugins/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "plugins/snipmate"]
 	path = plugins/snipmate
 	url = https://github.com/garbas/vim-snipmate.git
 [submodule "plugins/tlib_vim"]
-	path = plugins/tlib_vim
+	path = plugins/tlib
 	url = https://github.com/tomtom/tlib_vim.git
 [submodule "plugins/vim-addon-mw-utils"]
-	path = plugins/vim-addon-mw-utils
+	path = plugins/addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "plugins/syntastic"]
 	path = plugins/syntastic
@@ -34,9 +34,6 @@
 [submodule "plugins/airline"]
 	path = plugins/airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "plugins/vimshell"]
-	path = plugins/vimshell
-	url = https://github.com/Shougo/vimshell.vim.git
 [submodule "plugins/vimproc"]
 	path = plugins/vimproc
 	url = https://github.com/Shougo/vimproc.vim.git
@@ -47,13 +44,13 @@
 	path = plugins/unite-launch
 	url = https://github.com/ujihisa/unite-launch.git
 [submodule "plugins/vim-pathogen"]
-	path = plugins/vim-pathogen
+	path = plugins/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "plugins/ack"]
 	path = plugins/ack
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "plugins/excel.vim"]
-	path = plugins/excel.vim
+	path = plugins/excel
 	url = https://github.com/yakiang/excel.vim.git
 [submodule "plugins/ctrlp"]
 	path = plugins/ctrlp
@@ -73,3 +70,54 @@
 [submodule "plugins/virtualenv"]
 	path = plugins/virtualenv
 	url = https://github.com/jmcantrell/vim-virtualenv.git
+[submodule "plugins/id3"]
+	path = plugins/support-id3
+	url = https://github.com/AndrewRadev/id3.vim
+[submodule "plugins/colors-gummybears"]
+	path = plugins/colors-gummybears
+	url = https://github.com/vim-scripts/Gummybears.git
+[submodule "plugins/restore_view"]
+	path = plugins/restore_view
+	url = https://github.com/vim-scripts/restore_view.vim
+[submodule "plugins/markdown-instant"]
+	path = plugins/markdown-instant
+	url = https://github.com/suan/vim-instant-markdown.git
+[submodule "plugins/support-django"]
+	path = plugins/support-django
+	url = https://github.com/vim-scripts/vim-django-support.git
+[submodule "plugins/pyflakes-pathogen"]
+	path = plugins/pyflakes-pathogen
+	url = https://github.com/mitechie/pyflakes-pathogen.git
+[submodule "plugins/pydoc"]
+	path = plugins/pydoc
+	url = https://github.com/fs111/pydoc.vim.git
+[submodule "plugins/pep8"]
+	path = plugins/pep8
+	url = https://github.com/vim-scripts/pep8.git
+[submodule "plugins/pytest"]
+	path = plugins/pytest
+	url = https://github.com/alfredodeza/pytest.vim.git
+[submodule "plugins/jedi"]
+	path = plugins/jedi
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "plugins/completion-htmldjango"]
+	path = plugins/completion-htmldjango
+	url = https://github.com/mjbrownie/vim-htmldjango_omnicomplete.git
+[submodule "plugins/django-projects"]
+	path = plugins/django-projects
+	url = https://github.com/vim-scripts/Django-Projects.git
+[submodule "plugins/viewdoc"]
+	path = plugins/viewdoc
+	url = https://github.com/powerman/vim-plugin-viewdoc
+[submodule "plugins/support-cssless"]
+	path = plugins/support-cssless
+	url = https://github.com/KohPoll/vim-less
+[submodule "plugins/support-javascript"]
+	path = plugins/support-javascript
+	url = https://github.com/pangloss/vim-javascript/
+[submodule "plugins/misc"]
+	path = plugins/misc
+	url = https://github.com/xolox/vim-misc
+[submodule "plugins/easytags"]
+	path = plugins/easytags
+	url = https://github.com/xolox/vim-easytags.git

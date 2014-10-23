@@ -3,7 +3,7 @@
 
 " Use pathogen to load further modules from plugins/
 filetype off
-runtime plugins/vim-pathogen/autoload/pathogen.vim
+runtime plugins/pathogen/autoload/pathogen.vim
 call pathogen#infect('plugins/{}')
 call pathogen#helptags()
 
@@ -487,6 +487,19 @@ autocmd FileType javascript set ft=javascript.html
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E501'
+
+" Add the virtualenv's site-packages to vim path
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
 
 """ C
 autocmd FileType c set omnifunc=ccomplete#Complete
