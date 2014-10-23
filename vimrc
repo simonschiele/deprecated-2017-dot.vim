@@ -518,6 +518,10 @@ let g:netrw_special_syntax = 1
 " some kind of highliting
 let readline_has_bash = 1
 
+" Buffer command
+command -nargs=? -bang B if <q-args> != '' | exe 'buffer '.<q-args> | else | ls<bang> | let buffer_nn=input('Which one: ') | if buffer_nn != '' | exe buffer_nn != 0 ? 'buffer '.buffer_nn : 'enew' | endif | endif
+
+
 " ruler
 "set ruler 
 
