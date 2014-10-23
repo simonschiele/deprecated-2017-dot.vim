@@ -381,11 +381,27 @@ let g:airline#extensions#whitespace#trailing_format = 'trailing[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'mixed-indent[%s]'
 
 " ctrlp <https://github.com/kien/ctrlp.vim>
-"let g:airline#extensions#ctrlp#color_template = 'insert' (default)
+nnoremap <leader>p :CtrlPBuffer<CR>
+nnoremap <leader>o :CtrlP<CR>
+nnoremap <silent> <C-o> :CtrlP<CR>
+
+let g:airline#extensions#ctrlp#color_template = 'insert' " (default)
 "let g:airline#extensions#ctrlp#color_template = 'normal'
 "let g:airline#extensions#ctrlp#color_template = 'visual'
 "let g:airline#extensions#ctrlp#color_template = 'replace'
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_show_hidden = 1
+"let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/ctrlp'
+let g:ctrlp_max_history = &history
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_regexp_search = 1       " Regex search by default
+let g:ctrlp_max_height = 15         " Show more results at once
 
 " virtualenv <https://github.com/jmcantrell/vim-virtualenv>
 "let g:airline#extensions#virtualenv#enabled = 1  " enable/disable virtualenv integration >
