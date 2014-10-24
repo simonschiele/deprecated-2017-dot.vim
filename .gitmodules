@@ -104,7 +104,7 @@
 	path = plugins/django-projects
 	url = https://github.com/vim-scripts/Django-Projects.git
 [submodule "plugins/viewdoc"]
-	path = plugins/viewdoc
+	path = plugins-not-used/viewdoc
 	url = https://github.com/powerman/vim-plugin-viewdoc
 [submodule "plugins/support-cssless"]
 	path = plugins/support-cssless
