@@ -1,1 +1,0 @@
-../../.lib/Smyck-Color-Scheme/smyck.vim
