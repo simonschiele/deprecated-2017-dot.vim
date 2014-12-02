@@ -1,1 +1,0 @@
-../plugins/supertab/doc/supertab.txt

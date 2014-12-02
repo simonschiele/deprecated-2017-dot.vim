@@ -1,1 +1,0 @@
-../plugins/snipmate/doc/snipMate.txt
