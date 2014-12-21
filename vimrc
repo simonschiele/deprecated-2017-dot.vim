@@ -12,9 +12,12 @@ call pathogen#helptags()
 " {{{ environment
 
 """ just to be sure
+
 set nocompatible
 set ttyfast
 set showcmd
+filetype plugin on
+filetype plugin indent on
 
 set encoding=utf-8              " default encoding 'utf-8'
 set ff=unix                     " 
@@ -30,8 +33,27 @@ let g:mapleader = ","
 "set lazyredraw                 " performance + hiccups
 
 """ some input settings
-set backspace=indent,eol,start      " more intuitive backspacing in insert mode
-map q <Nop>                         " disable recording
+set backspace=indent,eol,start          " more intuitive backspacing in insert mode
+map q <Nop>                             " disable recording
+"set list                               " show unprintable chars
+"set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
+
+
+" }}}
+
+" {{{ cmd
+
+" buffer stuff
+set browsedir=buffer    " open path should be on pwd of file in buffer
+
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.so,.out,.bin,.aux,.idx,.jpg,.png,.gif,.avi,.mkv,.mp3,.flac
+
+set wildmenu
+"set wildmode=longest,list,full
+set wildmode=longest:full,full
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,*.rar
 
 " }}}
 
@@ -90,6 +112,13 @@ if has('gui_running')
 else
     set noeb vb t_vb=
 endif
+
+" }}}
+
+" {{{ print
+
+set printoptions=paper:a4
+set printoptions=number:y " put line numbers on hardcopy
 
 " }}}
 
@@ -190,7 +219,6 @@ set laststatus=2    " don't combine status- & commandline
 " :AirlineToggleWhitespace 
 " :AirlineToggle 
 
-
 """ airline look 
 " themes: badwolf, base16, bubblegum, dark, hybrid, jellybeans, kalisi, kolor,
 " laederon, light, lucius, luna, molokai, monochrome, murmur, powerlineish,
@@ -209,7 +237,7 @@ let g:airline_detect_iminsert=1
 
 "let g:airline#extensions#tagbar#enabled=1   " tagbar
 let g:airline#extensions#tabline#enabled=1   " display open buffers in tabline
-"let g:airline#extensions#tabline#buffer_min_count=3
+let g:airline#extensions#tabline#buffer_min_count=2
 
 " smart algorithm, uniquifies buffers names with similar filename
 let g:airline#extensions#tabline#formatter='unique_tail_improved'   
@@ -230,8 +258,8 @@ let g:airline#extensions#hunks#non_zero_only = 0    " enable/disable showing onl
 " let g:airline#extensions#csv#column_display = 'Name'
 
 " syntastic
-"i let g:airline_enable_syntastic=1
-" let g:airline#extensions#syntastic#enabled=1        " syntastic
+let g:airline_enable_syntastic=1
+let g:airline#extensions#syntastic#enabled=1
 
 " airline->whitespace
 let g:airline#extensions#whitespace#enabled=1
@@ -387,6 +415,7 @@ function! FoldText() " {{{
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
+
 set foldtext=FoldText()
 
 " }}}
@@ -433,12 +462,28 @@ nnoremap <silent> <F9> :NERDTreeToggle<CR>      " keymapping:todo
 
 " }}}
 
+" {{{ ctags 
+
+"set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
+
+" }}}
+
 " {{{ tag-browser / tagbar (plugin: todo)
 
 nmap <F10> :TagbarToggle<CR>        " keymapping:todo
 
 let g:tagbar_usearrows = 1
 let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
+
+" }}}
+
+" {{{ tag-browser / taglist (plugin: todo)
+
+"let Tlist_Ctags_Cmd='/usr/bin/ctags'       " point taglist to ctags
+"let Tlist_GainFocus_On_ToggleOpen = 1      " Focus on the taglist when its  toggled
+"let Tlist_Close_On_Select = 1              " Close when something's selected
+"let Tlist_Use_Right_Window = 1             " Project uses the left window
+"let Tlist_File_Fold_Auto_Close = 1         " Close folds for inactive files
 
 " }}}
 
@@ -479,6 +524,113 @@ let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 " filetype overwrites
 "let g:UltiSnipsAddFiletypes html.css
 "let g:UltiSnipsAddFiletypes php.html
+
+" }}}
+
+" {{{ completion / supertab (plugin: todo)
+
+set omnifunc=syntaxcomplete#Complete
+
+" }}}
+
+" {{{ syntastic
+
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_auto_loc_list=2
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+"let g:syntastic_disabled_filetypes=['html']
+
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+" }}}
+
+" {{{ Python
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+""" syntastic 
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501'
+
+" }}}
+
+" {{{ php 
+
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php let php_sql_query=1
+autocmd FileType php let php_htmlInStrings=1
+
+" Map <CTRL>-P to run PHP parser check
+"autocmd FileType php noremap <C-P> :!php -l %<CR>
+
+" The php completion dictionary is provided by Rasmus: http://lerdorf.com/funclist.txt
+"autocmd FileType php set dictionary-=/home/simon/.vim/documentation/php_funclist.txt dictionary+=/home/simon/.vim/documentation/php_funclist.txt
+
+" php manual
+"function! OpenPhpFunction (keyword)
+"    let proc_keyword = substitute(a:keyword , '_', '-', 'g')
+"    exe 'split'
+"    exe 'enew'
+"    exe "set buftype=nofile"
+"    exe 'silent r!lynx -dump -nolist http://www.php.net/manual/en/print/function.'.proc_keyword.'.php'
+"    exe 'norm gg'
+"    exe 'call search ("' . a:keyword .'")'
+"    exe 'norm dgg'
+"    exe 'call search("User Contributed Notes")'
+"    exe 'norm dGgg'
+"endfunction
+"autocmd FileType php noremap <C-k> :call OpenPhpFunction('<C-r><C-w>')<CR>
+
+
+" }}}
+
+" {{{ javascript
+
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set ft=javascript.html
+
+""" syntastic 
+let g:syntastic_javascript_checkers = ['gjslint']
+
+" }}}
+
+" {{{ html/css
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+" }}}
+
+" {{{ xml
+
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+
+" }}}
+
+" {{{ sql
+
+let g:sql_type_default = 'pgsql'
+
+" }}}
+
+" {{{ C 
+
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+" }}}
+
+" {{{ make
+
+autocmd FileType make set noexpandtab shiftwidth=8
+
+" }}}
+
+" {{{ binary 
+
+"augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
 
 " }}}
 
