@@ -88,3 +88,6 @@
 [submodule "plugins/javascript-beautify"]
 	path = plugins/javascript-beautify
 	url = https://github.com/bigfish/vim-js-beautify.git
+[submodule "plugins/nerdcommenter"]
+	path = plugins/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
