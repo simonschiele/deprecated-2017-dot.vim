@@ -20,9 +20,9 @@ filetype plugin on
 filetype plugin indent on
 
 set encoding=utf-8              " default encoding 'utf-8'
-set ff=unix                     " 
-set shell=/bin/bash             "  
-let readline_has_bash = 1       " readline + bash 
+set ff=unix                     "
+set shell=/bin/bash             "
+let readline_has_bash = 1       " readline + bash
 
 """ set the <Leader> mapping
 let mapleader = ","
@@ -35,6 +35,7 @@ let g:mapleader = ","
 """ some input settings
 set backspace=indent,eol,start          " more intuitive backspacing in insert mode
 map q <Nop>                             " disable recording
+set nowrap
 "set list                               " show unprintable chars
 "set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
 
@@ -85,12 +86,12 @@ if has("syntax")
         let g:solarized_termtrans = 1
         let g:solarized_termcolors = 16
         " let g:solarized_termcolors = 256
-        
+
         colorscheme solarized
-    
+
     elseif theme == 'wombat'
         colorscheme wombat256
-    
+
     endif
 
     set synmaxcol=501 " process highliting on lines <= 501 chars
@@ -102,7 +103,7 @@ endif
 
 " }}}
 
-" {{{ sounds 
+" {{{ sounds
 
 set noerrorbells
 set visualbell
@@ -216,10 +217,10 @@ set statusline=[%n]%y[%{strlen(&fenc)?&fenc:'none'}][%{&ff}]%r%h%w%m%=%1*%F%*\ [
 set laststatus=2    " don't combine status- & commandline
 
 """ todo: ????
-" :AirlineToggleWhitespace 
-" :AirlineToggle 
+" :AirlineToggleWhitespace
+" :AirlineToggle
 
-""" airline look 
+""" airline look
 " themes: badwolf, base16, bubblegum, dark, hybrid, jellybeans, kalisi, kolor,
 " laederon, light, lucius, luna, molokai, monochrome, murmur, powerlineish,
 " raven, serene, silver, simple, solarized, sol, tomorrow, ubaryd,
@@ -229,27 +230,27 @@ let g:airline_theme='base16'
 
 let g:airline_inactive_collapse=1      " inactive windows have only filename
 let g:airline_exclude_preview=0        " no airline in preview_window
-let g:airline_detect_paste=1            
+let g:airline_detect_paste=1
 let g:airline_detect_modified=1
 let g:airline_detect_iminsert=1
 "let g:airline_exclude_filetypes=[]    " filetypes which have no airline
 "let g:airline_exclude_filenames=[]    " filenames which have no airline
 
-"let g:airline#extensions#tagbar#enabled=1   " tagbar
+let g:airline#extensions#tagbar#enabled=1   " tagbar
 let g:airline#extensions#tabline#enabled=1   " display open buffers in tabline
 let g:airline#extensions#tabline#buffer_min_count=2
 
 " smart algorithm, uniquifies buffers names with similar filename
-let g:airline#extensions#tabline#formatter='unique_tail_improved'   
+"let g:airline#extensions#tabline#formatter='unique_tail_improved'
 
 "let g:bufferline_echo =
 
 " airline->git
 let g:airline_enable_fugitive=1
-let g:airline#extensions#branch#enabled=1           " 
-let g:airline#extensions#branch#empty_message = ''
-let g:airline#extensions#hunks#enabled=1            " enable/disable showing a summary of changed hunks under source control
-let g:airline#extensions#hunks#non_zero_only = 0    " enable/disable showing only non-zero hunks
+"let g:airline#extensions#branch#enabled=1           "
+"let g:airline#extensions#branch#empty_message = ''
+"let g:airline#extensions#hunks#enabled=1            " enable/disable showing a summary of changed hunks under source control
+"let g:airline#extensions#hunks#non_zero_only = 0    " enable/disable showing only non-zero hunks
 "let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
 
 " csv
@@ -322,14 +323,14 @@ command! -nargs=? -bang B if <q-args> != '' | exe 'buffer '.<q-args> | else | ls
 " }}}
 
 " {{{ line numbers / numbers (plugin: https://github.com/b3niup/numbers.vim.git)
- 
+
 set number          " line numbering
 
 " numbers.vim: toggle keymapping
 nnoremap <silent> <F4> :NumbersToggle<CR>   " keymapping:<F4> _toggle numbers (normal/relative/disable)
 
-" numbers.vim: windows where not to show numbers at all 
-let g:numbers_exclude = ['minibufexpl', 'nerdtree', 'unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m'] 
+" numbers.vim: windows where not to show numbers at all
+let g:numbers_exclude = ['minibufexpl', 'nerdtree', 'unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']
 
 " }}}
 
@@ -344,13 +345,13 @@ set showmatch
 " {{{ indentation
 
 set tabstop=4       " how many char a tab stands for (affects existing text)
-set shiftwidth=4    " indentation 4 spaces 
+set shiftwidth=4    " indentation 4 spaces
 set softtabstop=4   " indentation 4 spaces on <tab> (in insert mode)
 set expandtab       "
 set smarttab        "
-set autoindent      "  
+set autoindent      "
 set smartindent     " tries 'to do the right thing' - sometimes crazy, mostly ok
-"set cindent        " stricter rules for C  
+"set cindent        " stricter rules for C
 "set shiftround     "
 
 """ don't lose visual selection after doing indents
@@ -430,22 +431,22 @@ let g:myLangList = ['nospell', 'de', 'en']
 function! MySpellLang()
   let g:myLang = g:myLang + 1
   if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
-  
+
   if g:myLang == 0 | setlocal nospell | endif
   if g:myLang == 1 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
   if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
   echomsg 'language:' g:myLangList[g:myLang]
 endfunction
-nmap <F7> :<C-U>call MySpellLang()<CR>      " keymapping:<F7> _Toggle spellcheck & switch languages  
+nmap <F7> :<C-U>call MySpellLang()<CR>      " keymapping:<F7> _Toggle spellcheck & switch languages
 
 " }}}
 
 " {{{ remote editing
 
-let g:netrw_altv = 1          " change from left to right splitting 
+let g:netrw_altv = 1          " change from left to right splitting
 let g:netrw_fastbrowse = 2    " 0=cache nothing, 1=reuse when browsing, 2=cache always
 let g:netrw_keepdir = 0       " keep local curdir
-let g:netrw_liststyle = 2     " wide listing (multiple files in columns) 
+let g:netrw_liststyle = 2     " wide listing (multiple files in columns)
 let g:netrw_silent = 1        " transfer silent
 let g:netrw_special_syntax = 1  " highlite some filetypes
 
@@ -462,9 +463,12 @@ nnoremap <silent> <F9> :NERDTreeToggle<CR>      " keymapping:todo
 
 " }}}
 
-" {{{ ctags 
+" {{{ ctags / easytags (plugin: todo)
 
 "set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
+
+let g:easytags_suppress_report = 1
+let g:easytags_suppress_ctags_warning = 1
 
 " }}}
 
@@ -515,9 +519,9 @@ let g:UltiSnipsEditSplit = "vertical"   " split window vertical
 let g:UltiSnipsUsePythonVersion = 2     " use python 2/3
 
 " ultisnips mappings
-let g:UltiSnipsExpandTrigger="<s-tab>" 
-let g:UltiSnipsJumpForwardTrigger="<s-tab>" 
-"let g:UltiSnipsJumpBackwardTrigger="<c-tab>" 
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-tab>"
 "unlet g:UltiSnipsListSnippets
 "unlet g:UltiSnipsJumpBackwardTrigger
 
@@ -541,6 +545,8 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
 "let g:syntastic_disabled_filetypes=['html']
 
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
@@ -551,13 +557,13 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-""" syntastic 
+""" syntastic
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501'
+let g:syntastic_python_flake8_args='--ignore=E501'  " E501 - long lines
 
 " }}}
 
-" {{{ php 
+" {{{ php
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType php let php_sql_query=1
@@ -590,10 +596,14 @@ autocmd FileType php let php_htmlInStrings=1
 " {{{ javascript
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript set ft=javascript.html
 
-""" syntastic 
-let g:syntastic_javascript_checkers = ['gjslint']
+""" fix html tidy for angular sytax
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+""" syntastic
+let g:syntastic_javascript_gjslint_args='--max_line_length=120'
+"let g:syntastic_javascript_checkers = ['gjslint']
+"let g:syntastic_javascript_checkers = ['jshint'];
 
 " }}}
 
@@ -616,7 +626,7 @@ let g:sql_type_default = 'pgsql'
 
 " }}}
 
-" {{{ C 
+" {{{ C
 
 autocmd FileType c set omnifunc=ccomplete#Complete
 
@@ -628,7 +638,7 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 " }}}
 
-" {{{ binary 
+" {{{ binary
 
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
 

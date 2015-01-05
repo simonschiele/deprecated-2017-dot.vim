@@ -29,23 +29,23 @@ If you have nice tips or a few lines of cool config for me, please write a mail 
 ```
 /
 |
-|_ colors/          color schemes
+|_ colors/              color schemes
 |
-|_ documentation/   readme, plugin docs, ...
+|_ documentation/       readme, plugin docs, ...
 |
-|_ helper/          helper for plugins
+|_ helper/              helper / supporting stuff
+|      \_ php_manual/       php manual in vimhelp format
+|      \_ spell/            aspell dictionaries for spell check (de, en)
 |
-|_ plugins/         plugins
+|_ plugins/             plugins (mostly submodules, pathogen autoload path)
 |
-|_ spell/           aspell dictionaries for spell check (de, en)
+|_ tmp/                 backup, swap, undo, tmp-files, ...
 |
-|_ tmp/             backup, swap, undo, tmp-files, ...
+|_ vimrc-bigfile        special vim config for very big files (tested with 1-4gb files)
 |
-|_ vimrc-bigfile    special vim config for very big files (tested with 1-4gb files)
+|_ vimrc                my main vim config
 |
-|_ vimrc            my main vim config
-|
-\_ README.md        This small help file
+\_ README.md            This help file
 
 ```
 
@@ -84,7 +84,6 @@ To use this configuration, just checkout repo + subrepos and link vimrc directly
 ## Use vim (and this config)
 
 ### Documentation
-    * learn vim the hard way
     * [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/ "[ebook] Steve Losh - 2013 - Learn Vimscript the Hard Way") by [Steve Losh](https://github.com/sjl "[githuub] sjl (Steve Losh)")
 
 
@@ -326,12 +325,6 @@ Examples from plugins:
           depends: vim-addon-mw-utils, tlib (both plugins are submodules in this repo)
           Comment: put your snippets to ~/.vim/snippets/
 
-    * "tlib_vim" (https://github.com/tomtom/tlib_vim)
-          Description: "excellent filterable list selection view" for snipmate
-
-    * "vim-addon-mw-utils" (https://github.com/MarcWeber/vim-addon-mw-utils)
-          Description: "providing the implementation for caching parsed .snippets files" for snipmate
-
     * "taglist" by Yegappan Lakshmanan (yegappan AT yahoo DOT com) (state 2007 May 24)
           Description: source browser
           Depends: exuberant-ctags
@@ -375,6 +368,10 @@ Examples from plugins:
 
  # List all plugin-urls in vimrc
  `grep -oi "(plugin[^)]*)" ~/.vimrc | cut -f2- -d' ' | sed 's/)$//g'`
+
+
+## Links
+ * http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/
 
 
 ## License
