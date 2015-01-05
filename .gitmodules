@@ -52,3 +52,39 @@
 [submodule "plugins/tagbar"]
 	path = plugins/tagbar
 	url = git://github.com/majutsushi/tagbar
+[submodule "plugins/supertab"]
+	path = plugins/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "plugins/instant-markdown"]
+	path = plugins/instant-markdown
+	url = https://github.com/isnowfy/python-vim-instant-markdown.git
+[submodule "plugins/syntastic"]
+	path = plugins/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "plugins/easytags"]
+	path = plugins/easytags
+	url = https://github.com/xolox/vim-easytags.git
+[submodule "plugins/misc"]
+	path = plugins/misc
+	url = https://github.com/xolox/vim-misc
+[submodule "plugins/git-extradite"]
+	path = plugins/git-extradite
+	url = https://github.com/int3/vim-extradite/
+[submodule "plugins/javascript-libraries"]
+	path = plugins/javascript-libraries
+	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+[submodule "plugins/javascript-enhanced"]
+	path = plugins/javascript-enhanced
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "plugins/confluence-vimfluence"]
+	path = plugins/confluence-vimfluence
+	url = https://github.com/orlandov/vimfluence.git
+[submodule "plugins/syntax-confluence"]
+	path = plugins/syntax-confluence
+	url = https://github.com/vim-scripts/confluencewiki.vim.git
+[submodule "plugins/plu"]
+	path = plugins/plu
+	url = https://github.com/bigfish/vim-js-beautify.git
+[submodule "plugins/javascript-beautify"]
+	path = plugins/javascript-beautify
+	url = https://github.com/bigfish/vim-js-beautify.git
