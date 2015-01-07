@@ -590,6 +590,9 @@ autocmd FileType php let php_htmlInStrings=1
 "endfunction
 "autocmd FileType php noremap <C-k> :call OpenPhpFunction('<C-r><C-w>')<CR>
 
+""" syntastic
+let g:syntastic_php_checkers=['php','phpcs']
+let g:syntastic_php_phpcs_args='--standard=/home/simon/.vim/helper/phpcs_ruleset.xml'
 
 " }}}
 
