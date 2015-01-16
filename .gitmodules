@@ -76,12 +76,6 @@
 [submodule "plugins/javascript-enhanced"]
 	path = plugins/javascript-enhanced
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "plugins/confluence-vimfluence"]
-	path = plugins/confluence-vimfluence
-	url = https://github.com/orlandov/vimfluence.git
-[submodule "plugins/syntax-confluence"]
-	path = plugins/syntax-confluence
-	url = https://github.com/vim-scripts/confluencewiki.vim.git
 [submodule "plugins/plu"]
 	path = plugins/plu
 	url = https://github.com/bigfish/vim-js-beautify.git
