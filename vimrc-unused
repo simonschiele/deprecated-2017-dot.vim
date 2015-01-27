@@ -1,4 +1,7 @@
 
+highlight BadIndent ctermbg=1
+autocmd Syntax {bash,css,html,java,javascript,python,php,sh,vim} call matchadd('BadIndent', '^\t*\zs \+')
+
 map <F5> :!%:p<CR>   """ run script
 
 """ scrollsync

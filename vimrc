@@ -36,9 +36,9 @@ let g:mapleader = ","
 set backspace=indent,eol,start          " more intuitive backspacing in insert mode
 map q <Nop>                             " disable recording
 set nowrap
-"set list                               " show unprintable chars
+"set list                               " show unprintable characters
 "set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
-
+"set virtualedit=onemore                 " allow for cursor beyond last character
 
 " }}}
 
@@ -236,9 +236,14 @@ let g:airline_detect_iminsert=1
 "let g:airline_exclude_filetypes=[]    " filetypes which have no airline
 "let g:airline_exclude_filenames=[]    " filenames which have no airline
 
-let g:airline#extensions#tagbar#enabled=1   " tagbar
+let g:airline#extensions#tagbar#enabled=1    " tagbar
+let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#show_tabs = 1
+
 let g:airline#extensions#tabline#enabled=1   " display open buffers in tabline
 let g:airline#extensions#tabline#buffer_min_count=2
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " smart algorithm, uniquifies buffers names with similar filename
 "let g:airline#extensions#tabline#formatter='unique_tail_improved'
@@ -269,6 +274,9 @@ let g:airline#extensions#whitespace#trailing_format = 'trailing[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'mixed-indent[%s]'
 "let g:airline#extensions#whitespace#symbol = '!'
 "let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
+
+" configure the maximum number of lines where whitespace checking is enabled
+"let g:airline#extensions#whitespace#max_lines = 20000
 
 "let g:airline#extensions#ctrlp#color_template = 'insert' " (default)
 "let g:airline#extensions#ctrlp#color_template = 'normal'
@@ -393,7 +401,7 @@ set foldcolumn=1
 " set foldopen=all      " autoopen fold on cursor
 " set foldclose=all     " autoclose folding on leaving
 
-""" toggle folding
+""" toggle folding under cursor with <leader>f
 nnoremap <Leader>f za   " keymapping:<leader>f _toggle folding
 vnoremap <Leader>f zf   " keymapping:<leader>f _toggle folding
 
@@ -569,6 +577,10 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 
+""" syntastic
+let g:syntastic_php_checkers=['php','phpcs']
+let g:syntastic_php_phpcs_args='--standard=/home/simon/.vim/helper/phpcs_ruleset.xml'
+
 " Map <CTRL>-P to run PHP parser check
 "autocmd FileType php noremap <C-P> :!php -l %<CR>
 
@@ -589,10 +601,6 @@ autocmd FileType php let php_htmlInStrings=1
 "    exe 'norm dGgg'
 "endfunction
 "autocmd FileType php noremap <C-k> :call OpenPhpFunction('<C-r><C-w>')<CR>
-
-""" syntastic
-let g:syntastic_php_checkers=['php','phpcs']
-let g:syntastic_php_phpcs_args='--standard=/home/simon/.vim/helper/phpcs_ruleset.xml'
 
 " }}}
 
@@ -626,6 +634,16 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 " {{{ sql
 
 let g:sql_type_default = 'pgsql'
+
+" }}}
+
+" {{{ shell / bash
+
+"autocmd FileType sh set foldcolumn=2 foldminlines=5 foldlevelstart=1
+"autocmd FileType sh let sh_fold_enabled=3
+"autocmd FileType sh set foldmethod=syntax
+
+let g:is_bash=1
 
 " }}}
 

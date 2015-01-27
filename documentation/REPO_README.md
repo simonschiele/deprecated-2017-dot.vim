@@ -85,7 +85,7 @@ To use this configuration, just checkout repo + subrepos and link vimrc directly
 
 ### Documentation
     * [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/ "[ebook] Steve Losh - 2013 - Learn Vimscript the Hard Way") by [Steve Losh](https://github.com/sjl "[githuub] sjl (Steve Losh)")
-
+    * [Small VimL overview](http://en.wikibooks.org/wiki/Learning_the_vi_Editor/Vim/VimL_Script_language) - by wikibooks
 
 ### vim command line arguments
     
@@ -241,11 +241,9 @@ To use this configuration, just checkout repo + subrepos and link vimrc directly
     <C> + n             - automatic word completion (in insert mode)
 
 
-### vim lingua - learn to speak vim
+### vim command syntax
 
-(source: http://yanpritzker.com/2011/12/16/learn-to-speak-vim-verbs-nouns-and-modifiers/)
-
-"Using vim is like talking to your editor in 'verb modifier object' sentences, turned into acronyms [...] don’t try to do anything by pressing keys many times, instead speak to the editor in sentences"
+"Using vim is like talking to your editor in 'verb modifier object' sentences, turned into acronyms [...] don’t try to do anything by pressing keys many times, instead speak to the editor in sentences" (source: http://yanpritzker.com/2011/12/16/learn-to-speak-vim-verbs-nouns-and-modifiers/)
 
 verbs: 
     * v (visual)
