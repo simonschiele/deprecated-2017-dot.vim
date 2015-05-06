@@ -695,6 +695,12 @@ nmap <silent> <leader>vr :so $MYVIMRC<CR>   " keymapping:<leader>vr _reload vimr
 
 " }}}
 
+" {{{ markdown
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" }}}
+
 """ other references
 " bracketed-paste (plugin: https://github.com/ConradIrwin/vim-bracketed-paste)
 
