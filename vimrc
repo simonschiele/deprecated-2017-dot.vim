@@ -11,20 +11,19 @@ call pathogen#helptags()
 
 " {{{ environment
 
-""" just to be sure
-
+""" sane defaults
 set nocompatible
 set ttyfast
 set showcmd
 filetype plugin on
 filetype plugin indent on
 
-set encoding=utf-8              " default encoding 'utf-8'
-set ff=unix                     "
-set shell=/bin/bash             "
-let readline_has_bash = 1       " readline + bash
+set encoding=utf-8
+set ff=unix
+set shell=/bin/bash
+let readline_has_bash=1
 
-""" set the <Leader> mapping
+""" set the <leader> mappings
 let mapleader = ","
 let g:mapleader = ","
 
@@ -33,9 +32,16 @@ let g:mapleader = ","
 "set lazyredraw                 " performance + hiccups
 
 """ some input settings
-set backspace=indent,eol,start          " more intuitive backspacing in insert mode
-map q <Nop>                             " disable recording
+
+" more intuitive backspacing in insert mode
+set backspace=indent,eol,start
+
+" disable recording
+map q <Nop>
+
+" display with nowrap as default
 set nowrap
+
 "set list                               " show unprintable characters
 "set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
 "set virtualedit=onemore                 " allow for cursor beyond last character
@@ -44,8 +50,8 @@ set nowrap
 
 " {{{ cmd
 
-" buffer stuff
-set browsedir=buffer    " open path should be on pwd of file in buffer
+" open path should be on pwd of file in buffer
+set browsedir=buffer
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
@@ -134,7 +140,8 @@ set printoptions=number:y " put line numbers on hardcopy
 
 " {{{ backup / swap / history / viminfo / ... (todo)
 
-set history=1000        " keep 1000 lines of command line history
+" keep 1000 lines of command line history
+set history=1000
 
 " Tell vim to remember certain things when we exit
 " "  '10  :  marks will be remembered for up to 10 previously edited files
@@ -149,7 +156,9 @@ set noswapfile
 "set dir=~/.vim/tmp/swap
 "set swapfile
 
-set nobackup            " don't write backup file
+" don't write backup file
+set nobackup
+
 "set nowritebackup       " dont' write 'old_version'-backup file  """
 "set backupdir=~/.vim/tmp/backup
 "set backup
@@ -176,7 +185,9 @@ augroup END
 
 """ lines around the cursor
 "set scrolloff=3        " min 3 lines above/below cursor while scrolling
-set scrolloff=999       " cursor centered
+
+" cursor centered
+set scrolloff=999
 
 " }}}
 
@@ -189,7 +200,9 @@ set scrolloff=999       " cursor centered
 " {{{ save
 
 set autoread
-set autowrite       " save on buffer change
+
+" save on buffer change
+set autowrite
 
 " Fast saving
 nmap <leader>w :w!<cr>  " keymapping:<leader>w _save instantly
@@ -214,7 +227,8 @@ cmap w!! w !sudo tee % >/dev/null
 """ classic statusline, not really used since power-/airline...
 set statusline=[%n]%y[%{strlen(&fenc)?&fenc:'none'}][%{&ff}]%r%h%w%m%=%1*%F%*\ [line\ %l/%L\|%p%%\|char\ %v]
 
-set laststatus=2    " don't combine status- & commandline
+" don't combine status- & commandline
+set laststatus=2
 
 """ todo: ????
 " :AirlineToggleWhitespace
@@ -228,19 +242,25 @@ set laststatus=2    " don't combine status- & commandline
 let g:airline_powerline_fonts=1
 let g:airline_theme='base16'
 
-let g:airline_inactive_collapse=1      " inactive windows have only filename
-let g:airline_exclude_preview=0        " no airline in preview_window
+" inactive windows have only filename
+let g:airline_inactive_collapse=1
+
+" no airline in preview_window
+let g:airline_exclude_preview=0
+
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
 let g:airline_detect_iminsert=1
 "let g:airline_exclude_filetypes=[]    " filetypes which have no airline
 "let g:airline_exclude_filenames=[]    " filenames which have no airline
 
-let g:airline#extensions#tagbar#enabled=1    " tagbar
+" tagbar
+let g:airline#extensions#tagbar#enabled=1
+
+" tabline (for buffers)
 let g:airline#extensions#tabline#show_buffers = 1
 "let g:airline#extensions#tabline#show_tabs = 1
-
-let g:airline#extensions#tabline#enabled=1   " display open buffers in tabline
+let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_min_count=2
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -317,7 +337,8 @@ let g:airline#extensions#whitespace#mixed_indent_format = 'mixed-indent[%s]'
 
 " {{{ buffers
 
-set hidden      " hide buffers instead of closing them
+" hide buffers instead of closing them
+set hidden
 
 " switch buffers with ctrl+up/down
 " to make this work in gnome-terminal you need to deactivate the official
@@ -336,10 +357,12 @@ command! -nargs=? -bang B if <q-args> != '' | exe 'buffer '.<q-args> | else | ls
 
 " {{{ line numbers / numbers (plugin: https://github.com/b3niup/numbers.vim.git)
 
-set number          " line numbering
+" line numbering
+set number
 
+" keymapping:<F4> _toggle numbers (normal/relative/disable)
 " numbers.vim: toggle keymapping
-nnoremap <silent> <F4> :NumbersToggle<CR>   " keymapping:<F4> _toggle numbers (normal/relative/disable)
+nnoremap <silent> <F4> :NumbersToggle<CR>
 
 " numbers.vim: windows where not to show numbers at all
 let g:numbers_exclude = ['minibufexpl', 'nerdtree', 'unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']
@@ -356,15 +379,24 @@ set showmatch
 
 " {{{ indentation
 
-set tabstop=4       " how many char a tab stands for (affects existing text)
-set shiftwidth=4    " indentation 4 spaces
-set softtabstop=4   " indentation 4 spaces on <tab> (in insert mode)
-set expandtab       "
-set smarttab        "
-set autoindent      "
-set smartindent     " tries 'to do the right thing' - sometimes crazy, mostly ok
-"set cindent        " stricter rules for C
-"set shiftround     "
+" how many char a tab stands for (affects existing text)
+set tabstop=4
+
+" indentation 4 spaces
+set shiftwidth=4
+
+" indentation 4 spaces on <tab> (in insert mode)
+set softtabstop=4
+set expandtab
+set smarttab
+set autoindent
+
+" tries 'to do the right thing' - sometimes crazy, mostly ok
+set smartindent
+
+" stricter rules for C
+"set cindent
+"set shiftround
 
 """ don't lose visual selection after doing indents
 "vnoremap > >gv
@@ -374,18 +406,31 @@ set smartindent     " tries 'to do the right thing' - sometimes crazy, mostly ok
 
 " {{{ search / replace
 
-set hlsearch        " highlite search term
-set incsearch       " search while typing
-set ignorecase      " Do case insensitive matching by default
-set smartcase       " ignore case if pattern if all lowercase, sensitive otherwise
-"set wrapscan       " wrap around
-"set gdefault       " always assume /g
+" highlite search term
+set hlsearch
+
+" search while typing
+set incsearch
+
+" Do case insensitive matching by default
+set ignorecase
+
+" ignore case if pattern if all lowercase, sensitive otherwise
+set smartcase
+
+" wrap around
+"set wrapscan
+
+" always assume /g
+"set gdefault
 
 """ disable highliting temporary (afterddiwpp search)
-nnoremap <silent> <F2> :noh<CR>     " keymapping:<F2> _clear search highliting
+" keymapping:<F2> _clear search highliting
+nnoremap <silent> <F2> :noh<CR>
 
 """ toggle ignorecase
-map <F3> :set ic!<bar>set ic?<cr>   " keymapping:<F3> _toggle ignorecase for search
+" keymapping:<F3> _toggle ignorecase for search
+map <F3> :set ic!<bar>set ic?<cr>
 
 " }}}
 
@@ -406,11 +451,15 @@ set foldcolumn=1
 " set foldclose=all     " autoclose folding on leaving
 
 """ toggle folding under cursor with <leader>f
-nnoremap <Leader>f za   " keymapping:<leader>f _toggle folding
-vnoremap <Leader>f zf   " keymapping:<leader>f _toggle folding
+" keymapping:<leader>f _toggle folding
+nnoremap <Leader>f za
+
+" keymapping:<leader>f _toggle folding
+vnoremap <Leader>f zf
 
 """ toggle all foldings (todo: fix)
-" nnoremap <Leader><S-f> zR     " keymapping:<leader>XXX _toggle all foldings
+" keymapping:<leader>XXX _toggle all foldings
+" nnoremap <Leader><S-f> zR
 " vnoremap <Leader><S-f> zM
 
 function! FoldText() " {{{
@@ -436,8 +485,12 @@ set foldtext=FoldText()
 " {{{ spelling (de, en)
 
 highlight SpellBad term=underline gui=undercurl guisp=Red
-set spl=en spell        " english spellchecking
-set nospell             " disable by default
+
+" english spellchecking
+set spl=en spell
+
+" disable by default
+set nospell
 let g:myLang = 0
 let g:myLangList = ['nospell', 'de', 'en']
 function! MySpellLang()
@@ -449,18 +502,31 @@ function! MySpellLang()
   if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
   echomsg 'language:' g:myLangList[g:myLang]
 endfunction
-nmap <F7> :<C-U>call MySpellLang()<CR>      " keymapping:<F7> _Toggle spellcheck & switch languages
+
+" keymapping:<F7> _Toggle spellcheck / switch languages
+nmap <F7> :<C-U>call MySpellLang()<CR>
 
 " }}}
 
 " {{{ remote editing
 
-let g:netrw_altv = 1          " change from left to right splitting
-let g:netrw_fastbrowse = 2    " 0=cache nothing, 1=reuse when browsing, 2=cache always
-let g:netrw_keepdir = 0       " keep local curdir
-let g:netrw_liststyle = 2     " wide listing (multiple files in columns)
-let g:netrw_silent = 1        " transfer silent
-let g:netrw_special_syntax = 1  " highlite some filetypes
+" change from left to right splitting
+let g:netrw_altv=1
+
+" 0=cache nothing, 1=reuse when browsing, 2=cache always
+let g:netrw_fastbrowse=2
+
+" keep local curdir
+let g:netrw_keepdir=0
+
+" wide listing (multiple files in columns)
+let g:netrw_liststyle=2
+
+" transfer silent
+let g:netrw_silent=1
+
+" highlite some filetypes
+let g:netrw_special_syntax=1
 
 " }}}
 
@@ -471,7 +537,8 @@ let g:NERDTreeQuitOnOpen = 1
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-nnoremap <silent> <F9> :NERDTreeToggle<CR>      " keymapping:todo
+" keymapping:todo
+nnoremap <silent> <F9> :NERDTreeToggle<CR>
 
 " }}}
 
@@ -486,7 +553,8 @@ let g:easytags_suppress_ctags_warning = 1
 
 " {{{ tag-browser / tagbar (plugin: todo)
 
-nmap <F10> :TagbarToggle<CR>        " keymapping:todo
+" keymapping:todo
+nmap <F10> :TagbarToggle<CR>
 
 let g:tagbar_usearrows = 1
 let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
@@ -495,40 +563,76 @@ let g:tagbar_phpctags_bin='/home/simon/.lib/phpctags/phpctags'
 
 " {{{ tag-browser / taglist (plugin: todo)
 
-"let Tlist_Ctags_Cmd='/usr/bin/ctags'       " point taglist to ctags
-"let Tlist_GainFocus_On_ToggleOpen = 1      " Focus on the taglist when its  toggled
-"let Tlist_Close_On_Select = 1              " Close when something's selected
-"let Tlist_Use_Right_Window = 1             " Project uses the left window
-"let Tlist_File_Fold_Auto_Close = 1         " Close folds for inactive files
+" point taglist to ctags
+"let Tlist_Ctags_Cmd='/usr/bin/ctags'
+
+" Focus on the taglist when its  toggled
+"let Tlist_GainFocus_On_ToggleOpen=1
+
+" Close when something's selected
+"let Tlist_Close_On_Select=1
+
+" Project uses the left window
+"let Tlist_Use_Right_Window=1
+
+" Close folds for inactive files
+"let Tlist_File_Fold_Auto_Close=1
 
 " }}}
 
 " {{{ ctrlp (plugin: https://github.com/kien/ctrlp.vim)
 
-nnoremap <leader>p :CtrlPBuffer<CR>     " keymapping:<leader>p _ctrlp bufferlist
-nnoremap <leader>o :CtrlP<CR>           " keymapping:<leader>o _ctrlp open file
-nnoremap <silent> <C-o> :CtrlP<CR>      " keymapping:<C-o> _ctrlp open file
+" keymapping:<leader>p _ctrlp bufferlist
+nnoremap <leader>p :CtrlPBuffer<CR>
+
+" keymapping:<leader>o _ctrlp open file
+nnoremap <leader>o :CtrlP<CR>
+
+" keymapping:<C-o> _ctrlp open file
+nnoremap <silent> <C-o> :CtrlP<CR>
 
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
-let g:ctrlp_show_hidden = 1                         " show hidden files
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$' " ignore paths
-let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'  " reuse windows
-let g:ctrlp_clear_cache_on_exit = 1                 " don't reuse cache
-let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/ctrlp'     " ctrlp cache dir
-let g:ctrlp_max_history = &history                  "
-let g:ctrlp_follow_symlinks = 1                     " follow symlinks
-let g:ctrlp_regexp_search = 1                       " regex search by default
-let g:ctrlp_max_height = 15                         " height 15
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlPBuffer'
+
+" show hidden files
+let g:ctrlp_show_hidden=1
+
+" ignore paths
+let g:ctrlp_custom_ignore='\v[\/]\.(git|hg|svn)$'
+
+" reuse windows
+let g:ctrlp_reuse_window='netrw\|help\|quickfix'
+
+" don't reuse cache
+let g:ctrlp_clear_cache_on_exit=1
+
+" ctrlp cache dir
+let g:ctrlp_cache_dir=$HOME.'/.vim/tmp/ctrlp'
+
+" ctrlp history
+let g:ctrlp_max_history=&history
+
+" ctrlp follow symlinks
+let g:ctrlp_follow_symlinks=1
+
+" ctrlp regex search by default
+let g:ctrlp_regexp_search=1
+
+" ctrlp height 15
+let g:ctrlp_max_height=15
 
 " }}}
 
 " {{{ UltiSnips (plugin: https://github.com/SirVer/ultisnips.git)
 
-let g:UltiSnipsSnippetsDir = expand("$HOME/.vim/snippets/")
-let g:UltiSnipsEditSplit = "vertical"   " split window vertical
-let g:UltiSnipsUsePythonVersion = 2     " use python 2/3
+let g:UltiSnipsSnippetsDir=expand("$HOME/.vim/snippets/")
+
+" split window vertical
+let g:UltiSnipsEditSplit='vertical'
+
+" use python 2/3
+let g:UltiSnipsUsePythonVersion=2
 
 " ultisnips mappings
 let g:UltiSnipsExpandTrigger="<s-tab>"
@@ -672,10 +776,17 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " {{{ gvim
 
 if has('gui_running')
-    set guioptions-=T       " no toolbar
-    set guioptions-=m       " no menubar
-    set guioptions-=r       " no right scrollbar
-    set guioptions-=L       " no left scrollbar
+    " no toolbar
+    set guioptions-=T
+    
+    " no menubar
+    set guioptions-=m
+    
+    " no right scrollbar
+    set guioptions-=r
+    
+    " no left scrollbar
+    set guioptions-=L
 endif
 
 " }}}
@@ -683,15 +794,16 @@ endif
 " {{{ vimrc
 
 """ edit vimrc
-nmap <silent> <leader>ve :e $MYVIMRC<CR>    " keymapping:<leader>ve _edit vimrc
+" keymapping:<leader>ve _edit vimrc
+nmap <silent> <leader>ve :e $MYVIMRC<CR>
 
 """ reload vimrc
-nmap <silent> <leader>vr :so $MYVIMRC<CR>   " keymapping:<leader>vr _reload vimrc
+" keymapping:<leader>vr _reload vimrc
+nmap <silent> <leader>vr :so $MYVIMRC<CR>
 
 """ auto-reload vimrc on save
 "autocmd BufWritePost .vimrc source ~/.vimrc
 "autocmd BufWritePost vimrc source ~/.vimrc
-
 
 " }}}
 
