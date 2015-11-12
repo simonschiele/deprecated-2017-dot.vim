@@ -284,7 +284,6 @@ let g:airline_enable_fugitive=1
 " let g:airline#extensions#csv#column_display = 'Name'
 
 " syntastic
-let g:airline_enable_syntastic=1
 let g:airline#extensions#syntastic#enabled=1
 
 " airline->whitespace
