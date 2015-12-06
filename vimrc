@@ -31,8 +31,6 @@ let g:mapleader = ","
 "set ttimeoutlen=50             " todo
 "set lazyredraw                 " performance + hiccups
 
-""" some input settings
-
 " more intuitive backspacing in insert mode
 set backspace=indent,eol,start
 
@@ -42,9 +40,16 @@ map q <Nop>
 " display with nowrap as default
 set nowrap
 
-"set list                               " show unprintable characters
 "set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
-"set virtualedit=onemore                 " allow for cursor beyond last character
+"set virtualedit=onemore                " allow for cursor beyond last character
+
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
+" highlite long lines
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%79v', 102)
+
 
 " }}}
 
@@ -131,9 +136,9 @@ set printoptions=number:y " put line numbers on hardcopy
 
 " {{{ undo (todo)
 
-"set undolevels=500      " 500 undos
-"set undoreload=10000    " number of lines to save for undo
-"set undodir=~/.vim/tmp/undo
+set undolevels=500      " 500 undos
+set undoreload=10000    " number of lines to save for undo
+set undodir=~/.vim/tmp/undo
 "set undofile
 
 " }}}
@@ -149,8 +154,8 @@ set history=1000
 " "  :20  :  up to 20 lines of command-line history will be remembered
 " "  %    :  saves and restores the buffer list
 " "  n... :  where to save the viminfo files
-" " set viminfo='10,\"100,:20,%,n~/.viminfo'
 "set viminfo='20,\"10000 " read/write a .viminfo file  """
+set viminfo='500,\"3000,:50,%,n~/.vim/tmp/viminfo'
 
 set noswapfile
 "set dir=~/.vim/tmp/swap
@@ -159,7 +164,7 @@ set noswapfile
 " don't write backup file
 set nobackup
 
-"set nowritebackup       " dont' write 'old_version'-backup file  """
+set nowritebackup       " dont' write 'old_version'-backup file  """
 "set backupdir=~/.vim/tmp/backup
 "set backup
 "set writebackup
@@ -193,7 +198,8 @@ set scrolloff=999
 
 " {{{ mouse
 
-"set mouse=a|b   " play with x11 mouse integration - confusing behavier...
+"" play with x11 mouse integration - confusing behavier...
+"set mouse=a|b
 
 " }}}
 
@@ -205,10 +211,10 @@ set autoread
 set autowrite
 
 " Fast saving
-nmap <leader>w :w!<cr>  " keymapping:<leader>w _save instantly
+" nmap <leader>w :w!<cr>  " keymapping:<leader>w _save instantly
 
 """ :w!! to save as sudo
-cmap w!! w !sudo tee % >/dev/null
+" cmap w!! w !sudo tee % >/dev/null
 
 " }}}
 
@@ -271,8 +277,8 @@ let g:airline#extensions#tabline#buffer_min_count=2
 "let g:bufferline_echo =
 
 " airline->git
-let g:airline_enable_fugitive=1
-"let g:airline#extensions#branch#enabled=1           "
+"let g:airline_enable_fugitive=1
+let g:airline#extensions#branch#enabled=1           "
 "let g:airline#extensions#branch#empty_message = ''
 "let g:airline#extensions#hunks#enabled=1            " enable/disable showing a summary of changed hunks under source control
 "let g:airline#extensions#hunks#non_zero_only = 0    " enable/disable showing only non-zero hunks
@@ -388,18 +394,18 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set smarttab
-set autoindent
 
 " tries 'to do the right thing' - sometimes crazy, mostly ok
-set smartindent
+" set smartindent
+" set autoindent
 
 " stricter rules for C
 "set cindent
 "set shiftround
 
 """ don't lose visual selection after doing indents
-"vnoremap > >gv
-"vnoremap < <gv
+vnoremap > >gv
+vnoremap < <gv
 
 " }}}
 
@@ -430,6 +436,24 @@ nnoremap <silent> <F2> :noh<CR>
 """ toggle ignorecase
 " keymapping:<F3> _toggle ignorecase for search
 map <F3> :set ic!<bar>set ic?<cr>
+
+" This rewires n and N to do the highlighing.
+nnoremap <silent> n   n:call HLNext(0.3)<cr>
+nnoremap <silent> N   N:call HLNext(0.3)<cr>
+
+" highlight the match in red
+function! HLNext (blinktime)
+    highlight WhiteOnRed ctermfg=white ctermbg=red
+    let [bufnum, lnum, col, off] = getpos('.')
+    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+    let target_pat = '\c\%#\%('.@/.'\)'
+    let ring = matchadd('WhiteOnRed', target_pat, 101)
+    redraw
+    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+    call matchdelete(ring)
+    redraw
+endfunction
+
 
 " }}}
 
@@ -543,8 +567,8 @@ nnoremap <silent> <F9> :NERDTreeToggle<CR>
 
 " {{{ ctags / easytags (plugin: todo)
 
-"set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
-
+let g:easytags_cmd = '/usr/bin/ctags-exuberant'
+let g:easytags_file = '/home/simon/.vim/tmp/ctags/ctags'
 let g:easytags_suppress_report = 1
 let g:easytags_suppress_ctags_warning = 1
 
@@ -634,8 +658,8 @@ let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsUsePythonVersion=2
 
 " ultisnips mappings
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+"let g:UltiSnipsExpandTrigger="<s-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-tab>"
 "unlet g:UltiSnipsListSnippets
 "unlet g:UltiSnipsJumpBackwardTrigger
@@ -650,6 +674,24 @@ let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 
 set omnifunc=syntaxcomplete#Complete
 
+let g:SuperTabDefaultCompletionType = 'context'
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \ endif
+
+"autocmd FileType *
+  "\ if &omnifunc != '' |
+  "\   call SuperTabChain(&omnifunc, "<c-p>") |
+  "\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  "\ endif
+
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 " }}}
 
 " {{{ syntastic
@@ -659,9 +701,9 @@ let g:syntastic_check_on_wq=0
 let g:syntastic_auto_loc_list=2
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
+let g:syntastic_auto_jump=0
 let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
+let g:syntastic_warning_symbol = '⚠'
 "let g:syntastic_disabled_filetypes=['html']
 
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
@@ -673,8 +715,14 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 """ syntastic
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501'  " E501 - long lines
+let g:syntastic_python_checkers=['pyflakes', 'flake8', 'pylint']
+" let g:syntastic_python_flake8_args='--ignore=E501'  " E501 - long lines
+
+" pydoc on 'K'
+autocmd FileType python nnoremap <buffer> K :<C-u>let save_isk = &iskeyword \|
+    \ set iskeyword+=. \|
+    \ execute "!pydoc " . expand("<cword>") \|
+    \ let &iskeyword = save_isk<CR>
 
 " }}}
 
@@ -766,6 +814,12 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 " }}}
 
+" {{{ markdown
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" }}}
+
 " {{{ binary
 
 "augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
@@ -777,13 +831,13 @@ autocmd FileType make set noexpandtab shiftwidth=8
 if has('gui_running')
     " no toolbar
     set guioptions-=T
-    
+
     " no menubar
     set guioptions-=m
-    
+
     " no right scrollbar
     set guioptions-=r
-    
+
     " no left scrollbar
     set guioptions-=L
 endif
@@ -803,12 +857,6 @@ nmap <silent> <leader>vr :so $MYVIMRC<CR>
 """ auto-reload vimrc on save
 "autocmd BufWritePost .vimrc source ~/.vimrc
 "autocmd BufWritePost vimrc source ~/.vimrc
-
-" }}}
-
-" {{{ markdown
-
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " }}}
 

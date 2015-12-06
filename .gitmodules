@@ -32,59 +32,62 @@
 	path = plugins/bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste
 [submodule "plugins/ctrlp"]
-	path = plugins/ctrlp
-	url = https://github.com/kien/ctrlp.vim.git
+    path = plugins/ctrlp
+    url = https://github.com/kien/ctrlp.vim.git
 [submodule "plugins/fugitive"]
-	path = plugins/git-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+    path = plugins/git-fugitive
+    url = https://github.com/tpope/vim-fugitive.git
 [submodule "plugins/ultisnips"]
-	path = plugins/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
+    path = plugins/ultisnips
+    url = https://github.com/SirVer/ultisnips.git
 [submodule "plugins/syntax-systemd"]
-	path = plugins/syntax-systemd
-	url = https://github.com/Matt-Deacalion/vim-systemd-syntax.git
+    path = plugins/syntax-systemd
+    url = https://github.com/Matt-Deacalion/vim-systemd-syntax.git
 [submodule "plugins/numbers"]
-	path = plugins/numbers
-	url = https://github.com/b3niup/numbers.vim.git
+    path = plugins/numbers
+    url = https://github.com/b3niup/numbers.vim.git
 [submodule "plugins/NerdTree"]
-	path = plugins/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+    path = plugins/nerdtree
+    url = https://github.com/scrooloose/nerdtree.git
 [submodule "plugins/tagbar"]
-	path = plugins/tagbar
-	url = git://github.com/majutsushi/tagbar
+    path = plugins/tagbar
+    url = git://github.com/majutsushi/tagbar
 [submodule "plugins/supertab"]
-	path = plugins/supertab
-	url = https://github.com/ervandew/supertab.git
+    path = plugins/supertab
+    url = https://github.com/ervandew/supertab.git
 [submodule "plugins/instant-markdown"]
-	path = plugins/instant-markdown
-	url = https://github.com/isnowfy/python-vim-instant-markdown.git
+    path = plugins/instant-markdown
+    url = https://github.com/isnowfy/python-vim-instant-markdown.git
 [submodule "plugins/syntastic"]
-	path = plugins/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+    path = plugins/syntastic
+    url = https://github.com/scrooloose/syntastic.git
 [submodule "plugins/easytags"]
-	path = plugins/easytags
-	url = https://github.com/xolox/vim-easytags.git
+    path = plugins/easytags
+    url = https://github.com/xolox/vim-easytags.git
 [submodule "plugins/misc"]
-	path = plugins/misc
-	url = https://github.com/xolox/vim-misc
+    path = plugins/misc
+    url = https://github.com/xolox/vim-misc
 [submodule "plugins/git-extradite"]
-	path = plugins/git-extradite
-	url = https://github.com/int3/vim-extradite/
+    path = plugins/git-extradite
+    url = https://github.com/int3/vim-extradite/
 [submodule "plugins/javascript-libraries"]
-	path = plugins/javascript-libraries
-	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+    path = plugins/javascript-libraries
+    url = https://github.com/othree/javascript-libraries-syntax.vim.git
 [submodule "plugins/javascript-enhanced"]
-	path = plugins/javascript-enhanced
-	url = https://github.com/pangloss/vim-javascript.git
+    path = plugins/javascript-enhanced
+    url = https://github.com/pangloss/vim-javascript.git
 [submodule "plugins/plu"]
-	path = plugins/plu
-	url = https://github.com/bigfish/vim-js-beautify.git
+    path = plugins/plu
+    url = https://github.com/bigfish/vim-js-beautify.git
 [submodule "plugins/javascript-beautify"]
-	path = plugins/javascript-beautify
-	url = https://github.com/bigfish/vim-js-beautify.git
+    path = plugins/javascript-beautify
+    url = https://github.com/bigfish/vim-js-beautify.git
 [submodule "plugins/nerdcommenter"]
-	path = plugins/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
+    path = plugins/nerdcommenter
+    url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "plugins/support-markdown"]
-	path = plugins/support-markdown
-	url = https://github.com/tpope/vim-markdown.git
+    path = plugins/support-markdown
+    url = https://github.com/tpope/vim-markdown.git
+[submodule "plugins/ack"]
+    path = plugins/ack
+    url = https://github.com/mileszs/ack.vim.git

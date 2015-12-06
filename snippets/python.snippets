@@ -8,3 +8,6 @@ snippet class
 			${5:super($1, self).__init__()}
 			self.$4 = $4
 			${0}
+snippet debugger
+	import ipdb
+	ipdb.set_trace()

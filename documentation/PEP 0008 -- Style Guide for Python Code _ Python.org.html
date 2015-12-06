@@ -1,0 +1,3714 @@
+<!doctype html>
+<!--[if lt IE 7]>   <html class="no-js ie6 lt-ie7 lt-ie8 lt-ie9">   <![endif]-->
+<!--[if IE 7]>      <html class="no-js ie7 lt-ie8 lt-ie9">          <![endif]-->
+<!--[if IE 8]>      <html class="no-js ie8 lt-ie9">                 <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr">  <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="prefetch" href="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+
+    <meta name="application-name" content="Python.org">
+    <meta name="msapplication-tooltip" content="The official home of the Python Programming Language">
+    <meta name="apple-mobile-web-app-title" content="Python.org">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="imagetoolbar" content="false">
+
+    <script src="/static/js/libs/modernizr.js"></script>
+
+    <link href="/static/stylesheets/style.css" rel="stylesheet" type="text/css" title="default" />
+    <link href="/static/stylesheets/mq.css" rel="stylesheet" type="text/css" media="not print, braille, embossed, speech, tty" />
+    
+
+    <!--[if (lte IE 8)&(!IEMobile)]>
+    <link href="/static/stylesheets/no-mq.css" rel="stylesheet" type="text/css" media="screen" />
+    
+    
+    <![endif]-->
+
+    
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon-precomposed.png">
+
+    
+    <meta name="msapplication-TileImage" content="/static/metro-icon-144x144-precomposed.png"><!-- white shape -->
+    <meta name="msapplication-TileColor" content="#3673a5"><!-- python blue -->
+    <meta name="msapplication-navbutton-color" content="#3673a5">
+
+    <title>PEP 0008 -- Style Guide for Python Code | Python.org</title>
+
+    <meta name="description" content="The official home of the Python Programming Language">
+    <meta name="keywords" content="Python programming language object oriented web free open source software license documentation download community">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Python.org">
+    <meta property="og:title" content="Welcome to Python.org">
+    <meta property="og:description" content="The official home of the Python Programming Language">
+    
+    <meta property="og:image" content="https://www.python.org/static/opengraph-icon-200x200.png">
+    <meta property="og:image:secure_url" content="https://www.python.org/static/opengraph-icon-200x200.png">
+    
+    <meta property="og:url" content="https://www.python.org/dev/peps/pep-0008/">
+
+    <link rel="author" href="/static/humans.txt">
+
+    
+
+    
+    <script type="application/ld+json">
+     {
+       "@context": "http://schema.org",
+       "@type": "WebSite",
+       "url": "https://www.python.org/",
+       "potentialAction": {
+         "@type": "SearchAction",
+         "target": "https://www.python.org/search/?q={search_term_string}",
+         "query-input": "required name=search_term_string"
+       }
+     }
+    </script>
+
+    
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39055973-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+</head>
+
+<body class="python pages pep-page">
+
+    <div id="touchnav-wrapper">
+
+        <div id="nojs" class="do-not-print">
+            <p><strong>Notice:</strong> While Javascript is not essential for this website, your interaction with the content will be limited. Please turn Javascript on for the full experience. </p>
+        </div>
+
+        <!--[if lt IE 8]>
+        <div id="oldie-warning" class="do-not-print">
+            <p><strong>Notice:</strong> Your browser is <em>ancient</em> and <a href="http://www.ie6countdown.com/">Microsoft agrees</a>. <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience a better web.</p>
+        </div>
+        <![endif]-->
+
+        <!-- Sister Site Links -->
+        <div id="top" class="top-bar do-not-print">
+
+            <nav class="meta-navigation container" role="navigation">
+
+                
+                <div class="skip-link screen-reader-text">
+                    <a href="#content" title="Skip to content">Skip to content</a>
+                </div>
+
+                
+                <a id="close-python-network" class="jump-link" href="#python-network" aria-hidden="true">
+                    <span aria-hidden="true" class="icon-arrow-down"><span>&#9660;</span></span> Close
+                </a>
+
+                
+
+<ul class="menu" role="tree">
+    
+    <li class="python-meta ">
+        <a href="/" title="The Python Programming Language" >Python</a>
+    </li>
+    
+    <li class="psf-meta ">
+        <a href="/psf-landing/" title="The Python Software Foundation" >PSF</a>
+    </li>
+    
+    <li class="docs-meta ">
+        <a href="https://docs.python.org" title="Python Documentation" >Docs</a>
+    </li>
+    
+    <li class="pypi-meta ">
+        <a href="https://pypi.python.org/" title="Python Package Index" >PyPI</a>
+    </li>
+    
+    <li class="jobs-meta ">
+        <a href="/jobs/" title="Python Job Board" >Jobs</a>
+    </li>
+    
+    <li class="shop-meta ">
+        <a href="/community/" title="Python Community" >Community</a>
+    </li>
+    
+</ul>
+
+
+                <a id="python-network" class="jump-link" href="#top" aria-hidden="true">
+                    <span aria-hidden="true" class="icon-arrow-up"><span>&#9650;</span></span> The Python Network
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Header elements -->
+        <header class="main-header" role="banner">
+            <div class="container">
+
+                <h1 class="site-headline">
+                    <a href="/"><img class="python-logo" src="/static/img/python-logo.png" alt="python&trade;"></a>
+                </h1>
+
+                <div class="options-bar do-not-print">
+
+                    
+                    <a id="site-map-link" class="jump-to-menu" href="#site-map"><span class="menu-icon">&equiv;</span> Menu</a><form class="search-the-site" action="/search/" method="get">
+                        <fieldset title="Search Python.org">
+
+                            <span aria-hidden="true" class="icon-search"></span>
+
+                            <label class="screen-reader-text" for="id-search-field">Search This Site</label>
+                            <input id="id-search-field" name="q" type="search" role="textbox" class="search-field" placeholder="Search" value="" tabindex="1">
+
+                            <button type="submit" name="submit" id="submit" class="search-button" title="Submit this Search" tabindex="3">
+                                GO
+                            </button>
+
+                            
+                            <!--[if IE]><input type="text" style="display: none;" disabled="disabled" size="1" tabindex="4"><![endif]-->
+
+                        </fieldset>
+                    </form><span class="breaker"></span><div class="adjust-font-size" aria-hidden="true">
+                        <ul class="navigation menu" aria-label="Adjust Text Size on Page">
+                            <li class="tier-1 last" aria-haspopup="true">
+                                <a href="#" class="action-trigger"><strong><small>A</small> A</strong></a>
+                                <ul class="subnav menu">
+                                    <li class="tier-2 element-1" role="treeitem"><a class="text-shrink" title="Make Text Smaller" href="javascript:;">Smaller</a></li>
+                                    <li class="tier-2 element-2" role="treeitem"><a class="text-grow" title="Make Text Larger" href="javascript:;">Larger</a></li>
+                                    <li class="tier-2 element-3" role="treeitem"><a class="text-reset" title="Reset any font size changes I have made" href="javascript:;">Reset</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><div class="winkwink-nudgenudge">
+                        <ul class="navigation menu" aria-label="Social Media Navigation">
+                            <li class="tier-1 last" aria-haspopup="true">
+                                <a href="#" class="action-trigger">Socialize</a>
+                                <ul class="subnav menu">
+                                    <li class="tier-2 element-1" role="treeitem"><a href="http://plus.google.com/+Python"><span aria-hidden="true" class="icon-google-plus"></span>Google+</a></li>
+                                    <li class="tier-2 element-2" role="treeitem"><a href="http://www.facebook.com/pythonlang?fref=ts"><span aria-hidden="true" class="icon-facebook"></span>Facebook</a></li>
+                                    <li class="tier-2 element-3" role="treeitem"><a href="http://twitter.com/ThePSF"><span aria-hidden="true" class="icon-twitter"></span>Twitter</a></li>
+                                    <li class="tier-2 element-4" role="treeitem"><a href="/community/irc/"><span aria-hidden="true" class="icon-freenode"></span>Chat on IRC</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><div class="account-signin">
+                        <ul class="navigation menu" aria-label="Social Media Navigation">
+                            <li class="tier-1 last" aria-haspopup="true">
+                                
+                                <a href="/accounts/login/" title="Sign Up or Sign In to Python.org">Sign In</a>
+                                <ul class="subnav menu">
+                                    <li class="tier-2 element-1" role="treeitem"><a href="/accounts/signup/">Sign Up / Register</a></li>
+                                    <li class="tier-2 element-2" role="treeitem"><a href="/accounts/login/">Sign In</a></li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </div>
+
+                </div><!-- end options-bar -->
+
+                <nav id="mainnav" class="python-navigation main-navigation do-not-print" role="navigation">
+                    
+                        
+<ul class="navigation menu" role="menubar" aria-label="Main Navigation">
+  
+    
+    
+    <li id="about" class="tier-1 element-1  " aria-haspopup="true">
+        <a href="/about/" title="" class="">About</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/about/apps/" title="">Applications</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/about/quotes/" title="">Quotes</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/about/gettingstarted/" title="">Getting Started</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/about/help/" title="">Help</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    <li id="downloads" class="tier-1 element-2  " aria-haspopup="true">
+        <a href="/downloads/" title="" class="">Downloads</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/downloads/" title="">All releases</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/downloads/source/" title="">Source code</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/downloads/windows/" title="">Windows</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/downloads/mac-osx/" title="">Mac OS X</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="/download/other/" title="">Other Platforms</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="https://docs.python.org/3/license.html" title="">License</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="/download/alternatives" title="">Alternative Implementations</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    <li id="documentation" class="tier-1 element-3  " aria-haspopup="true">
+        <a href="/doc/" title="" class="">Documentation</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/doc/" title="">Docs</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/doc/av" title="">Audio/Visual Talks</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="https://wiki.python.org/moin/BeginnersGuide" title="">Beginner&#39;s Guide</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="https://docs.python.org/devguide/" title="">Developer&#39;s Guide</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="https://docs.python.org/faq/" title="">FAQ</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="http://wiki.python.org/moin/Languages" title="">Non-English Docs</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="http://python.org/dev/peps/" title="">PEP Index</a></li>
+    
+        <li class="tier-2 element-8" role="treeitem"><a href="https://wiki.python.org/moin/PythonBooks" title="">Python Books</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    <li id="community" class="tier-1 element-4  " aria-haspopup="true">
+        <a href="/community/" title="" class="">Community</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/community/diversity/" title="">Diversity</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/community/irc/" title="">IRC</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/community/lists/" title="">Mailing Lists</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/community/workshops/" title="">Python Conferences</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="/community/sigs/" title="">Special Interest Groups</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="https://wiki.python.org/moin/" title="">Python Wiki</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="/community/logos/" title="">Python Logo</a></li>
+    
+        <li class="tier-2 element-8" role="treeitem"><a href="/community/merchandise/" title="">Merchandise</a></li>
+    
+        <li class="tier-2 element-9" role="treeitem"><a href="/community/awards" title="">Community Awards</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    <li id="success-stories" class="tier-1 element-5  " aria-haspopup="true">
+        <a href="/about/success/" title="success-stories" class="">Success Stories</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/about/success/#arts" title="">Arts</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/about/success/#business" title="">Business</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/about/success/#education" title="">Education</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/about/success/#engineering" title="">Engineering</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="/about/success/#government" title="">Government</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="/about/success/#scientific" title="">Scientific</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="/about/success/#software-development" title="">Software Development</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    <li id="news" class="tier-1 element-6  " aria-haspopup="true">
+        <a href="/blogs/" title="News from around the Python world" class="">News</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/blogs/" title="Python Insider Blog Posts">Python News</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="http://planetpython.org/" title="Planet Python">Community News</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="http://pyfound.blogspot.com/" title="PSF Blog">PSF News</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="http://pycon.blogspot.com/" title="PyCon Blog">PyCon News</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    <li id="events" class="tier-1 element-7  " aria-haspopup="true">
+        <a href="/events/" title="" class="">Events</a>
+        
+            
+
+<ul class="subnav menu" role="menu" aria-hidden="true">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/events/python-events/" title="">Python Events</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/events/python-user-group/" title="">User Group Events</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/events/python-events/past/" title="">Python Events Archive</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/events/python-user-group/past/" title="">User Group Events Archive</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event" title="">Submit an Event</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+  
+</ul>
+
+                    
+                </nav>
+
+                <div class="header-banner "> <!-- for optional "do-not-print" class -->
+                    
+                    
+                </div>
+
+                
+                
+
+             </div><!-- end .container -->
+        </header>
+
+        <div id="content" class="content-wrapper">
+            <!-- Main Content Column -->
+            <div class="container">
+
+                <section class="main-content with-left-sidebar" role="main">
+
+                    
+<ul class="breadcrumbs menu">
+    <li>
+        <a href="/" title="The Python Programming Language">Python</a><span class="prompt">&gt;&gt;&gt;</span>
+    </li>
+    <li>
+        <a href="/dev/">Python Developer's Guide</a><span class="prompt">&gt;&gt;&gt;</span>
+    </li>
+    <li>
+        <a href="/dev/peps/">PEP Index</a><span class="prompt">&gt;&gt;&gt;</span>
+    </li>
+    <li>PEP 0008 -- Style Guide for Python Code</li>
+</ul>
+
+
+                    
+<style>
+   .pep-page pre {
+        padding: .5em;
+        background: inherit;
+        border-left: 0px;
+        -webkit-box-shadow: 0 0 0 0;
+        -moz-box-shadow: 0 0 0 0;
+        box-shadow: 0 0 0 0;
+   }
+</style>
+
+    
+    <article class="text">
+        
+
+        <header class="article-header">
+            <h1 class="page-title">PEP 0008 -- Style Guide for Python Code</h1>
+        </header>
+
+        <!--
+This HTML is auto-generated.  DO NOT EDIT THIS FILE!  If you are writing a new
+PEP, see http://www.python.org/dev/peps/pep-0001 for instructions and links
+to templates.  DO NOT USE THIS HTML FILE AS YOUR TEMPLATE!
+-->
+<html>
+ <body>
+  <table class="rfc2822 docutils field-list" frame="void" rules="none">
+   <col class="field-name">
+   </col>
+   <col class="field-body">
+   </col>
+   <tbody valign="top">
+    <tr class="field">
+     <th class="field-name">
+      PEP:
+     </th>
+     <td class="field-body">
+      8
+     </td>
+    </tr>
+    <tr class="field">
+     <th class="field-name">
+      Title:
+     </th>
+     <td class="field-body">
+      Style Guide for Python Code
+     </td>
+    </tr>
+    <tr class="field">
+     <th class="field-name">
+      Author:
+     </th>
+     <td class="field-body">
+      Guido van Rossum &lt;guido at python.org&gt;,
+Barry Warsaw &lt;barry at python.org&gt;,
+Nick Coghlan &lt;ncoghlan at gmail.com&gt;
+     </td>
+    </tr>
+    <tr class="field">
+     <th class="field-name">
+      Status:
+     </th>
+     <td class="field-body">
+      Active
+     </td>
+    </tr>
+    <tr class="field">
+     <th class="field-name">
+      Type:
+     </th>
+     <td class="field-body">
+      Process
+     </td>
+    </tr>
+    <tr class="field">
+     <th class="field-name">
+      Created:
+     </th>
+     <td class="field-body">
+      05-Jul-2001
+     </td>
+    </tr>
+    <tr class="field">
+     <th class="field-name">
+      Post-History:
+     </th>
+     <td class="field-body">
+      05-Jul-2001, 01-Aug-2013
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <hr/>
+  <div class="contents topic" id="contents">
+   <p class="topic-title first">
+    Contents
+   </p>
+   <ul class="simple">
+    <li>
+     <a class="reference internal" href="#introduction" id="id9">
+      Introduction
+     </a>
+    </li>
+    <li>
+     <a class="reference internal" href="#a-foolish-consistency-is-the-hobgoblin-of-little-minds" id="id10">
+      A Foolish Consistency is the Hobgoblin of Little Minds
+     </a>
+    </li>
+    <li>
+     <a class="reference internal" href="#code-lay-out" id="id11">
+      Code lay-out
+     </a>
+     <ul>
+      <li>
+       <a class="reference internal" href="#indentation" id="id12">
+        Indentation
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#tabs-or-spaces" id="id13">
+        Tabs or Spaces?
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#maximum-line-length" id="id14">
+        Maximum Line Length
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#blank-lines" id="id15">
+        Blank Lines
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#source-file-encoding" id="id16">
+        Source File Encoding
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#imports" id="id17">
+        Imports
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <a class="reference internal" href="#string-quotes" id="id18">
+      String Quotes
+     </a>
+    </li>
+    <li>
+     <a class="reference internal" href="#whitespace-in-expressions-and-statements" id="id19">
+      Whitespace in Expressions and Statements
+     </a>
+     <ul>
+      <li>
+       <a class="reference internal" href="#pet-peeves" id="id20">
+        Pet Peeves
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#other-recommendations" id="id21">
+        Other Recommendations
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <a class="reference internal" href="#comments" id="id22">
+      Comments
+     </a>
+     <ul>
+      <li>
+       <a class="reference internal" href="#block-comments" id="id23">
+        Block Comments
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#inline-comments" id="id24">
+        Inline Comments
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#documentation-strings" id="id25">
+        Documentation Strings
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <a class="reference internal" href="#version-bookkeeping" id="id26">
+      Version Bookkeeping
+     </a>
+    </li>
+    <li>
+     <a class="reference internal" href="#naming-conventions" id="id27">
+      Naming Conventions
+     </a>
+     <ul>
+      <li>
+       <a class="reference internal" href="#overriding-principle" id="id28">
+        Overriding Principle
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#descriptive-naming-styles" id="id29">
+        Descriptive: Naming Styles
+       </a>
+      </li>
+      <li>
+       <a class="reference internal" href="#prescriptive-naming-conventions" id="id30">
+        Prescriptive: Naming Conventions
+       </a>
+       <ul>
+        <li>
+         <a class="reference internal" href="#names-to-avoid" id="id31">
+          Names to Avoid
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#package-and-module-names" id="id32">
+          Package and Module Names
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#class-names" id="id33">
+          Class Names
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#exception-names" id="id34">
+          Exception Names
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#global-variable-names" id="id35">
+          Global Variable Names
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#function-names" id="id36">
+          Function Names
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#function-and-method-arguments" id="id37">
+          Function and method arguments
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#method-names-and-instance-variables" id="id38">
+          Method Names and Instance Variables
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#constants" id="id39">
+          Constants
+         </a>
+        </li>
+        <li>
+         <a class="reference internal" href="#designing-for-inheritance" id="id40">
+          Designing for inheritance
+         </a>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <a class="reference internal" href="#public-and-internal-interfaces" id="id41">
+        Public and internal interfaces
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <a class="reference internal" href="#programming-recommendations" id="id42">
+      Programming Recommendations
+     </a>
+    </li>
+    <li>
+     <a class="reference internal" href="#references" id="id43">
+      References
+     </a>
+    </li>
+    <li>
+     <a class="reference internal" href="#copyright" id="id44">
+      Copyright
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="section" id="introduction">
+   <h1>
+    <a class="toc-backref" href="#id9">
+     Introduction
+    </a>
+   </h1>
+   <p>
+    This document gives coding conventions for the Python code comprising
+the standard library in the main Python distribution.  Please see the
+companion informational PEP describing style guidelines for the C code
+in the C implementation of Python
+    <a class="footnote-reference" href="#id5" id="id1">
+     [1]
+    </a>
+    .
+   </p>
+   <p>
+    This document and
+    <a class="reference external" href="/dev/peps/pep-0257">
+     PEP 257
+    </a>
+    (Docstring Conventions) were adapted from
+Guido's original Python Style Guide essay, with some additions from
+Barry's style guide
+    <a class="footnote-reference" href="#id6" id="id2">
+     [2]
+    </a>
+    .
+   </p>
+   <p>
+    This style guide evolves over time as additional conventions are
+identified and past conventions are rendered obsolete by changes in
+the language itself.
+   </p>
+   <p>
+    Many projects have their own coding style guidelines. In the event of any
+conflicts, such project-specific guides take precedence for that project.
+   </p>
+  </div>
+  <div class="section" id="a-foolish-consistency-is-the-hobgoblin-of-little-minds">
+   <h1>
+    <a class="toc-backref" href="#id10">
+     A Foolish Consistency is the Hobgoblin of Little Minds
+    </a>
+   </h1>
+   <p>
+    One of Guido's key insights is that code is read much more often than
+it is written.  The guidelines provided here are intended to improve
+the readability of code and make it consistent across the wide
+spectrum of Python code.  As
+    <a class="reference external" href="/dev/peps/pep-0020">
+     PEP 20
+    </a>
+    says, "Readability counts".
+   </p>
+   <p>
+    A style guide is about consistency.  Consistency with this style guide
+is important.  Consistency within a project is more important.
+Consistency within one module or function is most important.
+   </p>
+   <p>
+    But most importantly: know when to be inconsistent -- sometimes the
+style guide just doesn't apply.  When in doubt, use your best
+judgment.  Look at other examples and decide what looks best.  And
+don't hesitate to ask!
+   </p>
+   <p>
+    In particular: do not break backwards compatibility just to comply with
+this PEP!
+   </p>
+   <p>
+    Some other good reasons to ignore a particular guideline:
+   </p>
+   <ol class="arabic simple">
+    <li>
+     When applying the guideline would make the code less readable, even
+for someone who is used to reading code that follows this PEP.
+    </li>
+    <li>
+     To be consistent with surrounding code that also breaks it (maybe
+for historic reasons) -- although this is also an opportunity to
+clean up someone else's mess (in true XP style).
+    </li>
+    <li>
+     Because the code in question predates the introduction of the
+guideline and there is no other reason to be modifying that code.
+    </li>
+    <li>
+     When the code needs to remain compatible with older versions of
+Python that don't support the feature recommended by the style guide.
+    </li>
+   </ol>
+  </div>
+  <div class="section" id="code-lay-out">
+   <h1>
+    <a class="toc-backref" href="#id11">
+     Code lay-out
+    </a>
+   </h1>
+   <div class="section" id="indentation">
+    <h2>
+     <a class="toc-backref" href="#id12">
+      Indentation
+     </a>
+    </h2>
+    <p>
+     Use 4 spaces per indentation level.
+    </p>
+    <p>
+     Continuation lines should align wrapped elements either vertically
+using Python's implicit line joining inside parentheses, brackets and
+braces, or using a
+     <em>
+      hanging indent
+     </em>
+     <a class="footnote-reference" href="#fn-hi" id="id3">
+      [5]
+     </a>
+     .  When using a hanging
+indent the following considerations should be applied; there should be
+no arguments on the first line and further indentation should be used
+to clearly distinguish itself as a continuation line.
+    </p>
+    <p>
+     Yes:
+    </p>
+    <pre class="literal-block">
+# Aligned with opening delimiter.
+foo = long_function_name(var_one, var_two,
+                         var_three, var_four)
+
+# More indentation included to distinguish this from the rest.
+def long_function_name(
+        var_one, var_two, var_three,
+        var_four):
+    print(var_one)
+
+# Hanging indents should add a level.
+foo = long_function_name(
+    var_one, var_two,
+    var_three, var_four)
+</pre>
+    <p>
+     No:
+    </p>
+    <pre class="literal-block">
+# Arguments on first line forbidden when not using vertical alignment.
+foo = long_function_name(var_one, var_two,
+    var_three, var_four)
+
+# Further indentation required as indentation is not distinguishable.
+def long_function_name(
+    var_one, var_two, var_three,
+    var_four):
+    print(var_one)
+</pre>
+    <p>
+     The 4-space rule is optional for continuation lines.
+    </p>
+    <p>
+     Optional:
+    </p>
+    <pre class="literal-block">
+# Hanging indents *may* be indented to other than 4 spaces.
+foo = long_function_name(
+  var_one, var_two,
+  var_three, var_four)
+</pre>
+    <p id="multiline-if-statements">
+     When the conditional part of an
+     <tt class="docutils literal">
+      if
+     </tt>
+     -statement is long enough to require
+that it be written across multiple lines, it's worth noting that the
+combination of a two character keyword (i.e.
+     <tt class="docutils literal">
+      if
+     </tt>
+     ), plus a single space,
+plus an opening parenthesis creates a natural 4-space indent for the
+subsequent lines of the multiline conditional.  This can produce a visual
+conflict with the indented suite of code nested inside the
+     <tt class="docutils literal">
+      if
+     </tt>
+     -statement,
+which would also naturally be indented to 4 spaces.  This PEP takes no
+explicit position on how (or whether) to further visually distinguish such
+conditional lines from the nested suite inside the
+     <tt class="docutils literal">
+      if
+     </tt>
+     -statement.
+Acceptable options in this situation include, but are not limited to:
+    </p>
+    <pre class="literal-block">
+# No extra indentation.
+if (this_is_one_thing and
+    that_is_another_thing):
+    do_something()
+
+# Add a comment, which will provide some distinction in editors
+# supporting syntax highlighting.
+if (this_is_one_thing and
+    that_is_another_thing):
+    # Since both conditions are true, we can frobnicate.
+    do_something()
+
+# Add some extra indentation on the conditional continuation line.
+if (this_is_one_thing
+        and that_is_another_thing):
+    do_something()
+</pre>
+    <p>
+     The closing brace/bracket/parenthesis on multi-line constructs may
+either line up under the first non-whitespace character of the last
+line of list, as in:
+    </p>
+    <pre class="literal-block">
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+    ]
+result = some_function_that_takes_arguments(
+    'a', 'b', 'c',
+    'd', 'e', 'f',
+    )
+</pre>
+    <p>
+     or it may be lined up under the first character of the line that
+starts the multi-line construct, as in:
+    </p>
+    <pre class="literal-block">
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+]
+result = some_function_that_takes_arguments(
+    'a', 'b', 'c',
+    'd', 'e', 'f',
+)
+</pre>
+   </div>
+   <div class="section" id="tabs-or-spaces">
+    <h2>
+     <a class="toc-backref" href="#id13">
+      Tabs or Spaces?
+     </a>
+    </h2>
+    <p>
+     Spaces are the preferred indentation method.
+    </p>
+    <p>
+     Tabs should be used solely to remain consistent with code that is
+already indented with tabs.
+    </p>
+    <p>
+     Python 3 disallows mixing the use of tabs and spaces for indentation.
+    </p>
+    <p>
+     Python 2 code indented with a mixture of tabs and spaces should be
+converted to using spaces exclusively.
+    </p>
+    <p>
+     When invoking the Python 2 command line interpreter with
+the
+     <tt class="docutils literal">
+      <span class="pre">
+       -t
+      </span>
+     </tt>
+     option, it issues warnings about code that illegally mixes
+tabs and spaces.  When using
+     <tt class="docutils literal">
+      <span class="pre">
+       -tt
+      </span>
+     </tt>
+     these warnings become errors.
+These options are highly recommended!
+    </p>
+   </div>
+   <div class="section" id="maximum-line-length">
+    <h2>
+     <a class="toc-backref" href="#id14">
+      Maximum Line Length
+     </a>
+    </h2>
+    <p>
+     Limit all lines to a maximum of 79 characters.
+    </p>
+    <p>
+     For flowing long blocks of text with fewer structural restrictions
+(docstrings or comments), the line length should be limited to 72
+characters.
+    </p>
+    <p>
+     Limiting the required editor window width makes it possible to have
+several files open side-by-side, and works well when using code
+review tools that present the two versions in adjacent columns.
+    </p>
+    <p>
+     The default wrapping in most tools disrupts the visual structure of the
+code, making it more difficult to understand. The limits are chosen to
+avoid wrapping in editors with the window width set to 80, even
+if the tool places a marker glyph in the final column when wrapping
+lines. Some web based tools may not offer dynamic line wrapping at all.
+    </p>
+    <p>
+     Some teams strongly prefer a longer line length.  For code maintained
+exclusively or primarily by a team that can reach agreement on this
+issue, it is okay to increase the nominal line length from 80 to
+100 characters (effectively increasing the maximum length to 99
+characters), provided that comments and docstrings are still wrapped
+at 72 characters.
+    </p>
+    <p>
+     The Python standard library is conservative and requires limiting
+lines to 79 characters (and docstrings/comments to 72).
+    </p>
+    <p>
+     The preferred way of wrapping long lines is by using Python's implied
+line continuation inside parentheses, brackets and braces.  Long lines
+can be broken over multiple lines by wrapping expressions in
+parentheses. These should be used in preference to using a backslash
+for line continuation.
+    </p>
+    <p>
+     Backslashes may still be appropriate at times.  For example, long,
+multiple
+     <tt class="docutils literal">
+      with
+     </tt>
+     -statements cannot use implicit continuation, so
+backslashes are acceptable:
+    </p>
+    <pre class="literal-block">
+with open('/path/to/some/file/you/want/to/read') as file_1, \
+     open('/path/to/some/file/being/written', 'w') as file_2:
+    file_2.write(file_1.read())
+</pre>
+    <p>
+     (See the previous discussion on
+     <a class="reference internal" href="#multiline-if-statements">
+      multiline if-statements
+     </a>
+     for further
+thoughts on the indentation of such multiline
+     <tt class="docutils literal">
+      with
+     </tt>
+     -statements.)
+    </p>
+    <p>
+     Another such case is with
+     <tt class="docutils literal">
+      assert
+     </tt>
+     statements.
+    </p>
+    <p>
+     Make sure to indent the continued line appropriately.  The preferred
+place to break around a binary operator is
+     <em>
+      after
+     </em>
+     the operator, not
+before it.  Some examples:
+    </p>
+    <pre class="literal-block">
+class Rectangle(Blob):
+
+    def __init__(self, width, height,
+                 color='black', emphasis=None, highlight=0):
+        if (width == 0 and height == 0 and
+                color == 'red' and emphasis == 'strong' or
+                highlight &gt; 100):
+            raise ValueError("sorry, you lose")
+        if width == 0 and height == 0 and (color == 'red' or
+                                           emphasis is None):
+            raise ValueError("I don't think so -- values are %s, %s" %
+                             (width, height))
+        Blob.__init__(self, width, height,
+                      color, emphasis, highlight)
+</pre>
+   </div>
+   <div class="section" id="blank-lines">
+    <h2>
+     <a class="toc-backref" href="#id15">
+      Blank Lines
+     </a>
+    </h2>
+    <p>
+     Surround top-level function and class definitions with two blank
+lines.
+    </p>
+    <p>
+     Method definitions inside a class are surrounded by a single blank
+line.
+    </p>
+    <p>
+     Extra blank lines may be used (sparingly) to separate groups of
+related functions.  Blank lines may be omitted between a bunch of
+related one-liners (e.g. a set of dummy implementations).
+    </p>
+    <p>
+     Use blank lines in functions, sparingly, to indicate logical sections.
+    </p>
+    <p>
+     Python accepts the control-L (i.e. ^L) form feed character as
+whitespace; Many tools treat these characters as page separators, so
+you may use them to separate pages of related sections of your file.
+Note, some editors and web-based code viewers may not recognize
+control-L as a form feed and will show another glyph in its place.
+    </p>
+   </div>
+   <div class="section" id="source-file-encoding">
+    <h2>
+     <a class="toc-backref" href="#id16">
+      Source File Encoding
+     </a>
+    </h2>
+    <p>
+     Code in the core Python distribution should always use UTF-8 (or ASCII
+in Python 2).
+    </p>
+    <p>
+     Files using ASCII (in Python 2) or UTF-8 (in Python 3) should not have
+an encoding declaration.
+    </p>
+    <p>
+     In the standard library, non-default encodings should be used only for
+test purposes or when a comment or docstring needs to mention an author
+name that contains non-ASCII characters; otherwise, using
+     <tt class="docutils literal">
+      \x
+     </tt>
+     ,
+     <tt class="docutils literal">
+      \u
+     </tt>
+     ,
+     <tt class="docutils literal">
+      \U
+     </tt>
+     , or
+     <tt class="docutils literal">
+      \N
+     </tt>
+     escapes is the preferred way to include
+non-ASCII data in string literals.
+    </p>
+    <p>
+     For Python 3.0 and beyond, the following policy is prescribed for the
+standard library (see
+     <a class="reference external" href="/dev/peps/pep-3131">
+      PEP 3131
+     </a>
+     ): All identifiers in the Python
+standard library MUST use ASCII-only identifiers, and SHOULD use
+English words wherever feasible (in many cases, abbreviations and
+technical terms are used which aren't English). In addition, string
+literals and comments must also be in ASCII. The only exceptions are
+(a) test cases testing the non-ASCII features, and
+(b) names of authors. Authors whose names are not based on the
+latin alphabet MUST provide a latin transliteration of their
+names.
+    </p>
+    <p>
+     Open source projects with a global audience are encouraged to adopt a
+similar policy.
+    </p>
+   </div>
+   <div class="section" id="imports">
+    <h2>
+     <a class="toc-backref" href="#id17">
+      Imports
+     </a>
+    </h2>
+    <ul>
+     <li>
+      <p class="first">
+       Imports should usually be on separate lines, e.g.:
+      </p>
+      <pre class="literal-block">
+Yes: import os
+     import sys
+
+No:  import sys, os
+</pre>
+      <p>
+       It's okay to say this though:
+      </p>
+      <pre class="literal-block">
+from subprocess import Popen, PIPE
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Imports are always put at the top of the file, just after any module
+comments and docstrings, and before module globals and constants.
+      </p>
+      <p>
+       Imports should be grouped in the following order:
+      </p>
+      <ol class="arabic simple">
+       <li>
+        standard library imports
+       </li>
+       <li>
+        related third party imports
+       </li>
+       <li>
+        local application/library specific imports
+       </li>
+      </ol>
+      <p>
+       You should put a blank line between each group of imports.
+      </p>
+      <p>
+       Put any relevant
+       <tt class="docutils literal">
+        __all__
+       </tt>
+       specification after the imports.
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       Absolute imports are recommended, as they are usually more readable
+and tend to be better behaved (or at least give better error
+messages) if the import system is incorrectly configured (such as
+when a directory inside a package ends up on
+       <tt class="docutils literal">
+        sys.path
+       </tt>
+       ):
+      </p>
+      <pre class="literal-block">
+import mypkg.sibling
+from mypkg import sibling
+from mypkg.sibling import example
+</pre>
+      <p>
+       However, explicit relative imports are an acceptable alternative to
+absolute imports, especially when dealing with complex package layouts
+where using absolute imports would be unnecessarily verbose:
+      </p>
+      <pre class="literal-block">
+from . import sibling
+from .sibling import example
+</pre>
+      <p>
+       Standard library code should avoid complex package layouts and always
+use absolute imports.
+      </p>
+      <p>
+       Implicit relative imports should
+       <em>
+        never
+       </em>
+       be used and have been removed
+in Python 3.
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       When importing a class from a class-containing module, it's usually
+okay to spell this:
+      </p>
+      <pre class="literal-block">
+from myclass import MyClass
+from foo.bar.yourclass import YourClass
+</pre>
+      <p>
+       If this spelling causes local name clashes, then spell them
+      </p>
+      <pre class="literal-block">
+import myclass
+import foo.bar.yourclass
+</pre>
+      <p>
+       and use "myclass.MyClass" and "foo.bar.yourclass.YourClass".
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       Wildcard imports (
+       <tt class="docutils literal">
+        from &lt;module&gt; import *
+       </tt>
+       ) should be avoided, as
+they make it unclear which names are present in the namespace,
+confusing both readers and many automated tools. There is one
+defensible use case for a wildcard import, which is to republish an
+internal interface as part of a public API (for example, overwriting
+a pure Python implementation of an interface with the definitions
+from an optional accelerator module and exactly which definitions
+will be overwritten isn't known in advance).
+      </p>
+      <p>
+       When republishing names this way, the guidelines below regarding
+public and internal interfaces still apply.
+      </p>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <div class="section" id="string-quotes">
+   <h1>
+    <a class="toc-backref" href="#id18">
+     String Quotes
+    </a>
+   </h1>
+   <p>
+    In Python, single-quoted strings and double-quoted strings are the
+same.  This PEP does not make a recommendation for this.  Pick a rule
+and stick to it.  When a string contains single or double quote
+characters, however, use the other one to avoid backslashes in the
+string. It improves readability.
+   </p>
+   <p>
+    For triple-quoted strings, always use double quote characters to be
+consistent with the docstring convention in
+    <a class="reference external" href="/dev/peps/pep-0257">
+     PEP 257
+    </a>
+    .
+   </p>
+  </div>
+  <div class="section" id="whitespace-in-expressions-and-statements">
+   <h1>
+    <a class="toc-backref" href="#id19">
+     Whitespace in Expressions and Statements
+    </a>
+   </h1>
+   <div class="section" id="pet-peeves">
+    <h2>
+     <a class="toc-backref" href="#id20">
+      Pet Peeves
+     </a>
+    </h2>
+    <p>
+     Avoid extraneous whitespace in the following situations:
+    </p>
+    <ul>
+     <li>
+      <p class="first">
+       Immediately inside parentheses, brackets or braces.
+      </p>
+      <pre class="literal-block">
+Yes: spam(ham[1], {eggs: 2})
+No:  spam( ham[ 1 ], { eggs: 2 } )
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Immediately before a comma, semicolon, or colon:
+      </p>
+      <pre class="literal-block">
+Yes: if x == 4: print x, y; x, y = y, x
+No:  if x == 4 : print x , y ; x , y = y , x
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       However, in a slice the colon acts like a binary operator, and
+should have equal amounts on either side (treating it as the
+operator with the lowest priority).  In an extended slice, both
+colons must have the same amount of spacing applied.  Exception:
+when a slice parameter is omitted, the space is omitted.
+      </p>
+      <p>
+       Yes:
+      </p>
+      <pre class="literal-block">
+ham[1:9], ham[1:9:3], ham[:9:3], ham[1::3], ham[1:9:]
+ham[lower:upper], ham[lower:upper:], ham[lower::step]
+ham[lower+offset : upper+offset]
+ham[: upper_fn(x) : step_fn(x)], ham[:: step_fn(x)]
+ham[lower + offset : upper + offset]
+</pre>
+      <p>
+       No:
+      </p>
+      <pre class="literal-block">
+ham[lower + offset:upper + offset]
+ham[1: 9], ham[1 :9], ham[1:9 :3]
+ham[lower : : upper]
+ham[ : upper]
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Immediately before the open parenthesis that starts the argument
+list of a function call:
+      </p>
+      <pre class="literal-block">
+Yes: spam(1)
+No:  spam (1)
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Immediately before the open parenthesis that starts an indexing or
+slicing:
+      </p>
+      <pre class="literal-block">
+Yes: dct['key'] = lst[index]
+No:  dct ['key'] = lst [index]
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       More than one space around an assignment (or other) operator to
+align it with another.
+      </p>
+      <p>
+       Yes:
+      </p>
+      <pre class="literal-block">
+x = 1
+y = 2
+long_variable = 3
+</pre>
+      <p>
+       No:
+      </p>
+      <pre class="literal-block">
+x             = 1
+y             = 2
+long_variable = 3
+</pre>
+     </li>
+    </ul>
+   </div>
+   <div class="section" id="other-recommendations">
+    <h2>
+     <a class="toc-backref" href="#id21">
+      Other Recommendations
+     </a>
+    </h2>
+    <ul>
+     <li>
+      <p class="first">
+       Always surround these binary operators with a single space on either
+side: assignment (
+       <tt class="docutils literal">
+        =
+       </tt>
+       ), augmented assignment (
+       <tt class="docutils literal">
+        +=
+       </tt>
+       ,
+       <tt class="docutils literal">
+        <span class="pre">
+         -=
+        </span>
+       </tt>
+       etc.), comparisons (
+       <tt class="docutils literal">
+        ==
+       </tt>
+       ,
+       <tt class="docutils literal">
+        &lt;
+       </tt>
+       ,
+       <tt class="docutils literal">
+        &gt;
+       </tt>
+       ,
+       <tt class="docutils literal">
+        !=
+       </tt>
+       ,
+       <tt class="docutils literal">
+        &lt;&gt;
+       </tt>
+       ,
+       <tt class="docutils literal">
+        &lt;=
+       </tt>
+       ,
+       <tt class="docutils literal">
+        &gt;=
+       </tt>
+       ,
+       <tt class="docutils literal">
+        in
+       </tt>
+       ,
+       <tt class="docutils literal">
+        not in
+       </tt>
+       ,
+       <tt class="docutils literal">
+        is
+       </tt>
+       ,
+       <tt class="docutils literal">
+        is not
+       </tt>
+       ), Booleans (
+       <tt class="docutils literal">
+        and
+       </tt>
+       ,
+       <tt class="docutils literal">
+        or
+       </tt>
+       ,
+       <tt class="docutils literal">
+        not
+       </tt>
+       ).
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       If operators with different priorities are used, consider adding
+whitespace around the operators with the lowest priority(ies). Use
+your own judgment; however, never use more than one space, and
+always have the same amount of whitespace on both sides of a binary
+operator.
+      </p>
+      <p>
+       Yes:
+      </p>
+      <pre class="literal-block">
+i = i + 1
+submitted += 1
+x = x*2 - 1
+hypot2 = x*x + y*y
+c = (a+b) * (a-b)
+</pre>
+      <p>
+       No:
+      </p>
+      <pre class="literal-block">
+i=i+1
+submitted +=1
+x = x * 2 - 1
+hypot2 = x * x + y * y
+c = (a + b) * (a - b)
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Don't use spaces around the
+       <tt class="docutils literal">
+        =
+       </tt>
+       sign when used to indicate a
+keyword argument or a default parameter value.
+      </p>
+      <p>
+       Yes:
+      </p>
+      <pre class="literal-block">
+def complex(real, imag=0.0):
+    return magic(r=real, i=imag)
+</pre>
+      <p>
+       No:
+      </p>
+      <pre class="literal-block">
+def complex(real, imag = 0.0):
+    return magic(r = real, i = imag)
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Do use spaces around the
+       <tt class="docutils literal">
+        =
+       </tt>
+       sign  of an annotated function definition.
+Additionally, use a single space after the
+       <tt class="docutils literal">
+        :
+       </tt>
+       , as well as a single space
+on either side of the
+       <tt class="docutils literal">
+        <span class="pre">
+         -&gt;
+        </span>
+       </tt>
+       sign representing an annotated return value.
+      </p>
+      <p>
+       Yes:
+      </p>
+      <pre class="literal-block">
+def munge(input: AnyStr):
+def munge(sep: AnyStr = None):
+def munge() -&gt; AnyStr:
+def munge(input: AnyStr, sep: AnyStr = None, limit=1000):
+</pre>
+      <p>
+       No:
+      </p>
+      <pre class="literal-block">
+def munge(input: AnyStr=None):
+def munge(input:AnyStr):
+def munge(input: AnyStr)-&gt;PosInt:
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       Compound statements (multiple statements on the same line) are
+generally discouraged.
+      </p>
+      <p>
+       Yes:
+      </p>
+      <pre class="literal-block">
+if foo == 'blah':
+    do_blah_thing()
+do_one()
+do_two()
+do_three()
+</pre>
+      <p>
+       Rather not:
+      </p>
+      <pre class="literal-block">
+if foo == 'blah': do_blah_thing()
+do_one(); do_two(); do_three()
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       While sometimes it's okay to put an if/for/while with a small body
+on the same line, never do this for multi-clause statements.  Also
+avoid folding such long lines!
+      </p>
+      <p>
+       Rather not:
+      </p>
+      <pre class="literal-block">
+if foo == 'blah': do_blah_thing()
+for x in lst: total += x
+while t &lt; 10: t = delay()
+</pre>
+      <p>
+       Definitely not:
+      </p>
+      <pre class="literal-block">
+if foo == 'blah': do_blah_thing()
+else: do_non_blah_thing()
+
+try: something()
+finally: cleanup()
+
+do_one(); do_two(); do_three(long, argument,
+                             list, like, this)
+
+if foo == 'blah': one(); two(); three()
+</pre>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <div class="section" id="comments">
+   <h1>
+    <a class="toc-backref" href="#id22">
+     Comments
+    </a>
+   </h1>
+   <p>
+    Comments that contradict the code are worse than no comments.  Always
+make a priority of keeping the comments up-to-date when the code
+changes!
+   </p>
+   <p>
+    Comments should be complete sentences.  If a comment is a phrase or
+sentence, its first word should be capitalized, unless it is an
+identifier that begins with a lower case letter (never alter the case
+of identifiers!).
+   </p>
+   <p>
+    If a comment is short, the period at the end can be omitted.  Block
+comments generally consist of one or more paragraphs built out of
+complete sentences, and each sentence should end in a period.
+   </p>
+   <p>
+    You should use two spaces after a sentence-ending period.
+   </p>
+   <p>
+    When writing English, follow Strunk and White.
+   </p>
+   <p>
+    Python coders from non-English speaking countries: please write your
+comments in English, unless you are 120% sure that the code will never
+be read by people who don't speak your language.
+   </p>
+   <div class="section" id="block-comments">
+    <h2>
+     <a class="toc-backref" href="#id23">
+      Block Comments
+     </a>
+    </h2>
+    <p>
+     Block comments generally apply to some (or all) code that follows
+them, and are indented to the same level as that code.  Each line of a
+block comment starts with a
+     <tt class="docutils literal">
+      #
+     </tt>
+     and a single space (unless it is
+indented text inside the comment).
+    </p>
+    <p>
+     Paragraphs inside a block comment are separated by a line containing a
+single
+     <tt class="docutils literal">
+      #
+     </tt>
+     .
+    </p>
+   </div>
+   <div class="section" id="inline-comments">
+    <h2>
+     <a class="toc-backref" href="#id24">
+      Inline Comments
+     </a>
+    </h2>
+    <p>
+     Use inline comments sparingly.
+    </p>
+    <p>
+     An inline comment is a comment on the same line as a statement.
+Inline comments should be separated by at least two spaces from the
+statement.  They should start with a # and a single space.
+    </p>
+    <p>
+     Inline comments are unnecessary and in fact distracting if they state
+the obvious.  Don't do this:
+    </p>
+    <pre class="literal-block">
+x = x + 1                 # Increment x
+</pre>
+    <p>
+     But sometimes, this is useful:
+    </p>
+    <pre class="literal-block">
+x = x + 1                 # Compensate for border
+</pre>
+   </div>
+   <div class="section" id="documentation-strings">
+    <h2>
+     <a class="toc-backref" href="#id25">
+      Documentation Strings
+     </a>
+    </h2>
+    <p>
+     Conventions for writing good documentation strings
+(a.k.a. "docstrings") are immortalized in
+     <a class="reference external" href="/dev/peps/pep-0257">
+      PEP 257
+     </a>
+     .
+    </p>
+    <ul>
+     <li>
+      <p class="first">
+       Write docstrings for all public modules, functions, classes, and
+methods.  Docstrings are not necessary for non-public methods, but
+you should have a comment that describes what the method does.  This
+comment should appear after the
+       <tt class="docutils literal">
+        def
+       </tt>
+       line.
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <a class="reference external" href="/dev/peps/pep-0257">
+        PEP 257
+       </a>
+       describes good docstring conventions.  Note that most
+importantly, the
+       <tt class="docutils literal">
+        """
+       </tt>
+       that ends a multiline docstring should be
+on a line by itself, e.g.:
+      </p>
+      <pre class="literal-block">
+"""Return a foobang
+
+Optional plotz says to frobnicate the bizbaz first.
+"""
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       For one liner docstrings, please keep the closing
+       <tt class="docutils literal">
+        """
+       </tt>
+       on
+the same line.
+      </p>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <div class="section" id="version-bookkeeping">
+   <h1>
+    <a class="toc-backref" href="#id26">
+     Version Bookkeeping
+    </a>
+   </h1>
+   <p>
+    If you have to have Subversion, CVS, or RCS crud in your source file,
+do it as follows.
+   </p>
+   <pre class="literal-block">
+__version__ = "$Revision$"
+# $Source$
+</pre>
+   <p>
+    These lines should be included after the module's docstring, before
+any other code, separated by a blank line above and below.
+   </p>
+  </div>
+  <div class="section" id="naming-conventions">
+   <h1>
+    <a class="toc-backref" href="#id27">
+     Naming Conventions
+    </a>
+   </h1>
+   <p>
+    The naming conventions of Python's library are a bit of a mess, so
+we'll never get this completely consistent -- nevertheless, here are
+the currently recommended naming standards.  New modules and packages
+(including third party frameworks) should be written to these
+standards, but where an existing library has a different style,
+internal consistency is preferred.
+   </p>
+   <div class="section" id="overriding-principle">
+    <h2>
+     <a class="toc-backref" href="#id28">
+      Overriding Principle
+     </a>
+    </h2>
+    <p>
+     Names that are visible to the user as public parts of the API should
+follow conventions that reflect usage rather than implementation.
+    </p>
+   </div>
+   <div class="section" id="descriptive-naming-styles">
+    <h2>
+     <a class="toc-backref" href="#id29">
+      Descriptive: Naming Styles
+     </a>
+    </h2>
+    <p>
+     There are a lot of different naming styles.  It helps to be able to
+recognize what naming style is being used, independently from what
+they are used for.
+    </p>
+    <p>
+     The following naming styles are commonly distinguished:
+    </p>
+    <ul>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        b
+       </tt>
+       (single lowercase letter)
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        B
+       </tt>
+       (single uppercase letter)
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        lowercase
+       </tt>
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        lower_case_with_underscores
+       </tt>
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        UPPERCASE
+       </tt>
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        UPPER_CASE_WITH_UNDERSCORES
+       </tt>
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        CapitalizedWords
+       </tt>
+       (or CapWords, or CamelCase -- so named because
+of the bumpy look of its letters
+       <a class="footnote-reference" href="#id7" id="id4">
+        [3]
+       </a>
+       ).  This is also sometimes known
+as StudlyCaps.
+      </p>
+      <p>
+       Note: When using abbreviations in CapWords, capitalize all the
+letters of the abbreviation.  Thus HTTPServerError is better than
+HttpServerError.
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        mixedCase
+       </tt>
+       (differs from CapitalizedWords by initial lowercase
+character!)
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        Capitalized_Words_With_Underscores
+       </tt>
+       (ugly!)
+      </p>
+     </li>
+    </ul>
+    <p>
+     There's also the style of using a short unique prefix to group related
+names together.  This is not used much in Python, but it is mentioned
+for completeness.  For example, the
+     <tt class="docutils literal">
+      os.stat()
+     </tt>
+     function returns a
+tuple whose items traditionally have names like
+     <tt class="docutils literal">
+      st_mode
+     </tt>
+     ,
+     <tt class="docutils literal">
+      st_size
+     </tt>
+     ,
+     <tt class="docutils literal">
+      st_mtime
+     </tt>
+     and so on.  (This is done to emphasize the
+correspondence with the fields of the POSIX system call struct, which
+helps programmers familiar with that.)
+    </p>
+    <p>
+     The X11 library uses a leading X for all its public functions.  In
+Python, this style is generally deemed unnecessary because attribute
+and method names are prefixed with an object, and function names are
+prefixed with a module name.
+    </p>
+    <p>
+     In addition, the following special forms using leading or trailing
+underscores are recognized (these can generally be combined with any
+case convention):
+    </p>
+    <ul>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        _single_leading_underscore
+       </tt>
+       : weak "internal use" indicator.
+E.g.
+       <tt class="docutils literal">
+        from M import *
+       </tt>
+       does not import objects whose name starts
+with an underscore.
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        single_trailing_underscore_
+       </tt>
+       : used by convention to avoid
+conflicts with Python keyword, e.g.
+      </p>
+      <pre class="literal-block">
+Tkinter.Toplevel(master, class_='ClassName')
+</pre>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        __double_leading_underscore
+       </tt>
+       : when naming a class attribute,
+invokes name mangling (inside class FooBar,
+       <tt class="docutils literal">
+        __boo
+       </tt>
+       becomes
+       <tt class="docutils literal">
+        _FooBar__boo
+       </tt>
+       ; see below).
+      </p>
+     </li>
+     <li>
+      <p class="first">
+       <tt class="docutils literal">
+        __double_leading_and_trailing_underscore__
+       </tt>
+       : "magic" objects or
+attributes that live in user-controlled namespaces.
+E.g.
+       <tt class="docutils literal">
+        __init__
+       </tt>
+       ,
+       <tt class="docutils literal">
+        __import__
+       </tt>
+       or
+       <tt class="docutils literal">
+        __file__
+       </tt>
+       .  Never invent
+such names; only use them as documented.
+      </p>
+     </li>
+    </ul>
+   </div>
+   <div class="section" id="prescriptive-naming-conventions">
+    <h2>
+     <a class="toc-backref" href="#id30">
+      Prescriptive: Naming Conventions
+     </a>
+    </h2>
+    <div class="section" id="names-to-avoid">
+     <h3>
+      <a class="toc-backref" href="#id31">
+       Names to Avoid
+      </a>
+     </h3>
+     <p>
+      Never use the characters 'l' (lowercase letter el), 'O' (uppercase
+letter oh), or 'I' (uppercase letter eye) as single character variable
+names.
+     </p>
+     <p>
+      In some fonts, these characters are indistinguishable from the
+numerals one and zero.  When tempted to use 'l', use 'L' instead.
+     </p>
+    </div>
+    <div class="section" id="package-and-module-names">
+     <h3>
+      <a class="toc-backref" href="#id32">
+       Package and Module Names
+      </a>
+     </h3>
+     <p>
+      Modules should have short, all-lowercase names.  Underscores can be
+used in the module name if it improves readability.  Python packages
+should also have short, all-lowercase names, although the use of
+underscores is discouraged.
+     </p>
+     <p>
+      When an extension module written in C or C++ has an accompanying
+Python module that provides a higher level (e.g. more object oriented)
+interface, the C/C++ module has a leading underscore
+(e.g.
+      <tt class="docutils literal">
+       _socket
+      </tt>
+      ).
+     </p>
+    </div>
+    <div class="section" id="class-names">
+     <h3>
+      <a class="toc-backref" href="#id33">
+       Class Names
+      </a>
+     </h3>
+     <p>
+      Class names should normally use the CapWords convention.
+     </p>
+     <p>
+      The naming convention for functions may be used instead in cases where
+the interface is documented and used primarily as a callable.
+     </p>
+     <p>
+      Note that there is a separate convention for builtin names: most builtin
+names are single words (or two words run together), with the CapWords
+convention used only for exception names and builtin constants.
+     </p>
+    </div>
+    <div class="section" id="exception-names">
+     <h3>
+      <a class="toc-backref" href="#id34">
+       Exception Names
+      </a>
+     </h3>
+     <p>
+      Because exceptions should be classes, the class naming convention
+applies here.  However, you should use the suffix "Error" on your
+exception names (if the exception actually is an error).
+     </p>
+    </div>
+    <div class="section" id="global-variable-names">
+     <h3>
+      <a class="toc-backref" href="#id35">
+       Global Variable Names
+      </a>
+     </h3>
+     <p>
+      (Let's hope that these variables are meant for use inside one module
+only.)  The conventions are about the same as those for functions.
+     </p>
+     <p>
+      Modules that are designed for use via
+      <tt class="docutils literal">
+       from M import *
+      </tt>
+      should use
+the
+      <tt class="docutils literal">
+       __all__
+      </tt>
+      mechanism to prevent exporting globals, or use the
+older convention of prefixing such globals with an underscore (which
+you might want to do to indicate these globals are "module
+non-public").
+     </p>
+    </div>
+    <div class="section" id="function-names">
+     <h3>
+      <a class="toc-backref" href="#id36">
+       Function Names
+      </a>
+     </h3>
+     <p>
+      Function names should be lowercase, with words separated by
+underscores as necessary to improve readability.
+     </p>
+     <p>
+      mixedCase is allowed only in contexts where that's already the
+prevailing style (e.g. threading.py), to retain backwards
+compatibility.
+     </p>
+    </div>
+    <div class="section" id="function-and-method-arguments">
+     <h3>
+      <a class="toc-backref" href="#id37">
+       Function and method arguments
+      </a>
+     </h3>
+     <p>
+      Always use
+      <tt class="docutils literal">
+       self
+      </tt>
+      for the first argument to instance methods.
+     </p>
+     <p>
+      Always use
+      <tt class="docutils literal">
+       cls
+      </tt>
+      for the first argument to class methods.
+     </p>
+     <p>
+      If a function argument's name clashes with a reserved keyword, it is
+generally better to append a single trailing underscore rather than
+use an abbreviation or spelling corruption.  Thus
+      <tt class="docutils literal">
+       class_
+      </tt>
+      is better
+than
+      <tt class="docutils literal">
+       clss
+      </tt>
+      .  (Perhaps better is to avoid such clashes by using a
+synonym.)
+     </p>
+    </div>
+    <div class="section" id="method-names-and-instance-variables">
+     <h3>
+      <a class="toc-backref" href="#id38">
+       Method Names and Instance Variables
+      </a>
+     </h3>
+     <p>
+      Use the function naming rules: lowercase with words separated by
+underscores as necessary to improve readability.
+     </p>
+     <p>
+      Use one leading underscore only for non-public methods and instance
+variables.
+     </p>
+     <p>
+      To avoid name clashes with subclasses, use two leading underscores to
+invoke Python's name mangling rules.
+     </p>
+     <p>
+      Python mangles these names with the class name: if class Foo has an
+attribute named
+      <tt class="docutils literal">
+       __a
+      </tt>
+      , it cannot be accessed by
+      <tt class="docutils literal">
+       Foo.__a
+      </tt>
+      .  (An
+insistent user could still gain access by calling
+      <tt class="docutils literal">
+       Foo._Foo__a
+      </tt>
+      .)
+Generally, double leading underscores should be used only to avoid
+name conflicts with attributes in classes designed to be subclassed.
+     </p>
+     <p>
+      Note: there is some controversy about the use of __names (see below).
+     </p>
+    </div>
+    <div class="section" id="constants">
+     <h3>
+      <a class="toc-backref" href="#id39">
+       Constants
+      </a>
+     </h3>
+     <p>
+      Constants are usually defined on a module level and written in all
+capital letters with underscores separating words.  Examples include
+      <tt class="docutils literal">
+       MAX_OVERFLOW
+      </tt>
+      and
+      <tt class="docutils literal">
+       TOTAL
+      </tt>
+      .
+     </p>
+    </div>
+    <div class="section" id="designing-for-inheritance">
+     <h3>
+      <a class="toc-backref" href="#id40">
+       Designing for inheritance
+      </a>
+     </h3>
+     <p>
+      Always decide whether a class's methods and instance variables
+(collectively: "attributes") should be public or non-public.  If in
+doubt, choose non-public; it's easier to make it public later than to
+make a public attribute non-public.
+     </p>
+     <p>
+      Public attributes are those that you expect unrelated clients of your
+class to use, with your commitment to avoid backward incompatible
+changes.  Non-public attributes are those that are not intended to be
+used by third parties; you make no guarantees that non-public
+attributes won't change or even be removed.
+     </p>
+     <p>
+      We don't use the term "private" here, since no attribute is really
+private in Python (without a generally unnecessary amount of work).
+     </p>
+     <p>
+      Another category of attributes are those that are part of the
+"subclass API" (often called "protected" in other languages).  Some
+classes are designed to be inherited from, either to extend or modify
+aspects of the class's behavior.  When designing such a class, take
+care to make explicit decisions about which attributes are public,
+which are part of the subclass API, and which are truly only to be
+used by your base class.
+     </p>
+     <p>
+      With this in mind, here are the Pythonic guidelines:
+     </p>
+     <ul>
+      <li>
+       <p class="first">
+        Public attributes should have no leading underscores.
+       </p>
+      </li>
+      <li>
+       <p class="first">
+        If your public attribute name collides with a reserved keyword,
+append a single trailing underscore to your attribute name.  This is
+preferable to an abbreviation or corrupted spelling.  (However,
+notwithstanding this rule, 'cls' is the preferred spelling for any
+variable or argument which is known to be a class, especially the
+first argument to a class method.)
+       </p>
+       <p>
+        Note 1: See the argument name recommendation above for class methods.
+       </p>
+      </li>
+      <li>
+       <p class="first">
+        For simple public data attributes, it is best to expose just the
+attribute name, without complicated accessor/mutator methods.  Keep
+in mind that Python provides an easy path to future enhancement,
+should you find that a simple data attribute needs to grow
+functional behavior.  In that case, use properties to hide
+functional implementation behind simple data attribute access
+syntax.
+       </p>
+       <p>
+        Note 1: Properties only work on new-style classes.
+       </p>
+       <p>
+        Note 2: Try to keep the functional behavior side-effect free,
+although side-effects such as caching are generally fine.
+       </p>
+       <p>
+        Note 3: Avoid using properties for computationally expensive
+operations; the attribute notation makes the caller believe that
+access is (relatively) cheap.
+       </p>
+      </li>
+      <li>
+       <p class="first">
+        If your class is intended to be subclassed, and you have attributes
+that you do not want subclasses to use, consider naming them with
+double leading underscores and no trailing underscores.  This
+invokes Python's name mangling algorithm, where the name of the
+class is mangled into the attribute name.  This helps avoid
+attribute name collisions should subclasses inadvertently contain
+attributes with the same name.
+       </p>
+       <p>
+        Note 1: Note that only the simple class name is used in the mangled
+name, so if a subclass chooses both the same class name and attribute
+name, you can still get name collisions.
+       </p>
+       <p>
+        Note 2: Name mangling can make certain uses, such as debugging and
+        <tt class="docutils literal">
+         __getattr__()
+        </tt>
+        , less convenient.  However the name mangling
+algorithm is well documented and easy to perform manually.
+       </p>
+       <p>
+        Note 3: Not everyone likes name mangling.  Try to balance the
+need to avoid accidental name clashes with potential use by
+advanced callers.
+       </p>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="section" id="public-and-internal-interfaces">
+    <h2>
+     <a class="toc-backref" href="#id41">
+      Public and internal interfaces
+     </a>
+    </h2>
+    <p>
+     Any backwards compatibility guarantees apply only to public interfaces.
+Accordingly, it is important that users be able to clearly distinguish
+between public and internal interfaces.
+    </p>
+    <p>
+     Documented interfaces are considered public, unless the documentation
+explicitly declares them to be provisional or internal interfaces exempt
+from the usual backwards compatibility guarantees. All undocumented
+interfaces should be assumed to be internal.
+    </p>
+    <p>
+     To better support introspection, modules should explicitly declare the
+names in their public API using the
+     <tt class="docutils literal">
+      __all__
+     </tt>
+     attribute. Setting
+     <tt class="docutils literal">
+      __all__
+     </tt>
+     to an empty list indicates that the module has no public API.
+    </p>
+    <p>
+     Even with
+     <tt class="docutils literal">
+      __all__
+     </tt>
+     set appropriately, internal interfaces (packages,
+modules, classes, functions, attributes or other names) should still be
+prefixed with a single leading underscore.
+    </p>
+    <p>
+     An interface is also considered internal if any containing namespace
+(package, module or class) is considered internal.
+    </p>
+    <p>
+     Imported names should always be considered an implementation detail.
+Other modules must not rely on indirect access to such imported names
+unless they are an explicitly documented part of the containing module's
+API, such as
+     <tt class="docutils literal">
+      os.path
+     </tt>
+     or a package's
+     <tt class="docutils literal">
+      __init__
+     </tt>
+     module that exposes
+functionality from submodules.
+    </p>
+   </div>
+  </div>
+  <div class="section" id="programming-recommendations">
+   <h1>
+    <a class="toc-backref" href="#id42">
+     Programming Recommendations
+    </a>
+   </h1>
+   <ul>
+    <li>
+     <p class="first">
+      Code should be written in a way that does not disadvantage other
+implementations of Python (PyPy, Jython, IronPython, Cython, Psyco,
+and such).
+     </p>
+     <p>
+      For example, do not rely on CPython's efficient implementation of
+in-place string concatenation for statements in the form
+      <tt class="docutils literal">
+       a += b
+      </tt>
+      or
+      <tt class="docutils literal">
+       a = a + b
+      </tt>
+      .  This optimization is fragile even in CPython (it
+only works for some types) and isn't present at all in implementations
+that don't use refcounting.  In performance sensitive parts of the
+library, the
+      <tt class="docutils literal">
+       <span class="pre">
+        ''.join()
+       </span>
+      </tt>
+      form should be used instead.  This will
+ensure that concatenation occurs in linear time across various
+implementations.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Comparisons to singletons like None should always be done with
+      <tt class="docutils literal">
+       is
+      </tt>
+      or
+      <tt class="docutils literal">
+       is not
+      </tt>
+      , never the equality operators.
+     </p>
+     <p>
+      Also, beware of writing
+      <tt class="docutils literal">
+       if x
+      </tt>
+      when you really mean
+      <tt class="docutils literal">
+       if x is not
+None
+      </tt>
+      -- e.g. when testing whether a variable or argument that
+defaults to None was set to some other value.  The other value might
+have a type (such as a container) that could be false in a boolean
+context!
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Use
+      <tt class="docutils literal">
+       is not
+      </tt>
+      operator rather than
+      <tt class="docutils literal">
+       not ... is
+      </tt>
+      .  While both
+expressions are functionally identical, the former is more readable
+and preferred.
+     </p>
+     <p>
+      Yes:
+     </p>
+     <pre class="literal-block">
+if foo is not None:
+</pre>
+     <p>
+      No:
+     </p>
+     <pre class="literal-block">
+if not foo is None:
+</pre>
+    </li>
+    <li>
+     <p class="first">
+      When implementing ordering operations with rich comparisons, it is
+best to implement all six operations (
+      <tt class="docutils literal">
+       __eq__
+      </tt>
+      ,
+      <tt class="docutils literal">
+       __ne__
+      </tt>
+      ,
+      <tt class="docutils literal">
+       __lt__
+      </tt>
+      ,
+      <tt class="docutils literal">
+       __le__
+      </tt>
+      ,
+      <tt class="docutils literal">
+       __gt__
+      </tt>
+      ,
+      <tt class="docutils literal">
+       __ge__
+      </tt>
+      ) rather than relying
+on other code to only exercise a particular comparison.
+     </p>
+     <p>
+      To minimize the effort involved, the
+      <tt class="docutils literal">
+       functools.total_ordering()
+      </tt>
+      decorator provides a tool to generate missing comparison methods.
+     </p>
+     <p>
+      <a class="reference external" href="/dev/peps/pep-0207">
+       PEP 207
+      </a>
+      indicates that reflexivity rules
+      <em>
+       are
+      </em>
+      assumed by Python.
+Thus, the interpreter may swap
+      <tt class="docutils literal">
+       y &gt; x
+      </tt>
+      with
+      <tt class="docutils literal">
+       x &lt; y
+      </tt>
+      ,
+      <tt class="docutils literal">
+       y &gt;= x
+      </tt>
+      with
+      <tt class="docutils literal">
+       x &lt;= y
+      </tt>
+      , and may swap the arguments of
+      <tt class="docutils literal">
+       x == y
+      </tt>
+      and
+      <tt class="docutils literal">
+       x !=
+y
+      </tt>
+      .  The
+      <tt class="docutils literal">
+       sort()
+      </tt>
+      and
+      <tt class="docutils literal">
+       min()
+      </tt>
+      operations are guaranteed to use
+the
+      <tt class="docutils literal">
+       &lt;
+      </tt>
+      operator and the
+      <tt class="docutils literal">
+       max()
+      </tt>
+      function uses the
+      <tt class="docutils literal">
+       &gt;
+      </tt>
+      operator.  However, it is best to implement all six operations so
+that confusion doesn't arise in other contexts.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Always use a def statement instead of an assignment statement that binds
+a lambda expression directly to an identifier.
+     </p>
+     <p>
+      Yes:
+     </p>
+     <pre class="literal-block">
+def f(x): return 2*x
+</pre>
+     <p>
+      No:
+     </p>
+     <pre class="literal-block">
+f = lambda x: 2*x
+</pre>
+     <p>
+      The first form means that the name of the resulting function object is
+specifically 'f' instead of the generic '&lt;lambda&gt;'. This is more
+useful for tracebacks and string representations in general. The use
+of the assignment statement eliminates the sole benefit a lambda
+expression can offer over an explicit def statement (i.e. that it can
+be embedded inside a larger expression)
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Derive exceptions from
+      <tt class="docutils literal">
+       Exception
+      </tt>
+      rather than
+      <tt class="docutils literal">
+       BaseException
+      </tt>
+      .
+Direct inheritance from
+      <tt class="docutils literal">
+       BaseException
+      </tt>
+      is reserved for exceptions
+where catching them is almost always the wrong thing to do.
+     </p>
+     <p>
+      Design exception hierarchies based on the distinctions that code
+      <em>
+       catching
+      </em>
+      the exceptions is likely to need, rather than the locations
+where the exceptions are raised. Aim to answer the question
+"What went wrong?" programmatically, rather than only stating that
+"A problem occurred" (see
+      <a class="reference external" href="/dev/peps/pep-3151">
+       PEP 3151
+      </a>
+      for an example of this lesson being
+learned for the builtin exception hierarchy)
+     </p>
+     <p>
+      Class naming conventions apply here, although you should add the
+suffix "Error" to your exception classes if the exception is an
+error.  Non-error exceptions that are used for non-local flow control
+or other forms of signaling need no special suffix.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Use exception chaining appropriately. In Python 3, "raise X from Y"
+should be used to indicate explicit replacement without losing the
+original traceback.
+     </p>
+     <p>
+      When deliberately replacing an inner exception (using "raise X" in
+Python 2 or "raise X from None" in Python 3.3+), ensure that relevant
+details are transferred to the new exception (such as preserving the
+attribute name when converting KeyError to AttributeError, or
+embedding the text of the original exception in the new exception
+message).
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      When raising an exception in Python 2, use
+      <tt class="docutils literal">
+       raise
+       <span class="pre">
+        ValueError('message')
+       </span>
+      </tt>
+      instead of the older form
+      <tt class="docutils literal">
+       raise ValueError, 'message'
+      </tt>
+      .
+     </p>
+     <p>
+      The latter form is not legal Python 3 syntax.
+     </p>
+     <p>
+      The paren-using form also means that when the exception arguments are
+long or include string formatting, you don't need to use line
+continuation characters thanks to the containing parentheses.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      When catching exceptions, mention specific exceptions whenever
+possible instead of using a bare
+      <tt class="docutils literal">
+       except:
+      </tt>
+      clause.
+     </p>
+     <p>
+      For example, use:
+     </p>
+     <pre class="literal-block">
+try:
+    import platform_specific_module
+except ImportError:
+    platform_specific_module = None
+</pre>
+     <p>
+      A bare
+      <tt class="docutils literal">
+       except:
+      </tt>
+      clause will catch SystemExit and
+KeyboardInterrupt exceptions, making it harder to interrupt a
+program with Control-C, and can disguise other problems.  If you
+want to catch all exceptions that signal program errors, use
+      <tt class="docutils literal">
+       except Exception:
+      </tt>
+      (bare except is equivalent to
+      <tt class="docutils literal">
+       except
+BaseException:
+      </tt>
+      ).
+     </p>
+     <p>
+      A good rule of thumb is to limit use of bare 'except' clauses to two
+cases:
+     </p>
+     <ol class="arabic simple">
+      <li>
+       If the exception handler will be printing out or logging the
+traceback; at least the user will be aware that an error has
+occurred.
+      </li>
+      <li>
+       If the code needs to do some cleanup work, but then lets the
+exception propagate upwards with
+       <tt class="docutils literal">
+        raise
+       </tt>
+       .
+       <tt class="docutils literal">
+        <span class="pre">
+         try...finally
+        </span>
+       </tt>
+       can be a better way to handle this case.
+      </li>
+     </ol>
+    </li>
+    <li>
+     <p class="first">
+      When binding caught exceptions to a name, prefer the explicit name
+binding syntax added in Python 2.6:
+     </p>
+     <pre class="literal-block">
+try:
+    process_data()
+except Exception as exc:
+    raise DataProcessingFailedError(str(exc))
+</pre>
+     <p>
+      This is the only syntax supported in Python 3, and avoids the
+ambiguity problems associated with the older comma-based syntax.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      When catching operating system errors, prefer the explicit exception
+hierarchy introduced in Python 3.3 over introspection of
+      <tt class="docutils literal">
+       errno
+      </tt>
+      values.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Additionally, for all try/except clauses, limit the
+      <tt class="docutils literal">
+       try
+      </tt>
+      clause
+to the absolute minimum amount of code necessary.  Again, this
+avoids masking bugs.
+     </p>
+     <p>
+      Yes:
+     </p>
+     <pre class="literal-block">
+try:
+    value = collection[key]
+except KeyError:
+    return key_not_found(key)
+else:
+    return handle_value(value)
+</pre>
+     <p>
+      No:
+     </p>
+     <pre class="literal-block">
+try:
+    # Too broad!
+    return handle_value(collection[key])
+except KeyError:
+    # Will also catch KeyError raised by handle_value()
+    return key_not_found(key)
+</pre>
+    </li>
+    <li>
+     <p class="first">
+      When a resource is local to a particular section of code, use a
+      <tt class="docutils literal">
+       with
+      </tt>
+      statement to ensure it is cleaned up promptly and reliably
+after use. A try/finally statement is also acceptable.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Context managers should be invoked through separate functions or methods
+whenever they do something other than acquire and release resources.
+For example:
+     </p>
+     <p>
+      Yes:
+     </p>
+     <pre class="literal-block">
+with conn.begin_transaction():
+    do_stuff_in_transaction(conn)
+</pre>
+     <p>
+      No:
+     </p>
+     <pre class="literal-block">
+with conn:
+    do_stuff_in_transaction(conn)
+</pre>
+     <p>
+      The latter example doesn't provide any information to indicate that
+the __enter__ and __exit__ methods are doing something other than
+closing the connection after a transaction.  Being explicit is
+important in this case.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Be consistent in return statements.  Either all return statements in
+a function should return an expression, or none of them should.  If
+any return statement returns an expression, any return statements
+where no value is returned should explicitly state this as
+      <tt class="docutils literal">
+       return
+None
+      </tt>
+      , and an explicit return statement should be present at the
+end of the function (if reachable).
+     </p>
+     <p>
+      Yes:
+     </p>
+     <pre class="literal-block">
+def foo(x):
+    if x &gt;= 0:
+        return math.sqrt(x)
+    else:
+        return None
+
+def bar(x):
+    if x &lt; 0:
+        return None
+    return math.sqrt(x)
+</pre>
+     <p>
+      No:
+     </p>
+     <pre class="literal-block">
+def foo(x):
+    if x &gt;= 0:
+        return math.sqrt(x)
+
+def bar(x):
+    if x &lt; 0:
+        return
+    return math.sqrt(x)
+</pre>
+    </li>
+    <li>
+     <p class="first">
+      Use string methods instead of the string module.
+     </p>
+     <p>
+      String methods are always much faster and share the same API with
+unicode strings.  Override this rule if backward compatibility with
+Pythons older than 2.0 is required.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Use
+      <tt class="docutils literal">
+       <span class="pre">
+        ''.startswith()
+       </span>
+      </tt>
+      and
+      <tt class="docutils literal">
+       <span class="pre">
+        ''.endswith()
+       </span>
+      </tt>
+      instead of string
+slicing to check for prefixes or suffixes.
+     </p>
+     <p>
+      startswith() and endswith() are cleaner and less error prone.  For
+example:
+     </p>
+     <pre class="literal-block">
+Yes: if foo.startswith('bar'):
+No:  if foo[:3] == 'bar':
+</pre>
+    </li>
+    <li>
+     <p class="first">
+      Object type comparisons should always use isinstance() instead of
+comparing types directly.
+     </p>
+     <pre class="literal-block">
+Yes: if isinstance(obj, int):
+
+No:  if type(obj) is type(1):
+</pre>
+     <p>
+      When checking if an object is a string, keep in mind that it might
+be a unicode string too!  In Python 2, str and unicode have a
+common base class, basestring, so you can do:
+     </p>
+     <pre class="literal-block">
+if isinstance(obj, basestring):
+</pre>
+     <p>
+      Note that in Python 3,
+      <tt class="docutils literal">
+       unicode
+      </tt>
+      and
+      <tt class="docutils literal">
+       basestring
+      </tt>
+      no longer exist
+(there is only
+      <tt class="docutils literal">
+       str
+      </tt>
+      ) and a bytes object is no longer a kind of
+string (it is a sequence of integers instead)
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      For sequences, (strings, lists, tuples), use the fact that empty
+sequences are false.
+     </p>
+     <pre class="literal-block">
+Yes: if not seq:
+     if seq:
+
+No: if len(seq)
+    if not len(seq)
+</pre>
+    </li>
+    <li>
+     <p class="first">
+      Don't write string literals that rely on significant trailing
+whitespace.  Such trailing whitespace is visually indistinguishable
+and some editors (or more recently, reindent.py) will trim them.
+     </p>
+    </li>
+    <li>
+     <p class="first">
+      Don't compare boolean values to True or False using
+      <tt class="docutils literal">
+       ==
+      </tt>
+      .
+     </p>
+     <pre class="literal-block">
+Yes:   if greeting:
+No:    if greeting == True:
+Worse: if greeting is True:
+</pre>
+    </li>
+    <li>
+     <p class="first">
+      The Python standard library will not use function annotations as
+that would result in a premature commitment to a particular
+annotation style.  Instead, the annotations are left for users to
+discover and experiment with useful annotation styles.
+     </p>
+     <p>
+      It is recommended that third party experiments with annotations use an
+associated decorator to indicate how the annotation should be
+interpreted.
+     </p>
+     <p>
+      Early core developer attempts to use function annotations revealed
+inconsistent, ad-hoc annotation styles.  For example:
+     </p>
+     <ul class="simple">
+      <li>
+       <tt class="docutils literal">
+        [str]
+       </tt>
+       was ambiguous as to whether it represented a list of
+strings or a value that could be either
+       <em>
+        str
+       </em>
+       or
+       <em>
+        None
+       </em>
+       .
+      </li>
+      <li>
+       The notation
+       <tt class="docutils literal">
+        <span class="pre">
+         open(file:(str,bytes))
+        </span>
+       </tt>
+       was used for a value that
+could be either
+       <em>
+        bytes
+       </em>
+       or
+       <em>
+        str
+       </em>
+       rather than a 2-tuple containing
+a
+       <em>
+        str
+       </em>
+       value followed by a
+       <em>
+        bytes
+       </em>
+       value.
+      </li>
+      <li>
+       The annotation
+       <tt class="docutils literal">
+        seek(whence:int)
+       </tt>
+       exhibited a mix of
+over-specification and under-specification:
+       <em>
+        int
+       </em>
+       is too
+restrictive (anything with
+       <tt class="docutils literal">
+        __index__
+       </tt>
+       would be allowed) and it
+is not restrictive enough (only the values 0, 1, and 2 are
+allowed).  Likewise, the annotation
+       <tt class="docutils literal">
+        write(b: bytes)
+       </tt>
+       was also
+too restrictive (anything supporting the buffer protocol would be
+allowed).
+      </li>
+      <li>
+       Annotations such as
+       <tt class="docutils literal">
+        read1(n: int=None)
+       </tt>
+       were self-contradictory
+since
+       <em>
+        None
+       </em>
+       is not an
+       <em>
+        int
+       </em>
+       .  Annotations such as
+       <tt class="docutils literal">
+        source_path(self, fullname:str)
+        <span class="pre">
+         -&gt;
+        </span>
+        object
+       </tt>
+       were confusing about
+what the return type should be.
+      </li>
+      <li>
+       In addition to the above, annotations were inconsistent in the use
+of concrete types versus abstract types:
+       <em>
+        int
+       </em>
+       versus
+       <em>
+        Integral
+       </em>
+       and set/frozenset versus MutableSet/Set.
+      </li>
+      <li>
+       Some annotations in the abstract base classes were incorrect
+specifications.  For example, set-to-set operations require
+       <em>
+        other
+       </em>
+       to be another instance of
+       <em>
+        Set
+       </em>
+       rather than just an
+       <em>
+        Iterable
+       </em>
+       .
+      </li>
+      <li>
+       A further issue was that annotations become part of the
+specification but weren't being tested.
+      </li>
+      <li>
+       In most cases, the docstrings already included the type
+specifications and did so with greater clarity than the function
+annotations.  In the remaining cases, the docstrings were improved
+once the annotations were removed.
+      </li>
+      <li>
+       The observed function annotations were too ad-hoc and inconsistent
+to work with a coherent system of automatic type checking or
+argument validation.  Leaving these annotations in the code would
+have made it more difficult to make changes later so that
+automated utilities could be supported.
+      </li>
+     </ul>
+    </li>
+   </ul>
+   <p class="rubric">
+    Footnotes
+   </p>
+   <table class="docutils footnote" frame="void" id="fn-hi" rules="none">
+    <colgroup>
+     <col class="label">
+     </col>
+     <col>
+     </col>
+    </colgroup>
+    <tbody valign="top">
+     <tr>
+      <td class="label">
+       <a class="fn-backref" href="#id3">
+        [5]
+       </a>
+      </td>
+      <td>
+       <em>
+        Hanging indentation
+       </em>
+       is a type-setting style where all
+the lines in a paragraph are indented except the first line.  In
+the context of Python, the term is used to describe a style where
+the opening parenthesis of a parenthesized statement is the last
+non-whitespace character of the line, with subsequent lines being
+indented until the closing parenthesis.
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="section" id="references">
+   <h1>
+    <a class="toc-backref" href="#id43">
+     References
+    </a>
+   </h1>
+   <table class="docutils footnote" frame="void" id="id5" rules="none">
+    <colgroup>
+     <col class="label">
+     </col>
+     <col>
+     </col>
+    </colgroup>
+    <tbody valign="top">
+     <tr>
+      <td class="label">
+       <a class="fn-backref" href="#id1">
+        [1]
+       </a>
+      </td>
+      <td>
+       <a class="reference external" href="/dev/peps/pep-0007">
+        PEP 7
+       </a>
+       , Style Guide for C Code, van Rossum
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <table class="docutils footnote" frame="void" id="id6" rules="none">
+    <colgroup>
+     <col class="label">
+     </col>
+     <col>
+     </col>
+    </colgroup>
+    <tbody valign="top">
+     <tr>
+      <td class="label">
+       <a class="fn-backref" href="#id2">
+        [2]
+       </a>
+      </td>
+      <td>
+       Barry's GNU Mailman style guide
+       <a class="reference external" href="http://barry.warsaw.us/software/STYLEGUIDE.txt">
+        http://barry.warsaw.us/software/STYLEGUIDE.txt
+       </a>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <table class="docutils footnote" frame="void" id="id7" rules="none">
+    <colgroup>
+     <col class="label">
+     </col>
+     <col>
+     </col>
+    </colgroup>
+    <tbody valign="top">
+     <tr>
+      <td class="label">
+       <a class="fn-backref" href="#id4">
+        [3]
+       </a>
+      </td>
+      <td>
+       <a class="reference external" href="http://www.wikipedia.com/wiki/CamelCase">
+        http://www.wikipedia.com/wiki/CamelCase
+       </a>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <table class="docutils footnote" frame="void" id="id8" rules="none">
+    <colgroup>
+     <col class="label">
+     </col>
+     <col>
+     </col>
+    </colgroup>
+    <tbody valign="top">
+     <tr>
+      <td class="label">
+       [4]
+      </td>
+      <td>
+       <a class="reference external" href="/dev/peps/pep-0008">
+        PEP 8
+       </a>
+       modernisation, July 2013
+       <a class="reference external" href="http://bugs.python.org/issue18472">
+        http://bugs.python.org/issue18472
+       </a>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="section" id="copyright">
+   <h1>
+    <a class="toc-backref" href="#id44">
+     Copyright
+    </a>
+   </h1>
+   <p>
+    This document has been placed in the public domain.
+   </p>
+   <!-- Local Variables:
+mode: indented-text
+indent-tabs-mode: nil
+sentence-end-double-space: t
+fill-column: 70
+coding: utf-8
+End: -->
+  </div>
+ </body>
+</html>Source: <a href="https://hg.python.org/peps/file/tip/pep-0008.txt">https://hg.python.org/peps/file/tip/pep-0008.txt</a>
+
+    </article>
+
+
+                </section>
+
+                
+
+
+<aside class="left-sidebar" role="secondary">
+
+    
+
+
+
+
+
+
+    
+
+
+
+
+
+        <div class="twitter-widget sidebar-widget">
+        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/ThePSF" data-widget-id="434113224703610882">Tweets by @ThePSF</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+
+    <div class="psf-sidebar-widget sidebar-widget">
+        <h3 class="widget-title">The PSF</h3>
+<p>The Python Software Foundation is the organization behind Python. Become a member of the PSF and help advance the software and our mission. </p>
+
+    </div>
+
+</aside>
+
+
+
+                
+                
+
+
+            </div><!-- end .container -->
+        </div><!-- end #content .content-wrapper -->
+
+        <!-- Footer and social media list -->
+        <footer id="site-map" class="main-footer" role="contentinfo">
+            <div class="main-footer-links">
+                <div class="container">
+
+                    
+                    <a id="back-to-top-1" class="jump-link" href="#python-network"><span aria-hidden="true" class="icon-arrow-up"><span>&#9650;</span></span> Back to Top</a>
+
+                    
+
+<ul class="sitemap navigation menu do-not-print" role="tree" id="container">
+    
+    <li class="tier-1 element-1">
+        <a href="/about/" >About</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/about/apps/" title="">Applications</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/about/quotes/" title="">Quotes</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/about/gettingstarted/" title="">Getting Started</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/about/help/" title="">Help</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-2">
+        <a href="/downloads/" >Downloads</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/downloads/" title="">All releases</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/downloads/source/" title="">Source code</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/downloads/windows/" title="">Windows</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/downloads/mac-osx/" title="">Mac OS X</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="/download/other/" title="">Other Platforms</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="https://docs.python.org/3/license.html" title="">License</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="/download/alternatives" title="">Alternative Implementations</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-3">
+        <a href="/doc/" >Documentation</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/doc/" title="">Docs</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/doc/av" title="">Audio/Visual Talks</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="https://wiki.python.org/moin/BeginnersGuide" title="">Beginner&#39;s Guide</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="https://docs.python.org/devguide/" title="">Developer&#39;s Guide</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="https://docs.python.org/faq/" title="">FAQ</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="http://wiki.python.org/moin/Languages" title="">Non-English Docs</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="http://python.org/dev/peps/" title="">PEP Index</a></li>
+    
+        <li class="tier-2 element-8" role="treeitem"><a href="https://wiki.python.org/moin/PythonBooks" title="">Python Books</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-4">
+        <a href="/community/" >Community</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/community/diversity/" title="">Diversity</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/community/irc/" title="">IRC</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/community/lists/" title="">Mailing Lists</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/community/workshops/" title="">Python Conferences</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="/community/sigs/" title="">Special Interest Groups</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="https://wiki.python.org/moin/" title="">Python Wiki</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="/community/logos/" title="">Python Logo</a></li>
+    
+        <li class="tier-2 element-8" role="treeitem"><a href="/community/merchandise/" title="">Merchandise</a></li>
+    
+        <li class="tier-2 element-9" role="treeitem"><a href="/community/awards" title="">Community Awards</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-5">
+        <a href="/about/success/" title="success-stories">Success Stories</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/about/success/#arts" title="">Arts</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/about/success/#business" title="">Business</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/about/success/#education" title="">Education</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/about/success/#engineering" title="">Engineering</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="/about/success/#government" title="">Government</a></li>
+    
+        <li class="tier-2 element-6" role="treeitem"><a href="/about/success/#scientific" title="">Scientific</a></li>
+    
+        <li class="tier-2 element-7" role="treeitem"><a href="/about/success/#software-development" title="">Software Development</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-6">
+        <a href="/blogs/" title="News from around the Python world">News</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/blogs/" title="Python Insider Blog Posts">Python News</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="http://planetpython.org/" title="Planet Python">Community News</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="http://pyfound.blogspot.com/" title="PSF Blog">PSF News</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="http://pycon.blogspot.com/" title="PyCon Blog">PyCon News</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-7">
+        <a href="/events/" >Events</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="/events/python-events/" title="">Python Events</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="/events/python-user-group/" title="">User Group Events</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="/events/python-events/past/" title="">Python Events Archive</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="/events/python-user-group/past/" title="">User Group Events Archive</a></li>
+    
+        <li class="tier-2 element-5" role="treeitem"><a href="https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event" title="">Submit an Event</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+    <li class="tier-1 element-8">
+        <a href="/dev/" >Contributing</a>
+        
+            
+
+<ul class="subnav menu">
+    
+        <li class="tier-2 element-1" role="treeitem"><a href="http://docs.python.org/devguide/" title="">Developer&#39;s Guide</a></li>
+    
+        <li class="tier-2 element-2" role="treeitem"><a href="http://bugs.python.org/" title="">Issue Tracker</a></li>
+    
+        <li class="tier-2 element-3" role="treeitem"><a href="https://mail.python.org/mailman/listinfo/python-dev" title="">python-dev list</a></li>
+    
+        <li class="tier-2 element-4" role="treeitem"><a href="http://pythonmentors.com/" title="">Core Mentorship</a></li>
+    
+</ul>
+
+        
+    </li>
+    
+</ul>
+
+
+                    <a id="back-to-top-2" class="jump-link" href="#python-network"><span aria-hidden="true" class="icon-arrow-up"><span>&#9650;</span></span> Back to Top</a>
+                    
+
+                </div><!-- end .container -->
+            </div> <!-- end .main-footer-links -->
+
+            <div class="site-base">
+                <div class="container">
+                    
+                    <ul class="footer-links navigation menu do-not-print" role="tree">
+                        <li class="tier-1 element-1"><a href="/about/help/">Help &amp; <span class="say-no-more">General</span> Contact</a></li>
+                        <li class="tier-1 element-2"><a href="/community/diversity/">Diversity <span class="say-no-more">Initiatives</span></a></li>
+                        <li class="tier-1 element-3"><a href="https://github.com/python/pythondotorg/issues">Submit Website Bug</a></li>
+                        <!--<li class="tier-1 element-3"><a href="#"><span class="say-no-more">Website</span> Colophon</a></li>-->
+                    </ul>
+
+                    <div class="copyright">
+                        <p><small>
+                            <span class="pre">Copyright &copy;2001-2015.</span>
+                            &nbsp;<span class="pre"><a href="/psf-landing/">Python Software Foundation</a></span>
+                            &nbsp;<span class="pre"><a href="/about/legal/">Legal Statements</a></span>
+                            &nbsp;<span class="pre"><a href="/privacy/">Privacy Policy</a></span>
+                        </small></p>
+                    </div>
+
+                </div><!-- end .container -->
+            </div><!-- end .site-base -->
+
+        </footer>
+
+    </div><!-- end #touchnav-wrapper -->
+
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.8.2.min.js"><\/script>')</script>
+
+    <script src="/static/js/libs/masonry.pkgd.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/main-min.js" charset="utf-8"></script>
+    
+
+    <!--[if lte IE 7]>
+    <script type="text/javascript" src="/static/js/plugins/IE8-min.js" charset="utf-8"></script>
+    
+    
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="/static/js/plugins/getComputedStyle-min.js" charset="utf-8"></script>
+    
+    
+    <![endif]-->
+
+    
+
+    
+    
+
+</body>
+</html>
