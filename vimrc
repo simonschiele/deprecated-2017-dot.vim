@@ -40,15 +40,16 @@ map q <Nop>
 " display with nowrap as default
 set nowrap
 
-" listchars
-"set fillchars=vert:┃,diff:⎼,fold:_
+"set virtualedit=onemore                " allow for cursor beyond last character
+set virtualedit=all                     " move around freely
+
+set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
 " highlite long lines
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%79v', 102)
-
 
 " }}}
 
@@ -905,6 +906,19 @@ nmap <silent> <leader>vr :so $MYVIMRC<CR>
 """ auto-reload vimrc on save
 "autocmd BufWritePost .vimrc source ~/.vimrc
 "autocmd BufWritePost vimrc source ~/.vimrc
+
+""" load local configs
+if filereadable(glob("~/.private/vimrc"))
+    source ~/.private/vimrc
+endif
+
+if filereadable(glob("~/.work/vimrc"))
+    source ~/.work/vimrc
+endif
+
+if filereadable(glob("~/.pb/vimrc"))
+    source ~/.pb/vimrc
+endif
 
 " }}}
 

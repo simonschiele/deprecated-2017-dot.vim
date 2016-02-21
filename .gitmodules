@@ -97,3 +97,6 @@
 [submodule "plugins/python-isort"]
 	path = plugins/python-isort
 	url = https://github.com/fisadev/vim-isort.git
+[submodule "plugins/git-gutter"]
+	path = plugins/git-gutter
+	url = git://github.com/airblade/vim-gitgutter.git
