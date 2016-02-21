@@ -91,3 +91,9 @@
 [submodule "plugins/ack"]
     path = plugins/ack
     url = https://github.com/mileszs/ack.vim.git
+[submodule "plugins/YouCompleteMe"]
+	path = plugins/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "plugins/python-isort"]
+	path = plugins/python-isort
+	url = https://github.com/fisadev/vim-isort.git
