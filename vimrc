@@ -724,6 +724,9 @@ autocmd FileType python nnoremap <buffer> K :<C-u>let save_isk = &iskeyword \|
     \ execute "!pydoc " . expand("<cword>") \|
     \ let &iskeyword = save_isk<CR>
 
+""" isort
+let g:vim_isort_map = '<C-i>'
+
 " }}}
 
 " {{{ php
