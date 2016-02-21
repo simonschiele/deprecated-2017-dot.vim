@@ -72,6 +72,15 @@ $> git submodule update --init --recursive
 # Link vimrc to your HOME
 $> ln -s ~/.vim/vimrc ~/.vimrc
 
+# Install external depends
+$> sudo apt-get install python-pip python-dev cmake npm
+$> sudo pip install markdown pygments
+$> sudo npm -g install instant-markdown-d
+
+# Compile YouCompleteMe
+$> cd ~/.vim/plugins/YouCompleteMe/
+$> ./install.py --clang-completer 
+
 ```
 
 
@@ -381,6 +390,7 @@ $> grep -oi "(plugin[^)]*)" ~/.vimrc | cut -f2- -d' ' | sed 's/)$//g'
 ## Vim Resources
 
 ### Books
+
  * "[Practical Vim](https://pragprog.com/book/dnvim/practical-vim)" by Drew Neil
  * "[The VimL Primer](https://pragprog.com/book/bkviml/the-viml-primer)" by Benjamin Klein
 
@@ -388,8 +398,8 @@ $> grep -oi "(plugin[^)]*)" ~/.vimrc | cut -f2- -d' ' | sed 's/)$//g'
 ### Online Resources
 
  * [A Byte of Vim (ebook)](http://www.swaroopch.com/notes/vim/)
- * [Learn Vimscript the Hard Way (ebook)](http://learnvimscriptthehardway.stevelosh.com/ "Learn Vimscript the Hard Way") by [Steve Losh](https://github.com/sjl "[githuub] sjl (Steve Losh)")
  * [Small VimL overview](http://en.wikibooks.org/wiki/Learning_the_vi_Editor/Vim/VimL_Script_language) - by wikibooks
+ * [Learn Vimscript the Hard Way (ebook)](http://learnvimscriptthehardway.stevelosh.com/ "Learn Vimscript the Hard Way") by [Steve Losh](https://github.com/sjl "[githuub] sjl (Steve Losh)")
  * [Learn Vim Progressively](http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/)
 
 
@@ -403,8 +413,9 @@ $> grep -oi "(plugin[^)]*)" ~/.vimrc | cut -f2- -d' ' | sed 's/)$//g'
 All code in this repo that was written by me:
 [MIT License](http://opensource.org/licenses/MIT)
 
-This repo contains many plugins from other very gifted people (mostly as sub-
-repo. Of course the original license of these are not touched or changed.
+This repo contains many plugins and stuff from other very gifted people (mostly
+as sub-repo).
+Of course the original license of these aren't touched or changed.
 
 
 ## Authors

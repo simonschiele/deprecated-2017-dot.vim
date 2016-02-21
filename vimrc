@@ -40,9 +40,8 @@ map q <Nop>
 " display with nowrap as default
 set nowrap
 
-"set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
-"set virtualedit=onemore                " allow for cursor beyond last character
-
+" listchars
+"set fillchars=vert:┃,diff:⎼,fold:_
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
@@ -437,7 +436,7 @@ nnoremap <silent> <F2> :noh<CR>
 " keymapping:<F3> _toggle ignorecase for search
 map <F3> :set ic!<bar>set ic?<cr>
 
-" This rewires n and N to do the highlighing.
+" This rewires n and N to do the blink for the next match
 nnoremap <silent> n   n:call HLNext(0.3)<cr>
 nnoremap <silent> N   N:call HLNext(0.3)<cr>
 
@@ -672,25 +671,66 @@ let g:UltiSnipsUsePythonVersion=2
 
 " {{{ completion / supertab (plugin: todo)
 
+function! AutoCompletion()
+    let g:ycm_auto_trigger=1
+endfunction
+
+function! ManualCompletion()
+    let g:ycm_auto_trigger=0
+
+    "let g:SuperTabDefaultCompletionType = 'context'
+    "autocmd FileType *
+      "\ if &omnifunc != '' |
+      "\   call SuperTabChain(&omnifunc, "<c-p>") |
+      "\ endif
+
+    "autocmd FileType *
+    "  \ if &omnifunc != '' |
+    "  \   call SuperTabChain(&omnifunc, "<c-p>") |
+    "  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+    "  \ endif
+endfunction
+
+function! NoCompletion()
+    " disable you complete me
+    let g:ycm_auto_trigger=0
+    nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+endfunction
+
+" Toggle completion Types
+let g:myCompletion = 0
+let g:myCompletionList = ['none', 'manual', 'auto']
+function! MyCompletion()
+    let g:myCompletion = g:myCompletion + 1
+    if g:myCompletion >= len(g:myCompletionList) | let g:myCompletion = 0 | endif
+
+    if g:myCompletion == 0
+        call NoCompletion()
+        echomsg 'completion: none'
+    elseif g:myCompletion == 1
+        call ManualCompletion()
+        echomsg 'completion: manual'
+    elseif g:myCompletion == 2
+        call AutoCompletion()
+        echomsg 'completion: auto'
+    endif
+endfunction
+
+" keymapping:<F8> _Toggle completion
+nmap <F8> :<C-U>call MyCompletion()<CR>
+
+" ???
 set omnifunc=syntaxcomplete#Complete
 
-let g:SuperTabDefaultCompletionType = 'context'
-autocmd FileType *
-  \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
-  \ endif
-
-"autocmd FileType *
-  "\ if &omnifunc != '' |
-  "\   call SuperTabChain(&omnifunc, "<c-p>") |
-  "\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-  "\ endif
+" YouCompleteMe settings
+let g:ycm_key_invoke_completion = '<S-Tab>'
+" let g:ycm_min_num_of_chars_for_completion = 2
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd CursorMovedI * if pumvisible() == 0 | pclose | endif
+autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 
 " }}}
 
@@ -823,12 +863,14 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " {{{ markdown
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd FileType markdown nnoremap <buffer> <F5> :Instantmd<CR>
+let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
 
 " }}}
 
 " {{{ binary
 
-"augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
+" augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
 
 " }}}
 
