@@ -42,6 +42,7 @@ set nowrap
 
 "set fillchars=vert:┃,diff:⎼,fold:⎼     " it's about borders?!
 "set virtualedit=onemore                " allow for cursor beyond last character
+set virtualedit=all                     " move around freely
 
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
