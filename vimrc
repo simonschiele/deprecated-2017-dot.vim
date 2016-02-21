@@ -365,9 +365,9 @@ command! -nargs=? -bang B if <q-args> != '' | exe 'buffer '.<q-args> | else | ls
 " line numbering
 set number
 
-" keymapping:<F4> _toggle numbers (normal/relative/disable)
+" keymapping:<F12> _toggle numbers (normal/relative/disable)
 " numbers.vim: toggle keymapping
-nnoremap <silent> <F4> :NumbersToggle<CR>
+nnoremap <silent> <F12> :NumbersToggle<CR>
 
 " numbers.vim: windows where not to show numbers at all
 let g:numbers_exclude = ['minibufexpl', 'nerdtree', 'unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']
