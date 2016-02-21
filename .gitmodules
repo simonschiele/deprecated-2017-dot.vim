@@ -91,3 +91,6 @@
 [submodule "plugins/ack"]
     path = plugins/ack
     url = https://github.com/mileszs/ack.vim.git
+[submodule "plugins/git-gutter"]
+	path = plugins/git-gutter
+	url = git://github.com/airblade/vim-gitgutter.git
