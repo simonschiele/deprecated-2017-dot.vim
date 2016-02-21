@@ -51,7 +51,6 @@ set list
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%79v', 102)
 
-
 " }}}
 
 " {{{ cmd
@@ -858,6 +857,19 @@ nmap <silent> <leader>vr :so $MYVIMRC<CR>
 """ auto-reload vimrc on save
 "autocmd BufWritePost .vimrc source ~/.vimrc
 "autocmd BufWritePost vimrc source ~/.vimrc
+
+""" load local configs
+if filereadable(glob("~/.private/vimrc"))
+    source ~/.private/vimrc
+endif
+
+if filereadable(glob("~/.work/vimrc"))
+    source ~/.work/vimrc
+endif
+
+if filereadable(glob("~/.pb/vimrc"))
+    source ~/.pb/vimrc
+endif
 
 " }}}
 
