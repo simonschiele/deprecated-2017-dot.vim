@@ -780,12 +780,15 @@ let g:syntastic_javascript_gjslint_args='--max_line_length=120'
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
+command! PrettyPrintJSON %!python -m json.tool
 
 " }}}
 
 " {{{ xml
 
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 
 " }}}
 
