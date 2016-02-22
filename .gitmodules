@@ -100,3 +100,6 @@
 [submodule "plugins/git-gutter"]
 	path = plugins/git-gutter
 	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "plugins/airline-themes"]
+	path = plugins/airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
