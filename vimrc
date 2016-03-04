@@ -85,21 +85,20 @@ let theme = 'solarized'
 if has("syntax")
     syntax on
 
-    set t_Co=256
+    " set t_Co=256
     set background=dark
 
     if theme == 'solarized'
-        " let g:solarized_bold = 1
-        " let g:solarized_italic = 1
+        let g:solarized_bold = 1
+        let g:solarized_italic = 1
         " let g:solarized_underline = 0
-        let g:solarized_contrast = 'high'
+        " let g:solarized_contrast = 'high'
         let g:solarized_visibility = 'low'
         let g:solarized_termtrans = 1
-        let g:solarized_termcolors = 16
+        " let g:solarized_termcolors = 16
         " let g:solarized_termcolors = 256
 
         colorscheme solarized
-
     elseif theme == 'wombat'
         colorscheme wombat256
 
