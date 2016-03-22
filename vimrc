@@ -51,6 +51,88 @@ set list
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%79v', 102)
 
+" Fix keycodes for screen
+map [1~ <Home>
+map [4~ <End>
+imap [1~ <Home>
+imap [4~ <End>
+
+"" strange settings for split windows. they are always minimized to
+"" one line, except one. and you can switch nicely... not usable for
+"" me but maybe comes handy some day for devices with small screen...
+"set winminheight=0
+"set winheight=999
+
+" }}}
+
+" {{{ cursor
+
+""" fancy cursor-crosshair
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+    au WinLeave * setlocal nocursorline
+    au WinLeave * setlocal nocursorcolumn
+augroup END
+
+""" lines around the cursor
+"set scrolloff=3        " min 3 lines above/below cursor while scrolling
+
+" cursor centered
+set scrolloff=999
+
+" }}}
+
+" {{{ backup / swap / history / viminfo / undo / ... (todo)
+
+" keep 1000 lines of command line history
+set history=1000
+
+" Tell vim to remember certain things when we exit
+" "  '10  :  marks will be remembered for up to 10 previously edited files
+" "  "100 :  will save up to 100 lines for each register
+" "  :20  :  up to 20 lines of command-line history will be remembered
+" "  %    :  saves and restores the buffer list
+" "  n... :  where to save the viminfo files
+"set viminfo='20,\"10000 " read/write a .viminfo file  """
+set viminfo='500,\"3000,:50,%,n~/.vim/tmp/viminfo'
+
+set noswapfile
+"set dir=~/.vim/tmp/swap
+"set swapfile
+
+" don't write backup file
+set nobackup
+
+set nowritebackup       " dont' write 'old_version'-backup file  """
+"set backupdir=~/.vim/tmp/backup
+"set backup
+"set writebackup
+
+" jump to last position on reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+" undo stuff
+set undolevels=500      " 500 undos
+set undoreload=10000    " number of lines to save for undo
+set undodir=~/.vim/tmp/undo
+
+" undo after closing file. need warning plugin before activating this one
+" again.
+"set undofile
+
+
+" }}}
+
+" {{{ print
+
+set printoptions=paper:a4
+set printoptions=number:y " put line numbers on hardcopy
+
 " }}}
 
 " {{{ cmd
@@ -126,75 +208,6 @@ endif
 
 " }}}
 
-" {{{ print
-
-set printoptions=paper:a4
-set printoptions=number:y " put line numbers on hardcopy
-
-" }}}
-
-" {{{ undo (todo)
-
-set undolevels=500      " 500 undos
-set undoreload=10000    " number of lines to save for undo
-set undodir=~/.vim/tmp/undo
-"set undofile
-
-" }}}
-
-" {{{ backup / swap / history / viminfo / ... (todo)
-
-" keep 1000 lines of command line history
-set history=1000
-
-" Tell vim to remember certain things when we exit
-" "  '10  :  marks will be remembered for up to 10 previously edited files
-" "  "100 :  will save up to 100 lines for each register
-" "  :20  :  up to 20 lines of command-line history will be remembered
-" "  %    :  saves and restores the buffer list
-" "  n... :  where to save the viminfo files
-"set viminfo='20,\"10000 " read/write a .viminfo file  """
-set viminfo='500,\"3000,:50,%,n~/.vim/tmp/viminfo'
-
-set noswapfile
-"set dir=~/.vim/tmp/swap
-"set swapfile
-
-" don't write backup file
-set nobackup
-
-set nowritebackup       " dont' write 'old_version'-backup file  """
-"set backupdir=~/.vim/tmp/backup
-"set backup
-"set writebackup
-
-" jump to last position on reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
-
-" }}}
-
-" {{{ cursor
-
-""" fancy cursor-crosshair
-augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
-    au WinLeave * setlocal nocursorline
-    au WinLeave * setlocal nocursorcolumn
-augroup END
-
-""" lines around the cursor
-"set scrolloff=3        " min 3 lines above/below cursor while scrolling
-
-" cursor centered
-set scrolloff=999
-
-" }}}
-
 " {{{ mouse
 
 "" play with x11 mouse integration - confusing behavier...
@@ -214,16 +227,6 @@ set autowrite
 
 """ :w!! to save as sudo
 " cmap w!! w !sudo tee % >/dev/null
-
-" }}}
-
-" {{{ windows
-
-"" strange settings for split windows. they are always minimized to
-"" one line, except one. and you can switch nicely... not usable for
-"" me but maybe comes handy some day for devices with small screen...
-"set winminheight=0
-"set winheight=999
 
 " }}}
 
