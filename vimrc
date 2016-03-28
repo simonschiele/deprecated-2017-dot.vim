@@ -914,12 +914,8 @@ if filereadable(glob("~/.private/vimrc"))
     source ~/.private/vimrc
 endif
 
-if filereadable(glob("~/.work/vimrc"))
-    source ~/.work/vimrc
-endif
-
-if filereadable(glob("~/.pb/vimrc"))
-    source ~/.pb/vimrc
+if filereadable(glob("~/.private/profitricks/vimrc"))
+    source ~/.private/profitbricks/vimrc
 endif
 
 " }}}
