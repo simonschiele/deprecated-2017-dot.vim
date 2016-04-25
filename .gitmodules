@@ -103,3 +103,9 @@
 [submodule "plugins/airline-themes"]
 	path = plugins/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "plugins/instant-rst"]
+	path = plugins/instant-rst
+	url = https://github.com/Rykka/InstantRst.git
+[submodule "plugins/rst-riv"]
+	path = plugins/rst-riv
+	url = https://github.com/Rykka/riv.vim.git

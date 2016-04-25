@@ -81,6 +81,9 @@ $> sudo npm -g install instant-markdown-d
 $> cd ~/.vim/plugins/YouCompleteMe/
 $> ./install.py --clang-completer 
 
+# install instant-rst
+$> sudo pip install https://github.com/Rykka/instant-rst.py/archive/master.zip
+
 ```
 
 

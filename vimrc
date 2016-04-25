@@ -871,6 +871,13 @@ let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
 
 " }}}
 
+" {{{ rst
+
+" let g:instant_rst_browser = 'chromium'
+autocmd FileType markdown nnoremap <buffer> <F5> :Instantmd<CR>
+
+" }}}
+
 " {{{ binary
 
 " augroup Binary au! au BufReadPre *.bin let &bin=1 au BufReadPost *.bin if &bin | %!xxd au BufReadPost  *.bin set filetype=xxd | endif au BufWritePre *.bin if &bin | %!xxd -r au BufWritePre *.bin endif au BufWritePost *.bin if &bin | %!xxd au BufWritePost *.bin set nomod | endif
