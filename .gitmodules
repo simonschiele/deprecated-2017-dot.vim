@@ -109,3 +109,6 @@
 [submodule "plugins/rst-riv"]
 	path = plugins/rst-riv
 	url = https://github.com/Rykka/riv.vim.git
+[submodule "plugins/preview"]
+	path = plugins/preview
+	url = https://github.com/greyblake/vim-preview.git
