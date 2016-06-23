@@ -4,8 +4,8 @@
 """ Use pathogen to load further modules from plugins/
 filetype off
 runtime plugins/pathogen/autoload/pathogen.vim
-call pathogen#infect('plugins/{}')
-call pathogen#helptags()
+silent! call pathogen#infect('plugins/{}')
+silent! call pathogen#helptags()
 
 " }}}
 
@@ -866,15 +866,17 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " {{{ markdown
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd FileType markdown nnoremap <buffer> <F5> :Instantmd<CR>
-let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
+" autocmd BufNewFile,BufRead \*.{md,mdwn,mkd,mkdn,mark\*} set filetype=markdown
+let g:PreviewBrowsers = 'chromium,google-chrome,iceweasel,firefox'
+" autocmd FileType markdown nnoremap <buffer> <F5> :Instantmd<CR>
+" let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
 
 " }}}
 
 " {{{ rst
 
 " let g:instant_rst_browser = 'chromium'
-autocmd FileType markdown nnoremap <buffer> <F5> :Instantmd<CR>
+" autocmd FileType rst nnoremap <buffer> <F5> :InstantRst<CR>
 
 " }}}
 

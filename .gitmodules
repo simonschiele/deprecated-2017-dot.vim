@@ -112,3 +112,6 @@
 [submodule "plugins/preview"]
 	path = plugins/preview
 	url = https://github.com/greyblake/vim-preview.git
+[submodule "plugins/surround"]
+	path = plugins/surround
+	url = https://github.com/tpope/vim-surround.git
