@@ -4,6 +4,8 @@
 """ Use pathogen to load further modules from plugins/
 filetype off
 runtime plugins/pathogen/autoload/pathogen.vim
+let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'YouCompleteMe')
 silent! call pathogen#infect('plugins/{}')
 silent! call pathogen#helptags()
 
@@ -859,7 +861,7 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 " {{{ make
 
-autocmd FileType make set noexpandtab shiftwidth=8
+autocmd FileType make set noexpandtab shiftwidth=4
 
 " }}}
 
@@ -923,8 +925,9 @@ if filereadable(glob("~/.private/vimrc"))
     source ~/.private/vimrc
 endif
 
-if filereadable(glob("~/.private/profitricks/vimrc"))
-    source ~/.private/profitbricks/vimrc
+if filereadable(glob("~/.private/work/vimrc"))
+    source ~/.private/work/vimrc
+    let g:syntastic_python_flake8_args='--max-line-length=99'
 endif
 
 " }}}

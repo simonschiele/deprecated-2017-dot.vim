@@ -53,8 +53,8 @@
     path = plugins/tagbar
     url = git://github.com/majutsushi/tagbar
 [submodule "plugins/supertab"]
-    path = plugins/supertab
-    url = https://github.com/ervandew/supertab.git
+	path = plugins/supertab
+	url = https://github.com/ervandew/supertab.git
 [submodule "plugins/instant-markdown"]
     path = plugins/instant-markdown
     url = https://github.com/isnowfy/python-vim-instant-markdown.git
