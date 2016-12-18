@@ -2,28 +2,28 @@
 	path = plugins/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "plugins/colors-busybee"]
-	path = plugins/colors-busybee
+	path = plugins-colors/busybee
 	url = https://github.com/vim-scripts/BusyBee.git
 [submodule "plugins/colors-flatlandia"]
-	path = plugins/colors-flatlandia
+	path = plugins-colors/flatlandia
 	url = https://github.com/jordwalke/flatlandia.git
 [submodule "plugins/colors-github"]
-	path = plugins/colors-github
+	path = plugins-colors/github
 	url = https://github.com/endel/vim-github-colorscheme
 [submodule "plugins/colors-gummybears"]
-    path = plugins/colors-gummybears
+	path = plugins-colors/gummybears
     url = https://github.com/vim-scripts/Gummybears.git
 [submodule "plugins/colors-inkpot"]
-	path = plugins/colors-inkpot
+	path = plugins-colors/inkpot
 	url = https://github.com/ciaranm/inkpot.git
 [submodule "plugins/colors-railscasts"]
-	path = plugins/colors-railscasts
+	path = plugins-colors/railscasts
 	url = https://github.com/jpo/vim-railscasts-theme.git
 [submodule "plugins/colors-smyck"]
-	path = plugins/colors-smyck
+	path = plugins-colors/smyck
 	url = https://github.com/hukl/Smyck-Color-Scheme.git
 [submodule "plugins/colors-solarized"]
-	path = plugins/colors-solarized
+	path = plugins-colors/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "plugins/airline"]
 	path = plugins/airline
@@ -41,7 +41,7 @@
     path = plugins/ultisnips
     url = https://github.com/SirVer/ultisnips.git
 [submodule "plugins/syntax-systemd"]
-    path = plugins/syntax-systemd
+	path = plugins-syntax/systemd
     url = https://github.com/Matt-Deacalion/vim-systemd-syntax.git
 [submodule "plugins/numbers"]
     path = plugins/numbers

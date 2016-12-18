@@ -6,7 +6,7 @@ filetype off
 runtime plugins/pathogen/autoload/pathogen.vim
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'YouCompleteMe')
-silent! call pathogen#infect('plugins/{}')
+silent! call pathogen#infect('plugins-colors/{}', 'plugins-syntax/{}', 'plugins/{}')
 silent! call pathogen#helptags()
 
 " }}}
@@ -164,7 +164,7 @@ set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.exe,
 " endif
 
 " solarized, wombat
-let theme = 'solarized'
+let theme = 'wombat'
 
 if has("syntax")
     syntax on
